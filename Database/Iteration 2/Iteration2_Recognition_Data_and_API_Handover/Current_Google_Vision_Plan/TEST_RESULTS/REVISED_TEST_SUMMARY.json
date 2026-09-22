@@ -1,0 +1,20 @@
+{
+  "revision": "Fresh-seafood sample replaced after visual QA",
+  "adjusted_images": 61,
+  "adjusted_correct": 38,
+  "adjusted_accuracy": 0.623,
+  "fresh_seafood_retest": {
+    "tested": 5,
+    "correct": 4,
+    "accuracy": 0.8,
+    "successful": ["raw whole fish", "fresh crab", "fresh mussels", "fresh squid"],
+    "unmapped": ["peeled raw shrimp"]
+  },
+  "api_usage": {
+    "initial_connectivity": 1,
+    "initial_main_evaluation": 61,
+    "fresh_seafood_retest": 5,
+    "total_label_detection_units": 67,
+    "percentage_of_current_1000_unit_monthly_allowance": 6.7
+  }
+}

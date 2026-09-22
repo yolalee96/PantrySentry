@@ -1,0 +1,11 @@
+fastapi==0.115.12
+uvicorn==0.34.2
+python-multipart==0.0.20
+transformers==4.51.3
+sentencepiece==0.2.0
+Pillow==11.2.1
+httpx==0.28.1
+pytesseract==0.3.13
+numpy==2.2.5
+safetensors==0.5.3
+protobuf==5.29.5

@@ -1,0 +1,34 @@
+name: pantrybuddy
+description: "PantryBuddy — Smart Household Food Inventory & Expiry Management Platform"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  # HTTP client for talking to the real backend API (see lib/data/api_data_store.dart)
+  # and for Open Food Facts barcode lookups (see lib/services/product_lookup_service.dart).
+  http: ^1.2.2
+  # Barcode scanning (User Story 4.1) — CameraX/ML Kit on Android, AVFoundation/
+  # Apple Vision on iOS & macOS, ZXing on web. Works on the deployed web build.
+  mobile_scanner: ^7.2.0
+  # Photo capture for image recognition (User Story 4.3) — camera/gallery
+  # picker with built-in resize/compression so uploads stay small.
+  image_picker: ^1.1.2
+  # Persists the session token/userId across app restarts (User Story:
+  # "stay logged in") — uses browser localStorage on web.
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets: 
+  - assets/images/Logo.png

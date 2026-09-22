@@ -1,0 +1,8 @@
+{
+  "tested_at_utc": "2026-09-14T10:39:10.796797+00:00",
+  "feature": "LABEL_DETECTION",
+  "images": 5,
+  "successful_api_calls": 5,
+  "mapped_to_seafood": 4,
+  "accuracy": 0.8
+}

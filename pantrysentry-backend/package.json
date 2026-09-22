@@ -1,0 +1,21 @@
+{
+  "name": "pantrybuddy-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "REST API for PantryBuddy, backed by the pantry_buddy MySQL schema.",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^6.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.0",
+    "nodemailer": "^9.1.1"
+  }
+}

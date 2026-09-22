@@ -1,0 +1,947 @@
+﻿label,category_id,source_locator
+Starfruit,5,Existing catalogue product 1
+Papaya,5,Existing catalogue product 2
+Cempedak,5,Existing catalogue product 3
+Sapodilla (Ciku),5,Existing catalogue product 4
+Dokong,5,Existing catalogue product 5
+Duku,5,Existing catalogue product 6
+Durian,5,Existing catalogue product 7
+Guava,5,Existing catalogue product 8
+Langsat,5,Existing catalogue product 9
+Pomelo,5,Existing catalogue product 10
+Sweet Orange,5,Existing catalogue product 11
+Mango,5,Existing catalogue product 12
+Mangosteen,5,Existing catalogue product 13
+Dragon Fruit,5,Existing catalogue product 14
+Pineapple,5,Existing catalogue product 15
+Jackfruit,5,Existing catalogue product 16
+Banana,5,Existing catalogue product 17
+Pulasan,5,Existing catalogue product 18
+Rambutan,5,Existing catalogue product 19
+Salak,5,Existing catalogue product 20
+Watermelon,5,Existing catalogue product 21
+Abiu,5,Existing catalogue product 22
+Grape,5,Existing catalogue product 23
+Avocado,5,Existing catalogue product 24
+Horse Mango (Bacang),5,Existing catalogue product 25
+Bambangan,5,Existing catalogue product 26
+Bilimbi,5,Existing catalogue product 27
+Baccaurea Angulata,5,Existing catalogue product 28
+Jujube,5,Existing catalogue product 29
+Malay Gooseberry (Cermai),5,Existing catalogue product 30
+Dabai,5,Existing catalogue product 31
+Soursop,5,Existing catalogue product 32
+Cashew Apple,5,Existing catalogue product 33
+Water Apple,5,Existing catalogue product 34
+Wax Apple,5,Existing catalogue product 35
+Malay Apple,5,Existing catalogue product 36
+Ambarella,5,Existing catalogue product 37
+Kuini,5,Existing catalogue product 38
+Kundang,5,Existing catalogue product 39
+Lemon,5,Existing catalogue product 40
+Longan,5,Existing catalogue product 41
+Passion Fruit,5,Existing catalogue product 42
+Cat's Eye Fruit (Mata Kucing),5,Existing catalogue product 43
+Velvet Apple,5,Existing catalogue product 44
+Sweet-sop,5,Existing catalogue product 45
+Custard Apple,5,Existing catalogue product 46
+Persimmon,5,Existing catalogue product 47
+Rambai,5,Existing catalogue product 48
+Breadfruit,5,Existing catalogue product 49
+Honeydew,5,Existing catalogue product 50
+Indian Mackerel,3,Existing catalogue product 51
+Short Mackerel,3,Existing catalogue product 52
+Narrow-barred Spanish Mackerel,3,Existing catalogue product 53
+Indo-Pacific King Mackerel,3,Existing catalogue product 54
+Yellowstripe Scad,3,Existing catalogue product 55
+Yellowtail Scad,3,Existing catalogue product 56
+Torpedo Scad,3,Existing catalogue product 57
+Indian Scad,3,Existing catalogue product 58
+Goldstripe Sardinella,3,Existing catalogue product 59
+Indian Anchovy,3,Existing catalogue product 60
+Longtail Tuna,3,Existing catalogue product 61
+Skipjack Tuna,3,Existing catalogue product 62
+Kawakawa,3,Existing catalogue product 63
+Great Barracuda,3,Existing catalogue product 64
+Japanese Threadfin Bream,3,Existing catalogue product 65
+Malabar Blood Snapper,3,Existing catalogue product 66
+Orange-spotted Grouper,3,Existing catalogue product 67
+Barramundi,3,Existing catalogue product 68
+Silver Pomfret,3,Existing catalogue product 69
+Black Pomfret,3,Existing catalogue product 70
+Golden Pompano,3,Existing catalogue product 71
+Croaker,3,Existing catalogue product 72
+Fourfinger Threadfin,3,Existing catalogue product 73
+Flathead Grey Mullet,3,Existing catalogue product 74
+Milkfish,3,Existing catalogue product 75
+White-spotted Rabbitfish,3,Existing catalogue product 76
+Whitespotted Whipray,3,Existing catalogue product 77
+Requiem Shark,3,Existing catalogue product 78
+Long Tongue Sole,3,Existing catalogue product 79
+Nile Tilapia,3,Existing catalogue product 80
+Striped Catfish,3,Existing catalogue product 81
+Walking Catfish,3,Existing catalogue product 82
+Striped Snakehead,3,Existing catalogue product 83
+Giant Gourami,3,Existing catalogue product 84
+Climbing Perch,3,Existing catalogue product 85
+Indonesian Shortfin Eel,3,Existing catalogue product 86
+Whiteleg Shrimp,3,Existing catalogue product 87
+Giant Tiger Prawn,3,Existing catalogue product 88
+Banana Prawn,3,Existing catalogue product 89
+Blue Swimming Crab,3,Existing catalogue product 90
+Mud Crab,3,Existing catalogue product 91
+Ornate Spiny Lobster,3,Existing catalogue product 92
+Indian Squid,3,Existing catalogue product 93
+Pharaoh Cuttlefish,3,Existing catalogue product 94
+Day Octopus,3,Existing catalogue product 95
+Blood Cockle,3,Existing catalogue product 96
+Asian Green Mussel,3,Existing catalogue product 97
+Belcher's Oyster,3,Existing catalogue product 98
+Asiatic Hard Clam,3,Existing catalogue product 99
+Asian Moon Scallop,3,Existing catalogue product 100
+Water Spinach,4,Existing catalogue product 101
+Bok Choy,4,Existing catalogue product 102
+Choy Sum,4,Existing catalogue product 103
+Chinese Broccoli,4,Existing catalogue product 104
+Amaranth Leaves,4,Existing catalogue product 105
+Fiddlehead Fern,4,Existing catalogue product 106
+Sweet Leaf,4,Existing catalogue product 107
+Round Cabbage,4,Existing catalogue product 108
+Napa Cabbage,4,Existing catalogue product 109
+Watercress,4,Existing catalogue product 110
+Sweet Potato Leaves,4,Existing catalogue product 111
+Ceylon Spinach,4,Existing catalogue product 112
+Iceberg Lettuce,4,Existing catalogue product 113
+Bitter Gourd,4,Existing catalogue product 114
+Ridge Gourd,4,Existing catalogue product 115
+Winter Melon,4,Existing catalogue product 116
+Bottle Gourd,4,Existing catalogue product 117
+Snake Gourd,4,Existing catalogue product 118
+Chayote,4,Existing catalogue product 119
+Cucumber,4,Existing catalogue product 120
+Pumpkin,4,Existing catalogue product 121
+Yardlong Beans,4,Existing catalogue product 122
+French Beans,4,Existing catalogue product 123
+Winged Beans,4,Existing catalogue product 124
+Okra,4,Existing catalogue product 125
+Stink Bean,4,Existing catalogue product 126
+Mung Bean Sprouts,4,Existing catalogue product 127
+Soybean Sprouts,4,Existing catalogue product 128
+Baby Corn,4,Existing catalogue product 129
+Bird's Eye Chili,4,Existing catalogue product 130
+Red Chili,4,Existing catalogue product 131
+Green Chili,4,Existing catalogue product 132
+Eggplant,4,Existing catalogue product 133
+Tomato,4,Existing catalogue product 134
+Lemongrass,4,Existing catalogue product 135
+Ginger,4,Existing catalogue product 136
+Galangal,4,Existing catalogue product 137
+Turmeric,4,Existing catalogue product 138
+Torch Ginger Flower,4,Existing catalogue product 139
+Curry Leaves,4,Existing catalogue product 140
+Pandan Leaves,4,Existing catalogue product 141
+Kaffir Lime Leaves,4,Existing catalogue product 142
+Spring Onion,4,Existing catalogue product 143
+Garlic Chives,4,Existing catalogue product 144
+Chinese Celery,4,Existing catalogue product 145
+Coriander,4,Existing catalogue product 146
+Daikon Radish,4,Existing catalogue product 147
+Carrot,4,Existing catalogue product 148
+Jicama,4,Existing catalogue product 149
+Lotus Root,4,Existing catalogue product 150
+Whole Chicken,2,Existing catalogue product 151
+Chicken Breast,2,Existing catalogue product 152
+Chicken Thigh,2,Existing catalogue product 153
+Chicken Drumstick,2,Existing catalogue product 154
+Chicken Wings,2,Existing catalogue product 155
+Chicken Feet,2,Existing catalogue product 156
+Minced Chicken,2,Existing catalogue product 157
+Chicken Liver,2,Existing catalogue product 158
+Chicken Gizzard,2,Existing catalogue product 159
+Free-Range Chicken,2,Existing catalogue product 160
+Whole Duck,2,Existing catalogue product 161
+Duck Breast,2,Existing catalogue product 162
+Duck Leg,2,Existing catalogue product 163
+Whole Quail,2,Existing catalogue product 164
+Beef Ribeye,2,Existing catalogue product 165
+Beef Sirloin,2,Existing catalogue product 166
+Beef Tenderloin,2,Existing catalogue product 167
+Beef Brisket,2,Existing catalogue product 168
+Beef Shank,2,Existing catalogue product 169
+Beef Chuck,2,Existing catalogue product 170
+Beef Short Ribs,2,Existing catalogue product 171
+Beef Flank,2,Existing catalogue product 172
+Beef Oxtail,2,Existing catalogue product 173
+Minced Beef,2,Existing catalogue product 174
+Beef Tendon,2,Existing catalogue product 175
+Beef Tripe,2,Existing catalogue product 176
+Beef Liver,2,Existing catalogue product 177
+Beef Tongue,2,Existing catalogue product 178
+Diced Mutton,2,Existing catalogue product 179
+Goat Meat,2,Existing catalogue product 180
+Lamb Chop,2,Existing catalogue product 181
+Lamb Shank,2,Existing catalogue product 182
+Lamb Shoulder,2,Existing catalogue product 183
+Lamb Leg,2,Existing catalogue product 184
+Lamb Ribs,2,Existing catalogue product 185
+Minced Lamb,2,Existing catalogue product 186
+Pork Belly,2,Existing catalogue product 187
+Pork Loin,2,Existing catalogue product 188
+Pork Shoulder,2,Existing catalogue product 189
+Pork Collar,2,Existing catalogue product 190
+Pork Ribs,2,Existing catalogue product 191
+Pork Chops,2,Existing catalogue product 192
+Minced Pork,2,Existing catalogue product 193
+Pork Trotters,2,Existing catalogue product 194
+Pork Liver,2,Existing catalogue product 195
+Pork Intestines,2,Existing catalogue product 196
+Pork Tenderloin,2,Existing catalogue product 197
+Pork Belly Slices,2,Existing catalogue product 198
+Beef Striploin,2,Existing catalogue product 199
+Beef Knuckle,2,Existing catalogue product 200
+Milks,1,en:milks
+Butters,1,en:butters
+Cheeses,1,en:cheeses
+Dairies,1,en:dairies
+Yogurts,1,en:yogurts
+Curd,1,en:curd
+whey,1,en:whey
+Creams,1,en:creams
+Paneer,1,en:paneer
+Haymilk,1,en:haymilk
+Raclette,1,en:raclette
+Zamorski,1,en:zamorski
+Cow milks,1,en:cow-milks
+Baked milk,1,en:baked-milk
+Dry butter,1,en:dry-butter
+Goat milks,1,en:goat-milks
+Cow cheeses,1,en:cow-cheeses
+Fresh milks,1,en:fresh-milks
+Mare's milk,1,en:mare-s-milk
+Sheep milks,1,en:sheep-milks
+Whey butter,1,en:whey-butter
+Whole milks,1,en:whole-milks
+whey powder,1,en:whey-powder
+Fried cheese,1,en:fried-cheese
+Goat cheeses,1,en:goat-cheeses
+Hard cheeses,1,en:hard-cheeses
+Herb butters,1,en:herb-butters
+Light butter,1,en:light-butter
+Soft cheeses,1,en:soft-cheeses
+Balkan cheese,1,en:balkan-cheese
+Buffalo milks,1,en:buffalo-milks
+Cream cheeses,1,en:cream-cheeses
+Cured cheeses,1,en:cured-cheeses
+Czech cheeses,1,en:czech-cheeses
+Fresh cheeses,1,en:fresh-cheeses
+Fruit yogurts,1,en:fruit-yogurts
+Grated cheese,1,en:grated-cheese
+Greek cheeses,1,en:greek-cheeses
+Honey yogurts,1,en:honey-yogurts
+Irish cheeses,1,en:irish-cheeses
+Milk permeate,1,en:milk-permeate
+Mixed yogurts,1,en:mixed-yogurts
+Plain yogurts,1,en:plain-yogurts
+Skimmed milks,1,en:skimmed-milks
+Spanish milks,1,en:spanish-milks
+Yogurt drinks,1,en:yogurt-drinks
+Abbaye cheeses,1,en:abbaye-cheeses
+Attested milks,1,en:attested-milks
+Brined cheeses,1,en:brined-cheeses
+Cheese spreads,1,en:cheese-spreads
+Meats,2,en:meats
+Breaded chicken,2,en:breaded-chicken
+Chicken and its products,2,en:chicken-and-its-products
+Beef,2,en:beef
+Game,2,en:game
+Pork,2,en:pork
+Frogs,2,en:frogs
+Zebra,2,en:zebra
+Snails,2,en:snails
+Steaks,2,en:steaks
+Insects,2,en:insects
+Ostrich,2,en:ostrich
+Chickens,2,en:chickens
+Kangaroo,2,en:kangaroo
+Dromedary,2,en:dromedary
+Lamb meat,2,en:lamb-meat
+Poultries,2,en:poultries
+Veal meat,2,en:veal-meat
+Horse meat,2,en:horse-meat
+Sheep meat,2,en:sheep-meat
+Fresh meats,2,en:fresh-meats
+Pig carcass,2,en:pig-carcass
+Rabbit meat,2,en:rabbit-meat
+Cooked meats,2,en:cooked-meats
+Ground meats,2,en:ground-meats
+Reindeer meat,2,en:reindeer-meat
+Roe deer meat,2,en:roe-deer-meat
+Chicken nuggets,2,en:chicken-nuggets
+Crocodile meats,2,en:crocodile-meats
+Wapiti elk meat,2,en:wapiti-elk-meat
+Cooked veal meat,2,en:cooked-veal-meat
+Meat for osso buco,2,en:meat-for-osso-buco
+European moose meat,2,en:european-moose-meat
+Chicken preparations,2,en:chicken-preparations
+Frozen breaded chicken,2,en:frozen-breaded-chicken
+Prepared chicken meats,2,en:prepared-chicken-meats
+Breaded chicken cutlets,2,en:breaded-chicken-cutlets
+Marinated chicken meats,2,en:marinated-chicken-meats
+Belgian fresh meat and offal,2,en:belgian-fresh-meat-and-offal
+Italian fresh meat and offal,2,en:italian-fresh-meat-and-offal
+Ants,2,en:ants
+Hart,2,en:hart
+Bacon,2,en:bacon
+Capon,2,en:capon
+Ducks,2,en:ducks
+Geese,2,en:geese
+Quail,2,en:quail
+Pigeon,2,en:pigeon
+Turkeys,2,en:turkeys
+Venison,2,en:venison
+Seafood,3,en:seafood
+Mollusc,3,en:mollusc
+Jellyfish,3,en:jellyfish
+Shellfish,3,en:shellfish
+Sea urchin,3,en:sea-urchin
+Crustaceans,3,en:crustaceans
+Lobster bisque,3,en:lobster-bisque
+Seafood salads,3,en:seafood-salads
+Salmon carpaccio,3,en:salmon-carpaccio
+Marinated seafood,3,en:marinated-seafood
+Seafood au gratin,3,en:seafood-au-gratin
+Czech sea products,3,en:czech-sea-products
+Irish sea products,3,en:irish-sea-products
+German sea products,3,en:german-sea-products
+Shrimp preparations,3,en:shrimp-preparations
+Belgian sea products,3,en:belgian-sea-products
+British sea products,3,en:british-sea-products
+Chinese sea products,3,en:chinese-sea-products
+Finnish sea products,3,en:finnish-sea-products
+Italian sea products,3,en:italian-sea-products
+Spanish sea products,3,en:spanish-sea-products
+Armenian sea products,3,en:armenian-sea-products
+Romanian sea products,3,en:romanian-sea-products
+Brazilian sea products,3,en:brazilian-sea-products
+Hungarian sea products,3,en:hungarian-sea-products
+Portuguese sea products,3,en:portuguese-sea-products
+Fishes and their products,3,en:fishes-and-their-products
+Seaweeds and their products,3,en:seaweeds-and-their-products
+Clam,3,en:clam
+Crab,3,en:crab
+Whelk,3,en:whelk
+Fishes,3,en:fishes
+Abalone,3,en:abalone
+Cockles,3,en:cockles
+Mussels,3,en:mussels
+Oysters,3,en:oysters
+Scallop,3,en:scallop
+Shrimps,3,en:shrimps
+Calamari,3,en:calamari
+Crayfish,3,en:crayfish
+lobsters,3,en:lobsters
+Cuttlefish,3,en:cuttlefish
+Fal Oyster,3,en:fal-oyster
+Boiled clam,3,en:boiled-clam
+Fried Squid,3,en:fried-squid
+Spider crab,3,en:spider-crab
+Cooked whelk,3,en:cooked-whelk
+Jumbo shrimps,3,en:jumbo-shrimps
+Nori seaweeds,3,en:nori-seaweeds
+Toothed wrack,3,en:toothed-wrack
+Vegetables,4,en:vegetables
+Okras,4,en:okras
+Chards,4,en:chards
+Sorrel,4,en:sorrel
+Turnip,4,en:turnip
+Carrots,4,en:carrots
+Endives,4,en:endives
+Parsnip,4,en:parsnip
+Beetroot,4,en:beetroot
+Broccoli,4,en:broccoli
+Radishes,4,en:radishes
+Salsifis,4,en:salsifis
+Tomatoes,4,en:tomatoes
+Zucchini,4,en:zucchini
+Cucumbers,4,en:cucumbers
+scallions,4,en:scallions
+Aubergines,4,en:aubergines
+Flat beans,4,en:flat-beans
+Green peas,4,en:green-peas
+Broad beans,4,en:broad-beans
+Green beans,4,en:green-beans
+Taro tubers,4,en:taro-tubers
+Butter beans,4,en:butter-beans
+Raw beetroot,4,en:raw-beetroot
+Cassava roots,4,en:cassava-roots
+Green garlics,4,en:green-garlics
+Sweet peppers,4,en:sweet-peppers
+Hearts of palm,4,en:hearts-of-palm
+Mustard greens,4,en:mustard-greens
+Vegetable rods,4,en:vegetable-rods
+Leaf vegetables,4,en:leaf-vegetables
+Root vegetables,4,en:root-vegetables
+Brussels sprouts,4,en:brussels-sprouts
+Diced vegetables,4,en:diced-vegetables
+Mixed vegetables,4,en:mixed-vegetables
+French vegetables,4,en:french-vegetables
+Belgian vegetables,4,en:belgian-vegetables
+Austrian vegetables,4,en:austrian-vegetables
+Jerusalem artichoke,4,en:jerusalem-artichoke
+Salads without dressing,4,en:salads-without-dressing
+Thinly-shredded vegetables,4,en:thinly-shredded-vegetables
+Leeks,4,en:leeks
+Mashua,4,en:mashua
+rocket,4,en:rocket
+Rhubarb,4,en:rhubarb
+Cabbages,4,en:cabbages
+Cardoons,4,en:cardoons
+Lettuces,4,en:lettuces
+Rutabaga,4,en:rutabaga
+Spinachs,4,en:spinachs
+Fruits,5,en:fruits
+Figs,5,en:figs
+Dates,5,en:dates
+Kakis,5,en:kakis
+Pears,5,en:pears
+Plums,5,en:plums
+Apples,5,en:apples
+Citrus,5,en:citrus
+Grapes,5,en:grapes
+Melons,5,en:melons
+Berries,5,en:berries
+Medlars,5,en:medlars
+Peaches,5,en:peaches
+Pitayas,5,en:pitayas
+Quinces,5,en:quinces
+Apricots,5,en:apricots
+Cherries,5,en:cherries
+Kumquats,5,en:kumquats
+Camu-Camu,5,en:camu-camu
+Kiwifruits,5,en:kiwifruits
+Dutch fruits,5,en:dutch-fruits
+Fresh fruits,5,en:fresh-fruits
+Pomegranates,5,en:pomegranates
+British fruit,5,en:british-fruit
+French fruits,5,en:french-fruits
+Prickly pears,5,en:prickly-pears
+Austrian fruit,5,en:austrian-fruit
+Belgian fruits,5,en:belgian-fruits
+Golden berries,5,en:golden-berries
+Persimmon pulp,5,en:persimmon-pulp
+Spanish fruits,5,en:spanish-fruits
+Tropical fruits,5,en:tropical-fruits
+Fruits (shelf stable),5,en:fruits-shelf-stable
+Immature tamarind pulp,5,en:immature-tamarind-pulp
+Okra cooked without salt,5,en:okra-cooked-without-salt
+Yuzu,5,en:yuzu
+Limes,5,en:limes
+Guavas,5,en:guavas
+Lemons,5,en:lemons
+Bananas,5,en:bananas
+Lychees,5,en:lychees
+Mangoes,5,en:mangoes
+Oranges,5,en:oranges
+Papayas,5,en:papayas
+Pomelos,5,en:pomelos
+Avocados,5,en:avocados
+Coconuts,5,en:coconuts
+Carambola,5,en:carambola
+Mandarins,5,en:mandarins
+Pink Lady,5,en:pink-lady
+Nuts,6,en:nuts
+Snacks,6,en:snacks
+Almonds,6,en:almonds
+Peanuts,6,en:peanuts
+Popcorn,6,en:popcorn
+Walnuts,6,en:walnuts
+Chestnuts,6,en:chestnuts
+Hazelnuts,6,en:hazelnuts
+Kola nuts,6,en:kola-nuts
+Pine nuts,6,en:pine-nuts
+Areca nuts,6,en:areca-nuts
+Mixed nuts,6,en:mixed-nuts
+Pecan nuts,6,en:pecan-nuts
+Pistachios,6,en:pistachios
+Brazil nuts,6,en:brazil-nuts
+Cashew nuts,6,en:cashew-nuts
+French nuts,6,en:french-nuts
+Roasted nuts,6,en:roasted-nuts
+Salty snacks,6,en:salty-snacks
+Shelled nuts,6,en:shelled-nuts
+Sweet snacks,6,en:sweet-snacks
+Unsalted nuts,6,en:unsalted-nuts
+Flavoured nuts,6,en:flavoured-nuts
+Macadamia nuts,6,en:macadamia-nuts
+Unshelled nuts,6,en:unshelled-nuts
+Nut-based snacks,6,en:nut-based-snacks
+Raw nuts or seeds,6,en:raw-nuts-or-seeds
+Extruded crispbreads,6,en:extruded-crispbreads
+Snacks variety packs,6,en:snacks-variety-packs
+Flavoured dried dates,6,en:flavoured-dried-dates
+Mixed nuts and dried fruits,6,en:mixed-nuts-and-dried-fruits
+Prepared unshelled nuts or seeds,6,en:prepared-unshelled-nuts-or-seeds
+Bars,6,en:bars
+Chaat,6,en:chaat
+Tapas,6,en:tapas
+Onigiri,6,en:onigiri
+Samosas,6,en:samosas
+Arancini,6,en:arancini
+Corn dogs,6,en:corn-dogs
+Appetizers,6,en:appetizers
+Cedar nuts,6,en:cedar-nuts
+Chocolates,6,en:chocolates
+Panzerotti,6,en:panzerotti
+Korean pine,6,en:korean-pine
+Salted nuts,6,en:salted-nuts
+Roasted peas,6,en:roasted-peas
+Black walnuts,6,en:black-walnuts
+European Pine,6,en:european-pine
+Fresh walnuts,6,en:fresh-walnuts
+Plain popcorn,6,en:plain-popcorn
+Beverages,7,en:beverages
+Waters,7,en:waters
+Dairy drinks,7,en:dairy-drinks
+Mixed drinks,7,en:mixed-drinks
+Coffee drinks,7,en:coffee-drinks
+Energy drinks,7,en:energy-drinks
+Hot beverages,7,en:hot-beverages
+Milsubstitutes,7,en:milsubstitutes
+Fermented drinks,7,en:fermented-drinks
+Flavoured Drinks,7,en:flavoured-drinks
+Carbonated drinks,7,en:carbonated-drinks
+Basil seeds drinks,7,en:basil-seeds-drinks
+Alcoholic beverages,7,en:alcoholic-beverages
+Sweetened beverages,7,en:sweetened-beverages
+Tea-based beverages,7,en:tea-based-beverages
+Dehydrated beverages,7,en:dehydrated-beverages
+Herbal tea beverages,7,en:herbal-tea-beverages
+Plant-based beverages,7,en:plant-based-beverages
+Unsweetened beverages,7,en:unsweetened-beverages
+Beverage variety packs,7,en:beverage-variety-packs
+Non-alcoholic beverages,7,en:non-alcoholic-beverages
+Artificially sweetened beverages,7,en:artificially-sweetened-beverages
+Kir,7,en:kir
+Teas,7,en:teas
+Beers,7,en:beers
+Kvass,7,en:kvass
+Latte,7,en:latte
+Perry,7,en:perry
+Rakia,7,en:rakia
+Sodas,7,en:sodas
+Wines,7,en:wines
+Ciders,7,en:ciders
+Pastis,7,en:pastis
+Punchs,7,en:punchs
+Shoshu,7,en:shoshu
+Absinthe,7,en:absinthe
+Cordials,7,en:cordials
+Liqueurs,7,en:liqueurs
+Schnapps,7,en:schnapps
+Ice Cubes,7,en:ice-cubes
+Iced teas,7,en:iced-teas
+Kir Royal,7,en:kir-royal
+Kombuchas,7,en:kombuchas
+Smoothies,7,en:smoothies
+Cappuccino,7,en:cappuccino
+Rice wines,7,en:rice-wines
+Date juices,7,en:date-juices
+Soft drinks,7,en:soft-drinks
+Şalgam suyu,7,en:şalgam-suyu
+Apple juices,7,en:apple-juices
+Frozen foods,8,en:frozen-foods
+Frozen manti,8,en:frozen-manti
+Frozen meats,8,en:frozen-meats
+Frozen pasta,8,en:frozen-pasta
+Frozen Zongzi,8,en:frozen-zongzi
+Frozen breads,8,en:frozen-breads
+Frozen creams,8,en:frozen-creams
+Frozen fishes,8,en:frozen-fishes
+Frozen knödel,8,en:frozen-knodel
+Frozen langos,8,en:frozen-langos
+Frozen sauces,8,en:frozen-sauces
+Frozen sushis,8,en:frozen-sushis
+Frozen cheeses,8,en:frozen-cheeses
+Frozen lasagne,8,en:frozen-lasagne
+Frozen muffins,8,en:frozen-muffins
+Frozen pelmeni,8,en:frozen-pelmeni
+Frozen pierogi,8,en:frozen-pierogi
+Frozen poultry,8,en:frozen-poultry
+Frozen quiches,8,en:frozen-quiches
+Frozen sashimi,8,en:frozen-sashimi
+Frozen seafood,8,en:frozen-seafood
+Frozen desserts,8,en:frozen-desserts
+Frozen focaccia,8,en:frozen-focaccia
+Frozen stuffing,8,en:frozen-stuffing
+Frozen varenyky,8,en:frozen-varenyky
+Frozen doughnuts,8,en:frozen-doughnuts
+Frozen dumplings,8,en:frozen-dumplings
+Frozen fish eggs,8,en:frozen-fish-eggs
+Frozen kroketten,8,en:frozen-kroketten
+Frozen sandwiches,8,en:frozen-sandwiches
+Frozen sweet pies,8,en:frozen-sweet-pies
+Frozen pizza dough,8,en:frozen-pizza-dough
+Frozen puff pastry,8,en:frozen-puff-pastry
+Frozen baking mixes,8,en:frozen-baking-mixes
+Frozen chicken eggs,8,en:frozen-chicken-eggs
+Frozen flammekueche,8,en:frozen-flammekueche
+Frozen phyllo dough,8,en:frozen-phyllo-dough
+Frozen salty snacks,8,en:frozen-salty-snacks
+Frozen Kadaif pastas,8,en:frozen-kadaif-pastas
+Frozen fruits coulis,8,en:frozen-fruits-coulis
+Frozen potato rostis,8,en:frozen-potato-rostis
+Frozen fried potatoes,8,en:frozen-fried-potatoes
+Frozen fruit tartlets,8,en:frozen-fruit-tartlets
+Frozen breaded cheeses,8,en:frozen-breaded-cheeses
+Frozen meals with meat,8,en:frozen-meals-with-meat
+Frozen pizzas and pies,8,en:frozen-pizzas-and-pies
+Frozen raw puff pastry,8,en:frozen-raw-puff-pastry
+Frozen vegetable rosti,8,en:frozen-vegetable-rosti
+Frozen Herbs and Spices,8,en:frozen-herbs-and-spices
+Frozen ready-made meals,8,en:frozen-ready-made-meals
+Baby foods,11,en:baby-foods
+Baby milks,11,en:baby-milks
+From 3 years,11,en:from-3-years
+From 4 months,11,en:from-4-months
+From 6 months,11,en:from-6-months
+From 8 months,11,en:from-8-months
+From 10 months,11,en:from-10-months
+From 15 months,11,en:from-15-months
+From 18 months,11,en:from-18-months
+From 24 months,11,en:from-24-months
+Cereals for babies,11,en:cereals-for-babies
+From 12 months old,11,en:from-12-months-old
+Kefir for children,11,en:kefir-for-children
+Main meals for babies,11,en:main-meals-for-babies
+Evening meals for babies,11,en:evening-meals-for-babies
+Snacks and desserts for babies,11,en:snacks-and-desserts-for-babies
+Baby dishes,11,en:baby-dishes
+Baby drinks,11,en:baby-drinks
+Growth milks,11,en:growth-milks
+Infant formulas,11,en:infant-formulas
+Anti-reflux milk,11,en:anti-reflux-milk
+Soups for babies,11,en:soups-for-babies
+Baby fruit desserts,11,en:baby-fruit-desserts
+Biscuits for babies,11,en:biscuits-for-babies
+Hypoallergenic milks,11,en:hypoallergenic-milks
+Fish menus for babies,11,en:fish-menus-for-babies
+Meat menus for babies,11,en:meat-menus-for-babies
+Dairy dessert for baby,11,en:dairy-dessert-for-baby
+Baby food jar with banana,11,en:baby-food-jar-with-banana
+Milks for premature babies,11,en:milks-for-premature-babies
+Vegetables menus for babies,11,en:vegetables-menus-for-babies
+Baby food jar without banana,11,en:baby-food-jar-without-banana
+Cocoa powder for baby beverage,11,en:cocoa-powder-for-baby-beverage
+Pre-food,11,en:pre-food
+Baby milks in powder,11,en:baby-milks-in-powder
+Specialised baby drinks,11,en:specialised-baby-drinks
+Ready to feed baby milks,11,en:ready-to-feed-baby-milks
+Second age baby milk powder,11,en:second-age-baby-milk-powder
+Milky cereal-based beverages,11,en:milky-cereal-based-beverages
+Plain dairy dessert for baby,11,en:plain-dairy-dessert-for-baby
+Plant-based beverages for babies,11,en:plant-based-beverages-for-babies
+First age baby milk powder,11,en:first-age-baby-milk-powder
+Fruit-based beverages for babies,11,en:fruit-based-beverages-for-babies
+Breads,12,en:breads
+Pastries,12,en:pastries
+Biscuits and cakes,12,en:biscuits-and-cakes
+Babas,12,en:babas
+Cakes,12,en:cakes
+Mochi,12,en:mochi
+Rusks,12,en:rusks
+Kadaif,12,en:kadaif
+Scones,12,en:scones
+Toasts,12,en:toasts
+Baklava,12,en:baklava
+Canelés,12,en:caneles
+Churros,12,en:churros
+Eclairs,12,en:eclairs
+Waffles,12,en:waffles
+Biscuits,12,en:biscuits
+Brookies,12,en:brookies
+Croutons,12,en:croutons
+Crumbles,12,en:crumbles
+Macarons,12,en:macarons
+Makroudh,12,en:makroudh
+Strudels,12,en:strudels
+Tiramisu,12,en:tiramisu
+Ciabattas,12,en:ciabattas
+Fraisiers,12,en:fraisiers
+Meringues,12,en:meringues
+Rum balls,12,en:rum-balls
+Bran bread,12,en:bran-bread
+Charlottes,12,en:charlottes
+Cream puff,12,en:cream-puff
+Flan tarts,12,en:flan-tarts
+Flatbreads,12,en:flatbreads
+Lo mai chi,12,en:lo-mai-chi
+Oat breads,12,en:oat-breads
+Rye breads,12,en:rye-breads
+Bread rolls,12,en:bread-rolls
+Breadsticks,12,en:breadsticks
+Crispbreads,12,en:crispbreads
+Jaffa cakes,12,en:jaffa-cakes
+Opera cakes,12,en:opera-cakes
+Paris-Brest,12,en:paris-brest
+Bread crumbs,12,en:bread-crumbs
+Bread loaves,12,en:bread-loaves
+Breton cakes,12,en:breton-cakes
+Dried breads,12,en:dried-breads
+Framboisiers,12,en:framboisiers
+French toast,12,en:french-toast
+Gazelle horn,12,en:gazelle-horn
+Gingerbreads,12,en:gingerbreads
+Kouign-amann,12,en:kouign-amann
+Sauces,13,en:sauces
+Spreads,13,en:spreads
+Condiments,13,en:condiments
+Nut butters,13,en:nut-butters
+Canned foods,13,en:canned-foods
+Legume butters,13,en:legume-butters
+Vegetable oils,13,en:vegetable-oils
+Dips,13,en:dips
+Roux,13,en:roux
+Gravy,13,en:gravy
+Mirin,13,en:mirin
+Salts,13,en:salts
+Aiolis,13,en:aiolis
+Capers,13,en:capers
+Pestos,13,en:pestos
+Gomasio,13,en:gomasio
+Mustards,13,en:mustards
+Nut oils,13,en:nut-oils
+Sofritos,13,en:sofritos
+Vinegars,13,en:vinegars
+Hemp oils,13,en:hemp-oils
+Marinades,13,en:marinades
+Maruboshi,13,en:maruboshi
+Palm oils,13,en:palm-oils
+Tapenades,13,en:tapenades
+Tzatzikis,13,en:tzatzikis
+Argan oils,13,en:argan-oils
+Frying oil,13,en:frying-oil
+Hot sauces,13,en:hot-sauces
+Olive oils,13,en:olive-oils
+Soy sauces,13,en:soy-sauces
+Cereal oils,13,en:cereal-oils
+Katsuobushi,13,en:katsuobushi
+Legume oils,13,en:legume-oils
+Mayonnaises,13,en:mayonnaises
+Meal sauces,13,en:meal-sauces
+Mint sauces,13,en:mint-sauces
+Mojo sauces,13,en:mojo-sauces
+Peanut stew,13,en:peanut-stew
+Piccalillis,13,en:piccalillis
+Pita sauces,13,en:pita-sauces
+Taco sauces,13,en:taco-sauces
+Tenderisers,13,en:tenderisers
+Warm sauces,13,en:warm-sauces
+Wine sauces,13,en:wine-sauces
+Brown sauces,13,en:brown-sauces
+Canned meals,13,en:canned-meals
+Canned meats,13,en:canned-meats
+Cream sauces,13,en:cream-sauces
+Curry sauces,13,en:curry-sauces
+Pastas,14,en:pastas
+Legumes,14,en:legumes
+Cereals and their products,14,en:cereals-and-their-products
+Soba,14,en:soba
+Udon,14,en:udon
+Penne,14,en:penne
+Torti,14,en:torti
+Groats,14,en:groats
+Semiya,14,en:semiya
+Fusilli,14,en:fusilli
+Noodles,14,en:noodles
+Spätzle,14,en:spatzle
+Bucatini,14,en:bucatini
+Linguine,14,en:linguine
+Rigatoni,14,en:rigatoni
+Capellini,14,en:capellini
+Oat pasta,14,en:oat-pasta
+Pie dough,14,en:pie-dough
+Spaghetti,14,en:spaghetti
+Conchiglie,14,en:conchiglie
+Corn pasta,14,en:corn-pasta
+Dry pastas,14,en:dry-pastas
+Egg pastas,14,en:egg-pastas
+Rice paper,14,en:rice-paper
+Rice pasta,14,en:rice-pasta
+Fresh pasta,14,en:fresh-pasta
+Orecchiette,14,en:orecchiette
+Tagliatelle,14,en:tagliatelle
+Tortiglioni,14,en:tortiglioni
+Brick sheets,14,en:brick-sheets
+Cereal brans,14,en:cereal-brans
+Cereal germs,14,en:cereal-germs
+German pasta,14,en:german-pasta
+Legume seeds,14,en:legume-seeds
+Lentil pasta,14,en:lentil-pasta
+Schupfnudeln,14,en:schupfnudeln
+Cereal flours,14,en:cereal-flours
+Cereal grains,14,en:cereal-grains
+Cereal pastas,14,en:cereal-pastas
+Cereal syrups,14,en:cereal-syrups
+Chinese pasta,14,en:chinese-pasta
+Fresh legumes,14,en:fresh-legumes
+Italian pasta,14,en:italian-pasta
+Lima bean raw,14,en:lima-bean-raw
+Pancake mixes,14,en:pancake-mixes
+Alphabet pasta,14,en:alphabet-pasta
+Chickpea pasta,14,en:chickpea-pasta
+Lasagna sheets,14,en:lasagna-sheets
+Buckwheat pasta,14,en:buckwheat-pasta
+Cereal starches,14,en:cereal-starches
+Sugars,15,en:sugars
+Dextrose,15,en:dextrose
+Lump sugar,15,en:lump-sugar
+Beet sugars,15,en:beet-sugars
+Cane sugars,15,en:cane-sugars
+Palm sugars,15,en:palm-sugars
+Blond sugars,15,en:blond-sugars
+Brown sugars,15,en:brown-sugars
+Maple sugars,15,en:maple-sugars
+White sugars,15,en:white-sugars
+rock candies,15,en:rock-candies
+Caster sugars,15,en:caster-sugars
+Coconut sugar,15,en:coconut-sugar
+Vanilla sugars,15,en:vanilla-sugars
+Powdered sugars,15,en:powdered-sugars
+Vanillin sugars,15,en:vanillin-sugars
+granulated sugars,15,en:granulated-sugars
+Cotton candy sugars,15,en:cotton-candy-sugars
+Inverted sugar syrups,15,en:inverted-sugar-syrups
+Panela,15,en:panela
+Jaggery,15,en:jaggery
+Muscovado,15,en:muscovado
+Panela blocks,15,en:panela-blocks
+Powdered panela,15,en:powdered-panela
+Seitan,16,en:seitan
+Tempeh,16,en:tempeh
+Meat analogues,16,en:meat-analogues
+Fried tofu,16,en:fried-tofu
+Plain tofu,16,en:plain-tofu
+Silken tofu,16,en:silken-tofu
+Smoked tofu,16,en:smoked-tofu
+Fish analogues,16,en:fish-analogues
+Marinated tofu,16,en:marinated-tofu
+Bacon substitutes,16,en:bacon-substitutes
+Kefta substitutes,16,en:kefta-substitutes
+Vegetarian grounds,16,en:vegetarian-grounds
+Vegetarian nuggets,16,en:vegetarian-nuggets
+Vegetarian sausages,16,en:vegetarian-sausages
+Foie gras substitutes,16,en:foie-gras-substitutes
+Frikandel substitutes,16,en:frikandel-substitutes
+Fleischkäse substitutes,16,en:fleischkase-substitutes
+Breaded fish substitutes,16,en:breaded-fish-substitutes
+Vegetarian cordons bleus,16,en:vegetarian-cordons-bleus
+Chicken kievs substitutes,16,en:chicken-kievs-substitutes
+Breaded cutlets substitutes,16,en:breaded-cutlets-substitutes
+Prepared meat cuts substitutes,16,en:prepared-meat-cuts-substitutes
+Vegan nuggets,16,en:vegan-nuggets
+Tuna analogues,16,en:tuna-analogues
+Vegan sausages,16,en:vegan-sausages
+Ham substitutes,16,en:ham-substitutes
+Salmon analogues,16,en:salmon-analogues
+Lyoner substitutes,16,en:lyoner-substitutes
+Salami substitutes,16,en:salami-substitutes
+Soy marinated tofu,16,en:soy-marinated-tofu
+Herb marinated tofu,16,en:herb-marinated-tofu
+Alder wood smoked tofu,16,en:alder-wood-smoked-tofu
+Beech wood smoked tofu,16,en:beech-wood-smoked-tofu
+Mortadella substitutes,16,en:mortadella-substitutes
+Vegetarian Vienna sausages,16,en:vegetarian-vienna-sausages
+Vegetarian hot dog sausages,16,en:vegetarian-hot-dog-sausages
+Soy and ginger marinated tofu,16,en:soy-and-ginger-marinated-tofu
+Vegetarian Frankfurt sausages,16,en:vegetarian-frankfurt-sausages
+Vegan hot dog saucages,16,en:vegan-hot-dog-saucages
+Meals,17,en:meals
+Nems,17,en:nems
+Soups,17,en:soups
+Stews,17,en:stews
+Khatfa,17,en:khatfa
+Knödel,17,en:knodel
+Pizzas,17,en:pizzas
+Tajine,17,en:tajine
+Aligots,17,en:aligots
+Fajitas,17,en:fajitas
+Gratins,17,en:gratins
+Hotpots,17,en:hotpots
+Quiches,17,en:quiches
+Banh Bao,17,en:banh-bao
+Focaccia,17,en:focaccia
+Frittata,17,en:frittata
+Moussaka,17,en:moussaka
+Pad thai,17,en:pad-thai
+Chop suey,17,en:chop-suey
+Crescioni,17,en:crescioni
+Tabbouleh,17,en:tabbouleh
+Truffades,17,en:truffades
+Waterzooi,17,en:waterzooi
+Bami goreng,17,en:bami-goreng
+Bean dishes,17,en:bean-dishes
+Dried meals,17,en:dried-meals
+Fresh meals,17,en:fresh-meals
+Irish stews,17,en:irish-stews
+Ratatouille,17,en:ratatouille
+Rice dishes,17,en:rice-dishes
+Salted pies,17,en:salted-pies
+Filled pinsa,17,en:filled-pinsa
+Pasta dishes,17,en:pasta-dishes
+Spring rolls,17,en:spring-rolls
+Bulgur dishes,17,en:bulgur-dishes
+Lentil dishes,17,en:lentil-dishes
+Pizza pockets,17,en:pizza-pockets
+Potato dishes,17,en:potato-dishes
+Quinoa dishes,17,en:quinoa-dishes
+Sushi and Maki,17,en:sushi-and-maki
+Cheese soufflés,17,en:cheese-souffles
+Filled fritters,17,en:filled-fritters
+Meals with fish,17,en:meals-with-fish
+Meals with meat,17,en:meals-with-meat
+Microwave meals,17,en:microwave-meals
+Prepared salads,17,en:prepared-salads
+Stuffed cabbage,17,en:stuffed-cabbage
+Dal Baati Churma,17,en:dal-baati-churma
+Endives with ham,17,en:endives-with-ham
+Pan-fried dishes,17,en:pan-fried-dishes
+Eggs and their products,18,en:eggs-and-their-products
+Eggs,18,en:eggs
+Fried egg,18,en:fried-egg
+Poached eggs,18,en:poached-eggs
+Scrambled egg,18,en:scrambled-egg
+Cooked egg yolk,18,en:cooked-egg-yolk
+Egg preparations,18,en:egg-preparations
+Soft-boiled eggs,18,en:soft-boiled-eggs
+Egg yolk,18,en:egg-yolk
+Emu eggs,18,en:emu-eggs
+Duck eggs,18,en:duck-eggs
+Egg white,18,en:egg-white
+Gull eggs,18,en:gull-eggs
+Omelettes,18,en:omelettes
+Egg powder,18,en:egg-powder
+Fresh eggs,18,en:fresh-eggs
+Goose eggs,18,en:goose-eggs
+Quail eggs,18,en:quail-eggs
+Boiled eggs,18,en:boiled-eggs
+Century egg,18,en:century-egg
+Scotch eggs,18,en:scotch-eggs
+Turkey eggs,18,en:turkey-eggs
+Chicken eggs,18,en:chicken-eggs
+Ostrich eggs,18,en:ostrich-eggs
+Pheasant eggs,18,en:pheasant-eggs
+Guineafowl eggs,18,en:guineafowl-eggs
+Hard-boiled egg,18,en:hard-boiled-egg
+Cooked quail eggs,18,en:cooked-quail-eggs
+Herb omelette,18,en:herb-omelette
+Egg yolk powder,18,en:egg-yolk-powder
+Egg white cooked,18,en:egg-white-cooked
+Egg white powder,18,en:egg-white-powder
+Barn chicken eggs,18,en:barn-chicken-eggs
+Cage chicken eggs,18,en:cage-chicken-eggs
+Omelette with lardoons,18,en:omelette-with-lardoons
+Free-range chicken eggs,18,en:free-range-chicken-eggs
+Omelette with mushrooms,18,en:omelette-with-mushrooms
+Omelette with meat,18,en:omelette-with-meat
+Omelettes with cheese,18,en:omelettes-with-cheese
+Omelette with vegetables,18,en:omelette-with-vegetables

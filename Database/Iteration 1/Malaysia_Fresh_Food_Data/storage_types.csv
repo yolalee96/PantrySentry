@@ -1,0 +1,4 @@
+﻿storage_type_id,storage_name,description
+1,FRIDGE,Chilled storage at refrigerator temperature (0-4 C).
+2,FREEZER,Frozen storage at -18 C or below; stated times are generally quality limits.
+3,PANTRY,Indoor room-temperature storage; this project uses a Malaysia profile of 25-30 C.

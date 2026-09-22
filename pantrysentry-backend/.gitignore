@@ -1,0 +1,4 @@
+node_modules/
+.env
+*.log
+pantrybuddy-vision-test-49d9cdb9d591.json

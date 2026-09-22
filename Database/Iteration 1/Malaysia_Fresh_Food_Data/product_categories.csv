@@ -1,0 +1,17 @@
+﻿category_id,category_name,is_fresh_food,description
+1,Dairy,1,"Milk, cheese, yogurt, butter and other dairy products; aligned to FoodKeeper Dairy Products & Eggs."
+2,Meat,1,"Fresh and processed meat; FoodKeeper separates fresh, processed, shelf-stable and assembled subgroups."
+3,Seafood,1,"Fish, shellfish and other aquatic foods; aligned to FoodKeeper Seafood."
+4,Vegetables,1,Fresh vegetables split from FoodKeeper Produce to support product-level shelf-life rules.
+5,Fruits,1,Fresh fruits split from FoodKeeper Produce to support product-level shelf-life rules.
+6,Snacks,0,Packaged snack and confectionery products; use package date when present.
+7,Beverages,0,"Water, juice, soft drinks and other beverages; aligned to FoodKeeper Beverages."
+8,Frozen Food,0,Products sold frozen; aligned to the FoodKeeper Food Purchased Frozen category.
+11,Baby Food,0,Commercial and prepared baby foods; aligned to FoodKeeper Baby Food.
+12,Baked Goods,0,"Bakery, baking/cooking and refrigerated-dough products; aligned to FoodKeeper Baked Goods."
+13,"Condiments, Sauces & Canned Goods",0,"Condiments, sauces and canned products; aligned to FoodKeeper."
+14,"Grains, Beans & Pasta",0,"Dry or prepared grains, beans and pasta; aligned to FoodKeeper."
+15,Shelf-Stable Foods,0,Foods designed for unopened ambient storage; aligned to FoodKeeper Shelf Stable Foods.
+16,Vegetarian Proteins,1,"Tofu, tempeh and other vegetarian protein products; aligned to FoodKeeper Vegetarian Proteins."
+17,Deli & Prepared Foods,1,Ready-to-eat deli and prepared foods; aligned to FoodKeeper Deli & Prepared Foods.
+18,Eggs,1,Fresh and processed eggs; split from FoodKeeper Dairy Products & Eggs for clearer household inventory routing.
