@@ -240,56 +240,122 @@ router.post('/recognize/image', asyncHandler(async (req, res) => {
 
 // ==================== 5. Receipt (Jaya Grocer format) -> items ====================
 //
-// Built directly against a real Jaya Grocer receipt sample (see chat),
-// not guessed — this is deliberately narrow to that one store's layout
-// for now, per the team's explicit "just Jaya Grocer for now" scope.
+// Rewritten against a real failing sample (see chat — a 9-item receipt
+// where only 3 items were being picked up). Root cause: the previous
+// version demanded barcode + unit + qty + unitPrice + TOTAL all on one
+// physical OCR line. Real Tesseract output on this receipt read the
+// right-hand "total" column as a totally separate block, nowhere near
+// its row — so that single-line match could barely ever fire at all.
 //
-// Observed structure, 2 lines per item:
-//   Line A: PRODUCT NAME [*N]              <- name, sometimes with a
-//                                              trailing promo/limit marker
-//   Line B: <barcode> <UNIT> <qty>x<price> <total>
-// Anchoring on Line B's barcode is what makes this reliable — it also
-// naturally skips the subtotal/discount/footer lines (e.g. a promo-code
-// line like "01   14.99   -5.01"), since none of those contain a
-// 12-14 digit barcode. This is the same anchoring strategy that worked
-// in the earlier KK Supermart notebook, just with real data behind it.
-const RECEIPT_ITEM_LINE = /(\d{12,14})\s+([A-Za-z]+)\s+([\d.]+)\s*[xX]\s*([\d.]+)\s+([\d.]+)/;
+// Fixed design:
+//   1. A line is "this item exists" the moment it has a barcode + a unit
+//      word on it — nothing else required. This alone is what makes an
+//      item show up at all, which was the main failure.
+//   2. totalPrice is never read from OCR — it's quantity * unitPrice,
+//      computed in code. Removes the single biggest point of failure
+//      (the separated right column) entirely.
+//   3. quantity/unitPrice is a best-effort search in a small window
+//      around the barcode line (bounded by the neighbouring barcode
+//      lines either side, so a qty line can never get stolen across an
+//      item boundary) — if genuinely not found, the item still gets
+//      added with quantity defaulted to 1 rather than disappearing.
+//      A wrong quantity is a quick manual fix in the review screen; a
+//      vanished item might go unnoticed entirely.
+//   4. Name extraction tolerates ONE skipped qty/discount line between
+//      the name and the barcode (observed: the qty line sometimes lands
+//      between them instead of after the barcode), and checks exactly
+//      one more line further back for a wrapped second name line
+//      (observed: "PRISTINE ROLLED OATS" / "750G *1" on two lines).
+//
+// Known remaining limitation: on a receipt where OCR's column order is
+// badly scrambled, quantity/price can still occasionally get paired
+// with the wrong neighbouring item — flattened text alone doesn't always
+// disambiguate this. The robust fix would read Tesseract's word-position
+// (bounding box) data and reconstruct rows by actual Y-coordinate rather
+// than by line order — a browser_ocr_service.dart change, not this file.
+const RECEIPT_BARCODE_LINE = /^(\d{12,14})\s+([A-Za-z]{1,6})\b/;
+// Tolerant of a stray space after the decimal point (observed:
+// "0. 472x25.60" from real OCR output).
+const RECEIPT_QTY_PRICE = /(\d+(?:\.\s?\d+)?)\s*[xX]\s*(\d+(?:\.\d+)?)/;
 const RECEIPT_UNIT_MAP = { KG: 'kg', G: 'g', UNIT: 'pcs', PKT: 'pack', PCS: 'pcs', L: 'L', ML: 'mL' };
-// Lines that could be mistaken for a product name if they happen to sit
-// directly above a real item line — skip these as a name candidate.
-const RECEIPT_BOILERPLATE = /^(invoice|item\s*\d|qty\s|saving|subtotal|spec\.?disc|rounding|total|change|approcode|thank you|we sell|if you are)/i;
+const RECEIPT_BOILERPLATE = /^(invoice|item\s*\d|qty\s|saving|subtotal|spec\.?disc|rounding|total|change|approcode|thank you|we sell|if you are|member|grab)/i;
+// A discount-code line ("03"), a bare price ("7.90"), a date/time stamp —
+// none of these are ever a usable product name.
+const RECEIPT_NUMERIC_ONLY = /^[\d.\-\s:/]+$/;
+
+function isNameCandidate(line) {
+  if (!line) return false;
+  if (RECEIPT_BARCODE_LINE.test(line)) return false;
+  if (RECEIPT_QTY_PRICE.test(line)) return false;
+  if (RECEIPT_BOILERPLATE.test(line)) return false;
+  if (RECEIPT_NUMERIC_ONLY.test(line)) return false;
+  return true;
+}
 
 function parseJayaGrocerReceipt(rawText) {
   const lines = rawText.split('\n').map((l) => l.trim()).filter(Boolean);
-  const parsed = [];
 
+  const barcodeIdx = [];
   for (let i = 0; i < lines.length; i++) {
-    const match = lines[i].match(RECEIPT_ITEM_LINE);
-    if (!match) continue;
+    if (RECEIPT_BARCODE_LINE.test(lines[i])) barcodeIdx.push(i);
+  }
 
-    const [, barcode, unitToken, qtyStr, unitPriceStr, totalStr] = match;
+  const parsed = [];
+  const claimedQtyLines = new Set();
 
-    // Name is the nearest preceding line that isn't itself an item line
-    // or obvious receipt boilerplate.
+  for (let k = 0; k < barcodeIdx.length; k++) {
+    const i = barcodeIdx[k];
+    const [, barcode, unitToken] = lines[i].match(RECEIPT_BARCODE_LINE);
+
+    // ---- Name ----
+    // Nearest usable line above, allowing ONE skipped qty/discount line,
+    // then one more line further back for a wrapped continuation.
     let name = null;
-    for (let j = i - 1; j >= 0 && j >= i - 2; j--) {
-      const candidate = lines[j];
-      if (RECEIPT_ITEM_LINE.test(candidate) || RECEIPT_BOILERPLATE.test(candidate)) continue;
-      name = candidate;
-      break;
+    let firstNameIdx = null;
+    for (let j = i - 1, tries = 0; j >= 0 && tries < 3; j--, tries++) {
+      if (RECEIPT_BARCODE_LINE.test(lines[j])) break; // previous item's territory
+      if (isNameCandidate(lines[j])) {
+        name = lines[j];
+        firstNameIdx = j;
+        break;
+      }
     }
-    if (!name) continue; // no usable name — skip rather than guess
+    if (name !== null && firstNameIdx > 0) {
+      const prev = lines[firstNameIdx - 1];
+      if (isNameCandidate(prev)) name = `${prev} ${name}`;
+    }
+    if (!name) continue; // genuinely nothing usable above — skip rather than guess
 
-    // Strip a trailing promo/limit marker like " *1".
     name = name.replace(/\s*\*\d+\s*$/, '').trim();
+
+    // ---- Quantity / unit price ----
+    // Bounded by the neighbouring barcode lines so a qty line is never
+    // pulled across an item boundary.
+    const lowerBound = k > 0 ? barcodeIdx[k - 1] : -1;
+    const upperBound = k < barcodeIdx.length - 1 ? barcodeIdx[k + 1] : lines.length;
+    let quantity = 1;
+    let unitPrice = null;
+    outer: for (let dist = 0; dist <= 4; dist++) {
+      for (const j of [i + dist, i - dist]) {
+        if (j <= lowerBound || j >= upperBound) continue;
+        if (claimedQtyLines.has(j)) continue;
+        const qm = lines[j].match(RECEIPT_QTY_PRICE);
+        if (qm) {
+          quantity = parseFloat(qm[1].replace(/\s+/g, '')) || 1;
+          unitPrice = parseFloat(qm[2]);
+          claimedQtyLines.add(j);
+          break outer;
+        }
+      }
+    }
 
     parsed.push({
       rawName: name,
       barcode,
       unit: RECEIPT_UNIT_MAP[unitToken.toUpperCase()] ?? 'pcs',
-      quantity: parseFloat(qtyStr),
-      unitPrice: parseFloat(unitPriceStr),
-      totalPrice: parseFloat(totalStr),
+      quantity,
+      unitPrice,
+      totalPrice: unitPrice !== null ? Math.round(quantity * unitPrice * 100) / 100 : null,
     });
   }
   return parsed;
