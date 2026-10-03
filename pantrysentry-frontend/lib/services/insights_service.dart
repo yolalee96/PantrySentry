@@ -74,7 +74,12 @@ class InsightsService {
 
   /// [userId] null = whole household (5.2); non-null = just that member's
   /// own added items (5.1 — "my contribution").
-  static PeriodSummary summarize(List<FoodItem> allItems, DateRange range, {String? userId}) {
+  ///
+  /// [previousRange] is the period to compare against — pass
+  /// `shift(range, period, forward: false)` so a month compares with the
+  /// previous calendar month. If omitted, it's the equal-length window
+  /// immediately before [range].
+  static PeriodSummary summarize(List<FoodItem> allItems, DateRange range, {String? userId, DateRange? previousRange}) {
     final resolved = _scopedByResolver(allItems, userId);
     final added = _scoped(allItems, userId);
 
@@ -94,24 +99,25 @@ class InsightsService {
 
     final score = calculateScore(consumed: consumed, wasted: wasted, donated: donated);
 
-    final prevRange = DateRange(
-      range.start.subtract(range.end.difference(range.start) + const Duration(days: 1)),
-      range.start.subtract(const Duration(milliseconds: 1)),
-    );
+    // (The old fallback subtracted the range length PLUS a day, so the
+    // "previous week" was actually 8 days long and overlapped an extra day.)
+    final prevRange = previousRange ??
+        DateRange(
+          range.start.subtract(range.end.difference(range.start) + const Duration(milliseconds: 1)),
+          range.start.subtract(const Duration(milliseconds: 1)),
+        );
     final prevConsumed = resolved.where((i) =>
         i.disposition == ItemDisposition.consumed && i.resolvedAt != null && prevRange.contains(i.resolvedAt!)).length;
     final prevWasted = resolved.where((i) =>
         i.disposition == ItemDisposition.discarded && i.resolvedAt != null && prevRange.contains(i.resolvedAt!)).length;
     final prevDonated = resolved.where((i) =>
         i.disposition == ItemDisposition.donated && i.resolvedAt != null && prevRange.contains(i.resolvedAt!)).length;
+    // The comparison is on wasted ITEM COUNTS, so a current period with
+    // nothing resolved is a real "0 wasted", not missing data, and is
+    // compared normally. Only a previous period with no activity at all
+    // (e.g. before the household started using the app) is treated as
+    // "nothing to compare with".
     final hasPrevData = prevConsumed + prevWasted + prevDonated > 0;
-    // A period with no resolved items of its own gets a default "no
-    // data" score (see calculateScore) — comparing that default against
-    // a real previous score is exactly what produced misleading jumps
-    // like "400% more waste" when there was really just nothing to
-    // compare. Treat "no current activity" the same as "no previous
-    // data": don't offer a comparison at all.
-    final hasCurrentData = consumed + wasted + donated > 0;
 
     return PeriodSummary(
       consumed: consumed,
@@ -119,7 +125,7 @@ class InsightsService {
       donated: donated,
       stored: stored,
       score: score,
-      previousScore: (hasPrevData && hasCurrentData) ? calculateScore(consumed: prevConsumed, wasted: prevWasted, donated: prevDonated) : null,
+      previousWasted: hasPrevData ? prevWasted : null,
     );
   }
 

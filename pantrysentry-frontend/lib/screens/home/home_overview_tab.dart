@@ -9,6 +9,7 @@ import '../../widgets/app_logo.dart';
 import '../inventory/expiring_soon_screen.dart';
 import '../inventory/item_detail_screen.dart';
 import '../household/switch_household_screen.dart';
+import '../recipes/recipe_suggestions_screen.dart';
 
 const _expiringSoonWindowDays = 3;
 
@@ -77,6 +78,7 @@ class _HomeOverviewTabState extends State<HomeOverviewTab> {
                 else ...[
                   SliverToBoxAdapter(child: _buildSummary(context, state)),
                   SliverToBoxAdapter(child: _buildExpiringSoon(context, state)),
+                  SliverToBoxAdapter(child: _buildRecipeIdeas(context, state)),
                   const SliverToBoxAdapter(child: SizedBox(height: 24)),
                 ],
               ],
@@ -383,6 +385,49 @@ class _HomeOverviewTabState extends State<HomeOverviewTab> {
                   ),
                 )),
         ],
+      ),
+    );
+  }
+
+  /// Epic 6 — entry point to recipe suggestions. Recipes themselves are
+  /// only fetched when the screen is opened (an LLM call), not on Home.
+  Widget _buildRecipeIdeas(BuildContext context, AppState state) {
+    // Same rule as the server: expired items can't be used in a recipe
+    // (AC 6.1.5), so they don't count as "expiring soon" here.
+    final expiringCount = state.expiringWithin(3).where((i) => i.daysLeft >= 0 && i.quantity > 0).length;
+    final subtitle = expiringCount > 0
+        ? 'Use up $expiringCount ${expiringCount == 1 ? 'item' : 'items'} expiring in the next 3 days'
+        : 'Get ideas for what to cook with the food you have';
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+      child: Card(
+        color: AppTheme.honeyLight,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => RecipeSuggestionsScreen(appState: widget.appState),
+          )),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                const Icon(Icons.restaurant_menu, color: AppTheme.honey, size: 28),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Recipe ideas', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+                      const SizedBox(height: 2),
+                      Text(subtitle, style: TextStyle(fontSize: 12.5, color: Colors.grey.shade800)),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

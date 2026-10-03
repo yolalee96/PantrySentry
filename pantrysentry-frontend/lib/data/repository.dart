@@ -7,6 +7,9 @@ import '../models/activity_log_entry.dart';
 import '../models/shelf_life_suggestion.dart';
 import '../models/recognition_candidate.dart';
 import '../models/receipt_item_draft.dart';
+import '../models/environmental_impact.dart';
+import '../models/recipe.dart';
+import '../models/insights_data.dart';
 
 /// See lib/data/README.md — screens depend only on these interfaces,
 /// never on a concrete storage implementation.
@@ -172,3 +175,41 @@ abstract class RecognitionRepository {
   Future<List<ReceiptItemDraft>> recognizeReceipt(String rawText);
 }
 
+
+/// Epic 8 — server-calculated CO2e estimate for food wasted in a period.
+/// Calculated on the backend (not in Flutter) so the emission-factor
+/// reference data and the formula live in one place.
+abstract class EnvironmentalImpactRepository {
+  /// [trendStarts] are the start instants of the earlier periods shown
+  /// in the trend chart, oldest first (the last one is also "the previous
+  /// period" for the headline comparison). Returns
+  /// [EnvironmentalImpactStatus.pendingData] rather than throwing while
+  /// the reference data hasn't been loaded yet.
+  Future<EnvironmentalImpact> getEnvironmentalImpact({
+    required String householdId,
+    required DateRange range,
+    required List<DateTime> trendStarts,
+  });
+}
+
+/// Epic 6 — recipe suggestions and recording what a recipe used.
+abstract class RecipeRepository {
+  /// [today] is the user's local calendar date (expiry dates are dates,
+  /// so "expiring within 3 days" must be judged from the user's day, not
+  /// the server's). [refresh] asks for new recipes instead of the cached set.
+  Future<RecipeSuggestions> getRecipeSuggestions({
+    required String householdId,
+    required DateTime today,
+    bool refresh = false,
+  });
+
+  /// Deducts the confirmed amounts in one all-or-nothing update. Sending
+  /// the same [submissionId] again never deducts twice (AC 6.3.7).
+  Future<RecipeUsageResult> recordRecipeUsage({
+    required String householdId,
+    required String submissionId,
+    required String recipeId,
+    required String recipeTitle,
+    required List<IngredientUse> uses,
+  });
+}

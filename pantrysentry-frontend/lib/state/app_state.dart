@@ -8,6 +8,9 @@ import '../models/food_item.dart';
 import '../models/reminder.dart';
 import '../models/activity_log_entry.dart';
 import '../models/shelf_life_suggestion.dart';
+import '../models/environmental_impact.dart';
+import '../models/recipe.dart';
+import '../models/insights_data.dart';
 import '../data/repository.dart';
 import '../services/id_service.dart';
 import '../services/reminder_service.dart';
@@ -24,6 +27,8 @@ class AppState extends ChangeNotifier {
     required this.activityRepo,
     required this.shelfLifeRepo,
     required this.recognitionRepo,
+    required this.environmentalImpactRepo,
+    required this.recipeRepo,
   });
 
   final UserRepository userRepo;
@@ -33,6 +38,8 @@ class AppState extends ChangeNotifier {
   final ActivityLogRepository activityRepo;
   final ShelfLifeRepository shelfLifeRepo;
   final RecognitionRepository recognitionRepo;
+  final EnvironmentalImpactRepository environmentalImpactRepo;
+  final RecipeRepository recipeRepo;
 
   AppUser? currentUser;
   Household? currentHousehold;
@@ -400,21 +407,53 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Consume / discard — resolves the item out of the active inventory.
+  /// Consume / discard / donate — fully resolves the item out of active
+  /// inventory, EXCEPT a partial or half consumption, which now actually
+  /// reduces [FoodItem.quantity] instead of just being a label:
+  ///   - half: quantity is halved (4 chickens -> 2; a 2kg bag -> 1kg).
+  ///   - partial: [remainingQuantity] is the user's own answer to "how
+  ///     much is left?" — there's no single correct fraction for
+  ///     "some of it", so the app asks rather than guesses.
+  /// If what's left rounds down to near-zero, the item is auto-resolved
+  /// as a full consumption instead of leaving a technically-active item
+  /// with ~0 left sitting in inventory indefinitely.
   Future<void> resolveItem(
     FoodItem item,
     ItemDisposition disposition, {
     DiscardReason? discardReason,
     ConsumedAmount? consumedAmount,
+    double? remainingQuantity,
   }) async {
     if (currentUser == null || currentHousehold == null) return;
-    // A "consumed" action with a partial/half amount does NOT resolve
-    // the item — it stays active in the inventory, just tagged with how
-    // much has been used so far. Only "full" (or discard/donate)
-    // actually resolves it and removes it from the active list.
+
     final isPartialConsumption = disposition == ItemDisposition.consumed &&
         (consumedAmount == ConsumedAmount.partial || consumedAmount == ConsumedAmount.half);
-    if (!isPartialConsumption) {
+
+    const nearZeroThreshold = 0.01;
+    var endedUpFullyResolved = !isPartialConsumption;
+
+    if (isPartialConsumption) {
+      final rawNewQty = consumedAmount == ConsumedAmount.half
+          ? item.quantity / 2
+          : (remainingQuantity ?? item.quantity);
+      // Round to 3dp — avoids ugly float noise (e.g. 0.311/2 = 0.1555)
+      // without over-rounding a genuinely precise weighed quantity.
+      final newQty = double.parse(rawNewQty.clamp(0, item.quantity).toStringAsFixed(3));
+
+      if (newQty <= nearZeroThreshold) {
+        // Effectively finished — treat as a full consumption rather than
+        // leaving a near-empty item active forever.
+        item.quantity = 0;
+        item.disposition = ItemDisposition.consumed;
+        item.resolvedAt = DateTime.now();
+        item.resolvedByUserId = currentUser!.id;
+        consumedAmount = ConsumedAmount.full;
+        endedUpFullyResolved = true;
+      } else {
+        item.quantity = newQty;
+        // Stays active — disposition/resolvedAt/resolvedByUserId untouched.
+      }
+    } else {
       item.disposition = disposition;
       item.resolvedAt = DateTime.now();
       item.resolvedByUserId = currentUser!.id;
@@ -423,21 +462,36 @@ class AppState extends ChangeNotifier {
     item.consumedAmount = consumedAmount;
     await inventoryRepo.updateItem(item);
     await _refreshItemsNow(); // instant feedback instead of waiting for the next poll tick
-    if (!isPartialConsumption) {
-      final action = switch (disposition) {
-        ItemDisposition.consumed => ActivityAction.consumed,
-        ItemDisposition.discarded => ActivityAction.discarded,
-        ItemDisposition.donated => ActivityAction.donated,
-      };
-      await activityRepo.logActivity(ActivityLogEntry(
-        id: IdService.newId('log'),
-        householdId: currentHousehold!.id,
-        actingUserId: currentUser!.id,
-        actingUserName: currentUser!.name,
-        action: action,
-        itemName: item.name,
-      ));
+
+    // The backend cancels a fully resolved item's reminders in the same
+    // request — re-fetch so they disappear from the Reminders tab now,
+    // not on the next poll. A failure here mustn't undo a successful
+    // resolve, so it's swallowed; the next poll will catch up.
+    if (endedUpFullyResolved) {
+      try {
+        reminders = await reminderRepo.getRemindersForHousehold(currentHousehold!.id);
+        notifyListeners();
+      } catch (_) {}
     }
+
+    // Logged for every real change now, including partial/half — those
+    // genuinely change stock now, not just a label, so they're just as
+    // worth recording as a full resolve.
+    final action = endedUpFullyResolved
+        ? switch (item.disposition!) {
+            ItemDisposition.consumed => ActivityAction.consumed,
+            ItemDisposition.discarded => ActivityAction.discarded,
+            ItemDisposition.donated => ActivityAction.donated,
+          }
+        : ActivityAction.consumed; // partial/half: still a consumption event, just not the whole item
+    await activityRepo.logActivity(ActivityLogEntry(
+      id: IdService.newId('log'),
+      householdId: currentHousehold!.id,
+      actingUserId: currentUser!.id,
+      actingUserName: currentUser!.name,
+      action: action,
+      itemName: item.name,
+    ));
   }
 
   /// Fetches the current item list immediately, rather than waiting for
@@ -561,6 +615,71 @@ class AppState extends ChangeNotifier {
     String? itemName,
   }) {
     return shelfLifeRepo.getStorageSuggestions(category: category, itemName: itemName);
+  }
+
+  // ==================== Environmental impact (Epic 8) ====================
+
+  /// Read-only pass-through (changes no state, so no notifyListeners) —
+  /// see [EnvironmentalImpactRepository]. Returns the pending state if
+  /// there's no household yet.
+  Future<EnvironmentalImpact> getEnvironmentalImpact({required DateRange range, required List<DateTime> trendStarts}) {
+    if (currentHousehold == null) return Future.value(const EnvironmentalImpact.pending());
+    return environmentalImpactRepo.getEnvironmentalImpact(
+      householdId: currentHousehold!.id,
+      range: range,
+      trendStarts: trendStarts,
+    );
+  }
+
+  // ==================== Recipes (Epic 6) ====================
+
+  /// Read-only — see [RecipeRepository.getRecipeSuggestions].
+  Future<RecipeSuggestions> getRecipeSuggestions({bool refresh = false}) {
+    if (currentHousehold == null) {
+      return Future.value(const RecipeSuggestions(status: RecipeSuggestionsStatus.noInventory, recipes: [], expiringSoonCount: 0));
+    }
+    return recipeRepo.getRecipeSuggestions(householdId: currentHousehold!.id, today: DateTime.now(), refresh: refresh);
+  }
+
+  /// User Story 6.3 — records what a recipe used, then refreshes items and
+  /// reminders so every household screen shows the new quantities and
+  /// statuses straight away (AC 6.3.5 / 6.3.6). [submissionId] must stay
+  /// the same if the user retries the same update (AC 6.3.7).
+  Future<RecipeUsageResult> recordRecipeUsage({
+    required String submissionId,
+    required Recipe recipe,
+    required List<IngredientUse> uses,
+  }) async {
+    if (currentUser == null || currentHousehold == null) {
+      throw AuthException('You need to be in a household to do this.');
+    }
+    final result = await recipeRepo.recordRecipeUsage(
+      householdId: currentHousehold!.id,
+      submissionId: submissionId,
+      recipeId: recipe.id,
+      recipeTitle: recipe.title,
+      uses: uses,
+    );
+    await _refreshItemsNow();
+    try {
+      reminders = await reminderRepo.getRemindersForHousehold(currentHousehold!.id);
+      notifyListeners();
+    } catch (_) {} // the next poll catches up; the usage itself already saved
+
+    // Only log activity the first time — a retry changed nothing.
+    if (!result.alreadyRecorded) {
+      for (final used in result.updated) {
+        await activityRepo.logActivity(ActivityLogEntry(
+          id: IdService.newId('log'),
+          householdId: currentHousehold!.id,
+          actingUserId: currentUser!.id,
+          actingUserName: currentUser!.name,
+          action: ActivityAction.consumed,
+          itemName: used.name,
+        ));
+      }
+    }
+    return result;
   }
 
   // ==================== Sign out ====================

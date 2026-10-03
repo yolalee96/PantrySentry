@@ -26,6 +26,7 @@ class ItemDetailScreen extends StatelessWidget {
     ItemDisposition disposition, {
     DiscardReason? discardReason,
     ConsumedAmount? consumedAmount,
+    double? remainingQuantity,
   }) async {
     // Show immediate visual feedback the moment the action is confirmed
     // — previously the button just sat there with no response while the
@@ -37,7 +38,13 @@ class ItemDetailScreen extends StatelessWidget {
       builder: (_) => const Center(child: CircularProgressIndicator()),
     );
     try {
-      await appState.resolveItem(item, disposition, discardReason: discardReason, consumedAmount: consumedAmount);
+      await appState.resolveItem(
+        item,
+        disposition,
+        discardReason: discardReason,
+        consumedAmount: consumedAmount,
+        remainingQuantity: remainingQuantity,
+      );
       if (context.mounted) {
         Navigator.of(context).pop(); // dismiss the loading indicator
         Navigator.of(context).pop(); // then leave the item detail screen
@@ -76,10 +83,68 @@ class ItemDetailScreen extends StatelessWidget {
         ),
       ),
     );
-    if (amount != null && context.mounted) {
-      await _resolve(context, item, ItemDisposition.consumed, consumedAmount: amount);
+    if (amount == null || !context.mounted) return;
+
+    // "Half" is unambiguous maths (handled entirely in AppState). "Full"
+    // needs no quantity input either — the item just fully resolves.
+    // "Partial" has no single correct fraction, so we ask directly
+    // rather than guess.
+    double? remainingQuantity;
+    if (amount == ConsumedAmount.partial) {
+      remainingQuantity = await _promptRemainingQuantity(context, item);
+      if (remainingQuantity == null || !context.mounted) return; // user cancelled
     }
+
+    await _resolve(context, item, ItemDisposition.consumed, consumedAmount: amount, remainingQuantity: remainingQuantity);
   }
+
+  /// Asks "how much is left?" rather than "how much did you use?" —
+  /// people generally know what's left in the fridge more reliably than
+  /// they can estimate what fraction they just used.
+  Future<double?> _promptRemainingQuantity(BuildContext context, FoodItem item) async {
+    final controller = TextEditingController(text: _formatQty(item.quantity));
+    return showDialog<double>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('How much is left?'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Currently ${_formatQty(item.quantity)} ${item.unit}. Enter how much is left after this use.',
+              style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+            ),
+            const SizedBox(height: 14),
+            TextField(
+              controller: controller,
+              autofocus: true,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: InputDecoration(labelText: 'Remaining (${item.unit})', isDense: true),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () {
+              final value = double.tryParse(controller.text.trim());
+              if (value == null || value < 0 || value >= item.quantity) {
+                ScaffoldMessenger.of(dialogContext).showSnackBar(
+                  SnackBar(content: Text('Enter a number less than ${_formatQty(item.quantity)} ${item.unit}.')),
+                );
+                return;
+              }
+              Navigator.pop(dialogContext, value);
+            },
+            child: const Text('Confirm'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatQty(double q) => q == q.roundToDouble() ? q.toInt().toString() : q.toString();
 
   Future<void> _discard(BuildContext context, FoodItem item) async {
     final reason = await Navigator.of(context).push<DiscardReason>(
@@ -192,7 +257,7 @@ class ItemDetailScreen extends StatelessWidget {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          '${item.consumedAmount!.label} \u2014 still in your inventory',
+                          '${item.consumedAmount!.label} \u2014 ${_formatQty(item.quantity)} ${item.unit} left',
                           style: TextStyle(color: Colors.orange.shade900, fontWeight: FontWeight.w600, fontSize: 13.5),
                         ),
                       ),

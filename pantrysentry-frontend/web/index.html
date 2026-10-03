@@ -32,6 +32,17 @@
   <title>pantrybuddy</title>
   <link rel="manifest" href="manifest.json">
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script>
+  window.pantrybuddyStopAllCameraStreams = function() {
+    document.querySelectorAll('video').forEach(function(v) {
+      var s = v.srcObject;
+      if (s && typeof s.getTracks === 'function') {
+        s.getTracks().forEach(function(t) { t.stop(); });
+        v.srcObject = null;
+      }
+    });
+  };
+  </script>
 </head>
 <body>
   <!--

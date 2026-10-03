@@ -1,9 +1,50 @@
+import 'dart:async';
+import 'dart:js_interop';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../models/scanned_product.dart';
 import '../../services/category_defaults_service.dart';
 import '../../state/app_state.dart';
+
+/// A hard, direct safety net for releasing the camera on web, independent
+/// of mobile_scanner's own cleanup — which has multiple documented,
+/// web-specific issues around not actually releasing the camera hardware
+/// (see _exit() below for specifics). Unlike photo capture (image_picker),
+/// where the BROWSER owns opening and closing the camera as one atomic,
+/// native operation, barcode scanning needs a live embedded video preview
+/// that OUR code opens and must close ourselves — so if the package's own
+/// bookkeeping is wrong, nothing else stops the stream. This walks every
+/// <video> element in the page and force-stops any camera track attached
+/// to it, the same guarantee the browser gives Take Photo for free.
+///
+/// SETUP REQUIRED — add this inside <head> in web/index.html, alongside
+/// the tesseract.js <script> tag:
+///   <script>
+///     window.pantrybuddyStopAllCameraStreams = function() {
+///       document.querySelectorAll('video').forEach(function(v) {
+///         var s = v.srcObject;
+///         if (s && typeof s.getTracks === 'function') {
+///           s.getTracks().forEach(function(t) { t.stop(); });
+///           v.srcObject = null;
+///         }
+///       });
+///     };
+///   </script>
+///
+/// WEB-ONLY (dart:js_interop) — consistent with BrowserOcrService.
+@JS('pantrybuddyStopAllCameraStreams')
+external void _stopAllCameraStreamsJS();
+
+void _forceStopAllCameraStreams() {
+  try {
+    _stopAllCameraStreamsJS();
+  } catch (_) {
+    // The JS function might not be defined yet (e.g. web/index.html
+    // hasn't been updated) — fail quietly rather than crash the exit
+    // path; mobile_scanner's own stop()/dispose() still ran regardless.
+  }
+}
 
 /// User Story 4.1 — scans a product barcode, resolved server-side via
 /// Open Food Facts + the product_keyword_mapping table (same recognition
@@ -83,9 +124,34 @@ class _BarcodeScanScreenState extends State<BarcodeScanScreen> {
   /// screen (confirmed via screen recording) — dispose() is what actually
   /// tears down the underlying camera stream on web, not just pausing
   /// frame analysis.
+  ///
+  /// Also waits for the camera to actually finish starting up first, if
+  /// it's still mid-startup — this is a documented mobile_scanner issue
+  /// (github.com/juliansteenbakker/mobile_scanner/issues/505): both
+  /// stop() and dispose() silently do nothing while the controller's
+  /// value.isInitialized is still false, and the in-flight startup can
+  /// then finish AFTER dispose(), leaving an orphaned camera stream
+  /// nothing can stop anymore. Exiting quickly (e.g. tapping back right
+  /// after opening the scanner) is exactly when this happens.
   Future<void> _exit([ScannedProduct? result]) async {
     if (_exited) return;
     _exited = true;
+
+    if (!_controller.value.isInitialized) {
+      final completer = Completer<void>();
+      late final VoidCallback listener;
+      listener = () {
+        if (_controller.value.isInitialized || _controller.value.error != null) {
+          completer.complete();
+        }
+      };
+      _controller.addListener(listener);
+      // Capped wait — if startup is somehow stuck, don't block leaving
+      // the screen forever; worst case we're back to the old behaviour.
+      await completer.future.timeout(const Duration(seconds: 3), onTimeout: () {});
+      _controller.removeListener(listener);
+    }
+
     try {
       await _controller.stop();
     } catch (_) {
@@ -96,6 +162,10 @@ class _BarcodeScanScreenState extends State<BarcodeScanScreen> {
     } catch (_) {
       // Already disposed — fine.
     }
+    // Belt and braces: force-stop anything still live at the browser
+    // level, regardless of whether the above actually worked — this is
+    // the same guarantee Take Photo gets from the browser automatically.
+    _forceStopAllCameraStreams();
     if (!mounted) return;
     Navigator.of(context).pop(result);
   }

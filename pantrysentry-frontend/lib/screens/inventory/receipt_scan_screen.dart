@@ -108,7 +108,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
       if (!mounted) return;
       setState(() {
         _stage = _Stage.capture;
-        _error = 'Unable to read this receipt. Try another photo, or a clearer one.';
+        _error = 'Unsupported receipt type. Please take a picture or choose another photo.';
       });
     }
   }

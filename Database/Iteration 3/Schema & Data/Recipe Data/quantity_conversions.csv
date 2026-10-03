@@ -1,0 +1,7 @@
+conversion_id,reference_id,from_unit,to_unit,factor,is_assumed,source_name,source_url,notes,is_active
+1000000,,g,kg,0.001,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1
+1000001,,ml,L,0.001,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1
+1000002,,dozen,pcs,12,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1
+1000003,,cup,ml,240,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1
+1000004,,tbsp,ml,15,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1
+1000005,,tsp,ml,5,1,Standard cooking conversions,,Team-requested conversion policy. Cooking volumes vary by convention. Volume/count to kg requires food-specific density/weight. is_assumed=1 per handover specification.,1

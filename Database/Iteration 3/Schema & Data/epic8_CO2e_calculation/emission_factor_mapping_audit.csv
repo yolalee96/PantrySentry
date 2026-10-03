@@ -1,0 +1,1783 @@
+reference_id,reference_key,product_name,category_id,mapped_food_type,factor_kg_co2e_per_kg,mapping_basis
+1,catalogue:1,Starfruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2,catalogue:2,Papaya,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3,catalogue:3,Cempedak,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4,catalogue:4,Sapodilla (Ciku),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5,catalogue:5,Dokong,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6,catalogue:6,Duku,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7,catalogue:7,Durian,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+8,catalogue:8,Guava,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+9,catalogue:9,Langsat,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+10,catalogue:10,Pomelo,5,Citrus Fruit,0.390000,direct citrus match
+11,catalogue:11,Sweet Orange,5,Citrus Fruit,0.390000,direct citrus match
+12,catalogue:12,Mango,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+13,catalogue:13,Mangosteen,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+14,catalogue:14,Dragon Fruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+15,catalogue:15,Pineapple,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+16,catalogue:16,Jackfruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+17,catalogue:17,Banana,5,Bananas,0.860000,direct fruit match
+18,catalogue:18,Pulasan,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+19,catalogue:19,Rambutan,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+20,catalogue:20,Salak,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+21,catalogue:21,Watermelon,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+22,catalogue:22,Abiu,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+23,catalogue:23,Grape,5,Berries & Grapes,1.530000,direct berries/grapes match
+24,catalogue:24,Avocado,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+25,catalogue:25,Horse Mango (Bacang),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+26,catalogue:26,Bambangan,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+27,catalogue:27,Bilimbi,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+28,catalogue:28,Baccaurea Angulata,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+29,catalogue:29,Jujube,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+30,catalogue:30,Malay Gooseberry (Cermai),5,Berries & Grapes,1.530000,direct berries/grapes match
+31,catalogue:31,Dabai,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+32,catalogue:32,Soursop,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+33,catalogue:33,Cashew Apple,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+34,catalogue:34,Water Apple,5,Apples,0.430000,direct fruit match
+35,catalogue:35,Wax Apple,5,Apples,0.430000,direct fruit match
+36,catalogue:36,Malay Apple,5,Apples,0.430000,direct fruit match
+37,catalogue:37,Ambarella,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+38,catalogue:38,Kuini,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+39,catalogue:39,Kundang,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+40,catalogue:40,Lemon,5,Citrus Fruit,0.390000,direct citrus match
+41,catalogue:41,Longan,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+42,catalogue:42,Passion Fruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+43,catalogue:43,Cat's Eye Fruit (Mata Kucing),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+44,catalogue:44,Velvet Apple,5,Apples,0.430000,direct fruit match
+45,catalogue:45,Sweet-sop,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+46,catalogue:46,Custard Apple,5,Apples,0.430000,direct fruit match
+47,catalogue:47,Persimmon,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+48,catalogue:48,Rambai,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+49,catalogue:49,Breadfruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+50,catalogue:50,Honeydew,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+101,catalogue:101,Water Spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+102,catalogue:102,Bok Choy,4,Brassicas,0.510000,direct brassica-family match
+103,catalogue:103,Choy Sum,4,Brassicas,0.510000,direct brassica-family match
+104,catalogue:104,Chinese Broccoli,4,Brassicas,0.510000,direct brassica-family match
+105,catalogue:105,Amaranth Leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+106,catalogue:106,Fiddlehead Fern,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+107,catalogue:107,Sweet Leaf,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+108,catalogue:108,Round Cabbage,4,Brassicas,0.510000,direct brassica-family match
+109,catalogue:109,Napa Cabbage,4,Brassicas,0.510000,direct brassica-family match
+110,catalogue:110,Watercress,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+111,catalogue:111,Sweet Potato Leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+112,catalogue:112,Ceylon Spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+113,catalogue:113,Iceberg Lettuce,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+114,catalogue:114,Bitter Gourd,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+115,catalogue:115,Ridge Gourd,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+116,catalogue:116,Winter Melon,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+117,catalogue:117,Bottle Gourd,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+118,catalogue:118,Snake Gourd,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+119,catalogue:119,Chayote,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+120,catalogue:120,Cucumber,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+121,catalogue:121,Pumpkin,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+122,catalogue:122,Yardlong Beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+123,catalogue:123,French Beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+124,catalogue:124,Winged Beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+125,catalogue:125,Okra,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+126,catalogue:126,Stink Bean,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+127,catalogue:127,Mung Bean Sprouts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+128,catalogue:128,Soybean Sprouts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+129,catalogue:129,Baby Corn,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+130,catalogue:130,Bird's Eye Chili,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+131,catalogue:131,Red Chili,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+132,catalogue:132,Green Chili,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+133,catalogue:133,Eggplant,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+134,catalogue:134,Tomato,4,Tomatoes,2.090000,direct vegetable match
+135,catalogue:135,Lemongrass,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+136,catalogue:136,Ginger,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+137,catalogue:137,Galangal,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+138,catalogue:138,Turmeric,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+139,catalogue:139,Torch Ginger Flower,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+140,catalogue:140,Curry Leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+141,catalogue:141,Pandan Leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+142,catalogue:142,Kaffir Lime Leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+143,catalogue:143,Spring Onion,4,Onions & Leeks,0.500000,direct allium match
+144,catalogue:144,Garlic Chives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+145,catalogue:145,Chinese Celery,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+146,catalogue:146,Coriander,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+147,catalogue:147,Daikon Radish,4,Root Vegetables,0.430000,direct root-vegetable match
+148,catalogue:148,Carrot,4,Root Vegetables,0.430000,direct root-vegetable match
+149,catalogue:149,Jicama,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+150,catalogue:150,Lotus Root,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+151,catalogue:151,Whole Chicken,2,Poultry Meat,9.870000,direct poultry match
+152,catalogue:152,Chicken Breast,2,Poultry Meat,9.870000,direct poultry match
+153,catalogue:153,Chicken Thigh,2,Poultry Meat,9.870000,direct poultry match
+154,catalogue:154,Chicken Drumstick,2,Poultry Meat,9.870000,direct poultry match
+155,catalogue:155,Chicken Wings,2,Poultry Meat,9.870000,direct poultry match
+156,catalogue:156,Chicken Feet,2,Poultry Meat,9.870000,direct poultry match
+157,catalogue:157,Minced Chicken,2,Poultry Meat,9.870000,direct poultry match
+158,catalogue:158,Chicken Liver,2,Poultry Meat,9.870000,direct poultry match
+159,catalogue:159,Chicken Gizzard,2,Poultry Meat,9.870000,direct poultry match
+160,catalogue:160,Free-Range Chicken,2,Poultry Meat,9.870000,direct poultry match
+161,catalogue:161,Whole Duck,2,Poultry Meat,9.870000,direct poultry match
+162,catalogue:162,Duck Breast,2,Poultry Meat,9.870000,direct poultry match
+163,catalogue:163,Duck Leg,2,Poultry Meat,9.870000,direct poultry match
+164,catalogue:164,Whole Quail,2,Poultry Meat,9.870000,direct poultry match
+165,catalogue:165,Beef Ribeye,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+166,catalogue:166,Beef Sirloin,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+167,catalogue:167,Beef Tenderloin,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+168,catalogue:168,Beef Brisket,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+169,catalogue:169,Beef Shank,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+170,catalogue:170,Beef Chuck,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+171,catalogue:171,Beef Short Ribs,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+172,catalogue:172,Beef Flank,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+173,catalogue:173,Beef Oxtail,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+174,catalogue:174,Minced Beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+175,catalogue:175,Beef Tendon,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+176,catalogue:176,Beef Tripe,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+177,catalogue:177,Beef Liver,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+178,catalogue:178,Beef Tongue,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+179,catalogue:179,Diced Mutton,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+181,catalogue:181,Lamb Chop,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+182,catalogue:182,Lamb Shank,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+183,catalogue:183,Lamb Shoulder,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+184,catalogue:184,Lamb Leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+185,catalogue:185,Lamb Ribs,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+186,catalogue:186,Minced Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+187,catalogue:187,Pork Belly,2,Pig Meat,12.310000,direct pig/pork match
+188,catalogue:188,Pork Loin,2,Pig Meat,12.310000,direct pig/pork match
+189,catalogue:189,Pork Shoulder,2,Pig Meat,12.310000,direct pig/pork match
+190,catalogue:190,Pork Collar,2,Pig Meat,12.310000,direct pig/pork match
+191,catalogue:191,Pork Ribs,2,Pig Meat,12.310000,direct pig/pork match
+192,catalogue:192,Pork Chops,2,Pig Meat,12.310000,direct pig/pork match
+193,catalogue:193,Minced Pork,2,Pig Meat,12.310000,direct pig/pork match
+194,catalogue:194,Pork Trotters,2,Pig Meat,12.310000,direct pig/pork match
+195,catalogue:195,Pork Liver,2,Pig Meat,12.310000,direct pig/pork match
+196,catalogue:196,Pork Intestines,2,Pig Meat,12.310000,direct pig/pork match
+197,catalogue:197,Pork Tenderloin,2,Pig Meat,12.310000,direct pig/pork match
+198,catalogue:198,Pork Belly Slices,2,Pig Meat,12.310000,direct pig/pork match
+199,catalogue:199,Beef Striploin,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+200,catalogue:200,Beef Knuckle,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+201,off:en:10-red-wine,10% red wine,7,Wine,1.790000,direct wine match
+202,off:en:11-dry-white-wine,11% dry white wine,7,Wine,1.790000,direct wine match
+203,off:en:11-red-wine,11% red wine,7,Wine,1.790000,direct wine match
+204,off:en:11-rose-wine,11% rosé wine,7,Wine,1.790000,direct wine match
+205,off:en:11-white-wine,11% white wine,7,Wine,1.790000,direct wine match
+206,off:en:12-red-wine,12% red wine,7,Wine,1.790000,direct wine match
+207,off:en:13-red-wine,13% red wine,7,Wine,1.790000,direct wine match
+233,off:en:abate-pears,Abate pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+234,off:en:abbaye-cheeses,Abbaye cheeses,1,Cheese,23.880000,direct dairy product match
+243,off:en:acidic-apples,Acidic apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+262,off:en:alder-wood-smoked-tofu,Alder wood smoked tofu,16,Tofu,3.160000,direct tofu match
+303,off:en:american-cheeses,American cheeses,1,Cheese,23.880000,direct dairy product match
+326,off:en:appenzeller-cheese,Appenzeller cheese,1,Cheese,23.880000,direct dairy product match
+338,off:en:apple-pulp,Apple pulp,5,Apples,0.430000,direct fruit match
+339,off:en:apple-pulp-and-peel,Apple pulp and peel,5,Apples,0.430000,direct fruit match
+346,off:en:apples,Apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+347,off:en:apples-chantecler,Apples Chantecler,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+350,off:en:applewood-cheese,Applewood cheese,1,Cheese,23.880000,direct dairy product match
+359,off:en:apricots,Apricots,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+365,off:en:arborio-rices,Arborio rices,14,Rice,4.450000,direct/basic rice match
+372,off:en:argentine-cheeses,Argentine cheeses,1,Cheese,23.880000,direct dairy product match
+374,off:en:ariane-apples,Ariane apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+375,off:en:armagh-bramley-apples,Armagh Bramley Apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+382,off:en:aromatic-rices,Aromatic rices,14,Rice,4.450000,direct/basic rice match
+386,off:en:artichoke-hearts,Artichoke hearts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+388,off:en:artichokes,Artichokes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+391,off:en:artisan-cheeses,Artisan cheeses,1,Cheese,23.880000,direct dairy product match
+398,off:en:asian-pears,Asian pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+399,off:en:asparagus,Asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+400,off:en:asparagus-from-sable-des-landes,Asparagus from Sable des Landes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+401,off:en:asparagus-heads,Asparagus heads,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+413,off:en:attested-milks,Attested milks,1,Milk,3.150000,direct fluid milk match
+414,off:en:aubergines,Aubergines,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+415,off:en:austrian-cheeses,Austrian cheeses,1,Cheese,23.880000,direct dairy product match
+416,off:en:austrian-fruit,Austrian fruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+421,off:en:austrian-vegetables,Austrian vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+422,off:en:auvergne-blue-cheese-from-cow-s-milk,Auvergne blue cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+425,off:en:avocado-pulp,Avocado pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+426,off:en:avocados,Avocados,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+430,off:en:azuki-beans,Azuki beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+457,off:en:bahia-rices,Bahía rices,14,Rice,4.450000,direct/basic rice match
+464,off:en:baked-milk,Baked milk,1,Milk,3.150000,direct fluid milk match
+468,off:en:baldo-rices,Baldo rices,14,Rice,4.450000,direct/basic rice match
+469,off:en:balilla-x-sollana-rices,Balilla x Sollana rices,14,Rice,4.450000,direct/basic rice match
+470,off:en:balkan-cheese,Balkan cheese,1,Cheese,23.880000,direct dairy product match
+475,off:en:bambara-groundnuts,Bambara groundnuts,14,Groundnuts,3.230000,direct groundnut/peanut match
+486,off:en:bananas,Bananas,5,Bananas,0.860000,direct fruit match
+487,off:en:bananas-from-the-canary-islands,Bananas from the Canary Islands,5,Bananas,0.860000,direct fruit match
+497,off:en:barley,Barley,14,Barley,1.180000,direct/basic barley match
+499,off:en:barley-flakes,Barley flakes,14,Barley,1.180000,direct/basic barley match
+500,off:en:barley-flours,Barley flours,14,Barley,1.180000,direct/basic barley match
+501,off:en:barley-malt-flours,Barley malt flours,14,Barley,1.180000,direct/basic barley match
+503,off:en:barley-pasta,Barley pasta,14,Barley,1.180000,direct/basic barley match
+504,off:en:barn-chicken-eggs,Barn chicken eggs,18,Eggs,4.670000,direct egg match
+510,off:en:basmati-rices,Basmati rices,14,Rice,4.450000,direct/basic rice match
+524,off:en:beacon-fell-traditional-lancashire-cheese,Beacon Fell traditional Lancashire cheese,1,Cheese,23.880000,direct dairy product match
+525,off:en:beading-wines,Beading wines,7,Wine,1.790000,direct wine match
+534,off:en:beech-wood-smoked-tofu,Beech wood smoked tofu,16,Tofu,3.160000,direct tofu match
+535,off:en:beef,Beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+536,off:en:beef-bacon,Beef bacon,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+537,off:en:beef-based-burger-with-15-fat,Beef based burger with 15% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+538,off:en:beef-blood,Beef blood,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+539,off:en:beef-bolar-blade,Beef bolar-blade,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+541,off:en:beef-cheek,Beef cheek,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+544,off:en:beef-flank-steak,Beef flank steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+545,off:en:beef-from-bazas,Beef from Bazas,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+546,off:en:beef-from-chalosse,Beef from Chalosse,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+547,off:en:beef-from-charolles,Beef from Charolles,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+548,off:en:beef-from-maine,Beef from Maine,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+549,off:en:beef-from-vendee,Beef from Vendée,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+550,off:en:beef-front-quarter,Beef front quarter,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+551,off:en:beef-hanger-steak,Beef hanger steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+552,off:en:beef-heart,Beef heart,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+554,off:en:beef-kidney,Beef kidney,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+555,off:en:beef-livers,Beef livers,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+556,off:en:beef-marrowbone,Beef marrowbone,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+557,off:en:beef-offals,Beef offals,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+560,off:en:beef-rib-steak,Beef rib steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+561,off:en:beef-ribs,Beef ribs,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+563,off:en:beef-round,Beef round,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+564,off:en:beef-rump-steak,Beef rump steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+566,off:en:beef-shoulder,Beef shoulder,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+567,off:en:beef-sirloin-steak,Beef sirloin steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+568,off:en:beef-sirloin-steak-red-label,Beef sirloin steak red label,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+569,off:en:beef-steaks,Beef steaks,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+570,off:en:beef-stew-meat,Beef stew meat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+574,off:en:beef-thin-flank,Beef thin flank,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+575,off:en:beef-tongues,Beef tongues,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+576,off:en:beef-topside,Beef topside,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+580,off:en:beenleigh-blue-cheese,Beenleigh Blue cheese,1,Cheese,23.880000,direct dairy product match
+596,off:en:beet-sugars,Beet sugars,15,Beet Sugar,1.810000,direct sugar source match
+597,off:en:beetroot,Beetroot,4,Root Vegetables,0.430000,direct root-vegetable match
+602,off:en:belgian-cheeses,Belgian cheeses,1,Cheese,23.880000,direct dairy product match
+603,off:en:belgian-endives,Belgian endives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+605,off:en:belgian-fruits,Belgian fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+609,off:en:belgian-vegetables,Belgian vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+614,off:en:berries,Berries,5,Berries & Grapes,1.530000,direct berries/grapes match
+628,off:en:bilberries,Bilberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+659,off:en:black-beans,Black beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+662,off:en:black-chickpeas,Black chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+663,off:en:black-eyed-peas,Black-eyed peas,14,Peas,0.980000,direct dry pea match
+666,off:en:black-grapes,Black grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+667,off:en:black-lentils,Black lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+668,off:en:black-mulberries,Black mulberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+672,off:en:black-radishes,Black radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+674,off:en:black-rices,Black rices,14,Rice,4.450000,direct/basic rice match
+675,off:en:black-salsify,Black salsify,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+677,off:en:black-seedless-grapes,Black seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+679,off:en:black-splendor-plums,Black Splendor plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+684,off:en:blackberries,Blackberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+698,off:en:blackcurrants,Blackcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+700,off:en:blackthorns,Blackthorns,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+714,off:en:blonde-lentils,Blonde lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+716,off:en:blood-oranges,Blood oranges,5,Citrus Fruit,0.390000,direct citrus match
+723,off:en:blue-stilton-cheese,Blue Stilton cheese,1,Cheese,23.880000,direct dairy product match
+724,off:en:blue-veined-cheeses,Blue-veined cheeses,1,Cheese,23.880000,direct dairy product match
+725,off:en:blueberries,Blueberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+738,off:en:bog-bilberries,Bog bilberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+740,off:en:boiled-apples-without-skin,Boiled apples without skin,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+741,off:en:boiled-beef-knuckle,Boiled beef knuckle,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+742,off:en:boiled-beef-oxtail,Boiled beef oxtail,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+745,off:en:boiled-chicken-leg-meat,Boiled chicken leg meat,2,Poultry Meat,9.870000,direct poultry match
+746,off:en:boiled-chicken-leg-with-meat-and-skin,Boiled chicken leg with meat and skin,2,Poultry Meat,9.870000,direct poultry match
+751,off:en:boiled-eggs,Boiled eggs,18,Eggs,4.670000,direct egg match
+752,off:en:boiled-fennel,Boiled fennel,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+753,off:en:boiled-green-cabbage,Boiled green cabbage,4,Brassicas,0.510000,direct brassica-family match
+754,off:en:boiled-kohlrabi,Boiled kohlrabi,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+758,off:en:boiled-red-cabbage,Boiled red cabbage,4,Brassicas,0.510000,direct brassica-family match
+773,off:en:bomba-rices,Bomba rices,14,Rice,4.450000,direct/basic rice match
+778,off:en:bordeaux-wines,Bordeaux wines,7,Wine,1.790000,direct wine match
+787,off:en:bowland-cheese,Bowland cheese,1,Cheese,23.880000,direct dairy product match
+788,off:en:braised-beef,Braised beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+789,off:en:braised-beef-cheek,Braised beef cheek,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+790,off:en:braised-beef-chuck,Braised beef chuck,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+791,off:en:braised-beef-neck,Braised beef neck,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+792,off:en:braised-beef-short-ribs,Braised beef short ribs,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+794,off:en:braised-lamb-kidneys,Braised lamb kidneys,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+795,off:en:braised-lamb-leg,Braised lamb leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+796,off:en:braised-lamb-neck,Braised lamb neck,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+797,off:en:braised-pork-brain,Braised pork brain,2,Pig Meat,12.310000,direct pig/pork match
+798,off:en:braised-pork-spare-ribs,Braised pork spare-ribs,2,Pig Meat,12.310000,direct pig/pork match
+806,off:en:branco-melons,Branco melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+818,off:en:breaded-camemberts,Breaded camemberts,1,Cheese,23.880000,direct dairy product match
+819,off:en:breaded-cheeses,Breaded cheeses,1,Cheese,23.880000,direct dairy product match
+820,off:en:breaded-chicken,Breaded chicken,2,Poultry Meat,9.870000,direct poultry match
+821,off:en:breaded-chicken-cutlets,Breaded chicken cutlets,2,Poultry Meat,9.870000,direct poultry match
+829,off:en:breaded-halloumi,Breaded halloumi,1,Cheese,23.880000,direct dairy product match
+832,off:en:breaded-reconstituted-chicken-cutlets,Breaded reconstituted chicken cutlets,2,Poultry Meat,9.870000,direct poultry match
+867,off:en:breakfast-chocolate-cereals-with-wheat-grain-flakes-not-fortified-with-vitamins-and-chemical-elements,Breakfast chocolate cereals with wheat grain flakes not fortified with vitamins and chemical elements,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+870,off:en:bresse-blue-cheese-from-cow-s-milk,Bresse blue cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+871,off:en:bresse-blue-cheese-from-cow-s-milk-reduced-fat-around-15-fat,Bresse blue cheese from cow's milk reduced fat around 15% fat,1,Cheese,23.880000,direct dairy product match
+883,off:en:brie-de-meaux-cheeses,Brie de Meaux cheeses,1,Cheese,23.880000,direct dairy product match
+884,off:en:brie-de-melun,Brie de Melun,1,Cheese,23.880000,direct dairy product match
+885,off:en:bries,Bries,1,Cheese,23.880000,direct dairy product match
+887,off:en:brined-cheeses,Brined cheeses,1,Cheese,23.880000,direct dairy product match
+897,off:en:british-fruit,British fruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+900,off:en:british-wines,British wines,7,Wine,1.790000,direct wine match
+904,off:en:broad-beans,Broad beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+905,off:en:broccoli,Broccoli,4,Brassicas,0.510000,direct brassica-family match
+910,off:en:brown-basmati-rices,Brown Basmati rices,14,Rice,4.450000,direct/basic rice match
+912,off:en:brown-camargue-rices,Brown Camargue rices,14,Rice,4.450000,direct/basic rice match
+913,off:en:brown-jasmine-rices,Brown Jasmine rices,14,Rice,4.450000,direct/basic rice match
+914,off:en:brown-lentils,Brown lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+916,off:en:brown-rices,Brown rices,14,Rice,4.450000,direct/basic rice match
+926,off:en:brussels-sprouts,Brussels sprouts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+938,off:en:buckwheat-flours,Buckwheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+939,off:en:buckwheat-groats,Buckwheat groats,14,Oatmeal,2.480000,direct/basic oat match
+945,off:en:buffalo-camemberts,Buffalo camemberts,1,Cheese,23.880000,direct dairy product match
+946,off:en:buffalo-cheeses,Buffalo cheeses,1,Cheese,23.880000,direct dairy product match
+947,off:en:buffalo-milks,Buffalo milks,1,Milk,3.150000,direct fluid milk match
+948,off:en:buffalo-mozzarella,Buffalo mozzarella,1,Cheese,23.880000,direct dairy product match
+950,off:en:bulgarian-cheeses,Bulgarian cheeses,1,Cheese,23.880000,direct dairy product match
+952,off:en:bulgarian-white-brine-cheese,Bulgarian white brine cheese,1,Cheese,23.880000,direct dairy product match
+953,off:en:bulgarian-wines-spirit,Bulgarian wines spirit,7,Wine,1.790000,direct wine match
+961,off:en:burgundy-wines,Burgundy wines,7,Wine,1.790000,direct wine match
+964,off:en:butter-beans,Butter beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+976,off:en:cabbages,Cabbages,4,Brassicas,0.510000,direct brassica-family match
+985,off:en:cage-chicken-eggs,Cage chicken eggs,18,Eggs,4.670000,direct egg match
+998,off:en:calrose-rices,Calrose rices,14,Rice,4.450000,direct/basic rice match
+1000,off:en:camargue-rices,Camargue rices,14,Rice,4.450000,direct/basic rice match
+1001,off:en:cambrian-mountains-lamb,Cambrian Mountains Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1003,off:en:camembert-with-calvados,Camembert with Calvados,1,Cheese,23.880000,direct dairy product match
+1004,off:en:camemberts,Camemberts,1,Cheese,23.880000,direct dairy product match
+1005,off:en:camemberts-de-normandie,Camemberts de Normandie,1,Cheese,23.880000,direct dairy product match
+1006,off:en:camemberts-from-microfiltered-cow-milk,Camemberts from microfiltered cow milk,1,Cheese,23.880000,direct dairy product match
+1007,off:en:camemberts-from-pasteurized-buffalo-milk,Camemberts from pasteurized buffalo milk,1,Cheese,23.880000,direct dairy product match
+1008,off:en:camemberts-from-pasteurized-cow-milk,Camemberts from pasteurized cow milk,1,Cheese,23.880000,direct dairy product match
+1009,off:en:camemberts-from-raw-buffalo-milk,Camemberts from raw buffalo milk,1,Cheese,23.880000,direct dairy product match
+1010,off:en:camemberts-from-raw-cow-milk,Camemberts from raw cow milk,1,Cheese,23.880000,direct dairy product match
+1011,off:en:camemberts-from-thermized-cow-milk,Camemberts from thermized cow milk,1,Cheese,23.880000,direct dairy product match
+1012,off:en:camolino-rices,Camolino rices,14,Rice,4.450000,direct/basic rice match
+1013,off:en:camu-camu,Camu-Camu,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1014,off:en:canada-apple-pulp,Canada apple pulp,5,Apples,0.430000,direct fruit match
+1015,off:en:canada-reinettes-apples,Canada Reinettes apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1020,off:en:canary-melons,Canary melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1041,off:en:cane-sugars,Cane sugars,15,Cane Sugar,3.200000,direct sugar source match
+1056,off:en:canned-black-beans,Canned black beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1076,off:en:canned-coco-white-beans,Canned coco white beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1100,off:en:canned-green-cabbage,Canned green cabbage,4,Brassicas,0.510000,direct brassica-family match
+1127,off:en:canned-okras,Canned okras,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1156,off:en:canned-red-cabbage,Canned red cabbage,4,Brassicas,0.510000,direct brassica-family match
+1173,off:en:canned-sorrel,Canned sorrel,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1178,off:en:canned-sweet-red-peppers,Canned sweet red peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1194,off:en:canned-white-cabbage,Canned white cabbage,4,Brassicas,0.510000,direct brassica-family match
+1207,off:en:cantaloupe-melon-pulp,Cantaloupe melon pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1208,off:en:cantaloupe-melons,Cantaloupe melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1217,off:en:carambola,Carambola,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1262,off:en:cardoons,Cardoons,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1263,off:en:carnaroli-rices,Carnaroli rices,14,Rice,4.450000,direct/basic rice match
+1265,off:en:carolino-rices,Carolino rices,14,Rice,4.450000,direct/basic rice match
+1272,off:en:carrots,Carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+1278,off:en:cassava-roots,Cassava roots,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1282,off:en:castellana-lentils,Castellana Lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1283,off:en:castellano-chickpeas,Castellano chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1289,off:en:cauliflowers,Cauliflowers,4,Brassicas,0.510000,direct brassica-family match
+1290,off:en:causses-blue-cheeses,Causses blue cheeses,1,Cheese,23.880000,direct dairy product match
+1291,off:en:cavendish-bananas,Cavendish Bananas,5,Bananas,0.860000,direct fruit match
+1301,off:en:century-egg,Century egg,18,Eggs,4.670000,direct egg match
+1346,off:en:chards,Chards,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1347,off:en:charentais-melons,Charentais melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1351,off:en:cheddar-cheese,Cheddar cheese,1,Cheese,23.880000,direct dairy product match
+1352,off:en:cheddar-slices,Cheddar slices,1,Cheese,23.880000,direct dairy product match
+1353,off:en:cheddar-with-chili,Cheddar with chili,1,Cheese,23.880000,direct dairy product match
+1354,off:en:cheddar-with-onions,Cheddar with onions,1,Cheese,23.880000,direct dairy product match
+1359,off:en:cheese-appetizers,Cheese appetizers,1,Cheese,23.880000,direct dairy product match
+1362,off:en:cheese-from-ewe-s-whey,Cheese from ewe's whey,1,Cheese,23.880000,direct dairy product match
+1363,off:en:cheese-from-goat-s-milk-fresh,Cheese from goat's milk fresh,1,Cheese,23.880000,direct dairy product match
+1364,off:en:cheese-from-goat-s-milk-fresh-from-raw-milk,Cheese from goat's milk fresh from raw milk,1,Cheese,23.880000,direct dairy product match
+1365,off:en:cheese-from-goat-s-milk-from-pasteurised-milk,Cheese from goat's milk from pasteurised milk,1,Cheese,23.880000,direct dairy product match
+1366,off:en:cheese-from-goat-s-milk-from-raw-milk,Cheese from goat's milk from raw milk,1,Cheese,23.880000,direct dairy product match
+1371,off:en:cheese-preparations,Cheese preparations,1,Cheese,23.880000,direct dairy product match
+1378,off:en:cheese-spreads,Cheese spreads,1,Cheese,23.880000,direct dairy product match
+1383,off:en:cheeses,Cheeses,1,Cheese,23.880000,direct dairy product match
+1384,off:en:cheeses-for-kids,Cheeses for kids,1,Cheese,23.880000,direct dairy product match
+1385,off:en:cheeses-from-corsica,Cheeses from Corsica,1,Cheese,23.880000,direct dairy product match
+1386,off:en:cheeses-from-england,Cheeses from England,1,Cheese,23.880000,direct dairy product match
+1387,off:en:cheeses-from-northern-ireland,Cheeses from Northern Ireland,1,Cheese,23.880000,direct dairy product match
+1388,off:en:cheeses-from-norway,Cheeses from Norway,1,Cheese,23.880000,direct dairy product match
+1389,off:en:cheeses-from-scotland,Cheeses from Scotland,1,Cheese,23.880000,direct dairy product match
+1390,off:en:cheeses-from-switzerland,Cheeses from Switzerland,1,Cheese,23.880000,direct dairy product match
+1391,off:en:cheeses-from-the-united-kingdom,Cheeses from the United Kingdom,1,Cheese,23.880000,direct dairy product match
+1392,off:en:cheeses-from-wales,Cheeses from Wales,1,Cheese,23.880000,direct dairy product match
+1393,off:en:cheeses-of-the-netherlands,Cheeses of the Netherlands,1,Cheese,23.880000,direct dairy product match
+1394,off:en:cheeses-perishable,Cheeses (perishable),1,Cheese,23.880000,direct dairy product match
+1395,off:en:cheeses-with-walnuts,Cheeses with walnuts,1,Cheese,23.880000,direct dairy product match
+1396,off:en:cherries,Cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1405,off:en:cherry-plum-tomatoes,Cherry plum tomatoes,4,Tomatoes,2.090000,direct vegetable match
+1408,off:en:cherry-tomatoes,Cherry tomatoes,4,Tomatoes,2.090000,direct vegetable match
+1410,off:en:cheshire-cheese,Cheshire cheese,1,Cheese,23.880000,direct dairy product match
+1418,off:en:chevington-cheese,Chevington cheese,1,Cheese,23.880000,direct dairy product match
+1419,off:en:chevrot-cheese-from-goat-s-milk,Chevrot cheese from goat's milk,1,Cheese,23.880000,direct dairy product match
+1423,off:en:chicken-and-its-products,Chicken and its products,2,Poultry Meat,9.870000,direct poultry match
+1428,off:en:chicken-breast-meat-and-skin-raw,Chicken breast meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+1429,off:en:chicken-breast-without-skin-raw,Chicken breast without skin raw,2,Poultry Meat,9.870000,direct poultry match
+1430,off:en:chicken-breasts,Chicken breasts,2,Poultry Meat,9.870000,direct poultry match
+1431,off:en:chicken-carcass,Chicken carcass,2,Poultry Meat,9.870000,direct poultry match
+1433,off:en:chicken-cordons-bleus,Chicken cordons bleus,2,Poultry Meat,9.870000,direct poultry match
+1438,off:en:chicken-cutlets,Chicken cutlets,2,Poultry Meat,9.870000,direct poultry match
+1439,off:en:chicken-drumsticks,Chicken drumsticks,2,Poultry Meat,9.870000,direct poultry match
+1440,off:en:chicken-eggs,Chicken eggs,18,Eggs,4.670000,direct egg match
+1441,off:en:chicken-eviscerated-without-offal-raw,Chicken eviscerated without offal raw,2,Poultry Meat,9.870000,direct poultry match
+1442,off:en:chicken-free-range-meat-and-skin-raw,Chicken free-range meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+1443,off:en:chicken-heart,Chicken heart,2,Poultry Meat,9.870000,direct poultry match
+1444,off:en:chicken-high-leg-meat-raw,Chicken high leg meat raw,2,Poultry Meat,9.870000,direct poultry match
+1446,off:en:chicken-kievs,Chicken kievs,2,Poultry Meat,9.870000,direct poultry match
+1448,off:en:chicken-leg-meat-and-skin-raw,Chicken leg meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+1449,off:en:chicken-leg-meat-raw,Chicken leg meat raw,2,Poultry Meat,9.870000,direct poultry match
+1450,off:en:chicken-meat-and-skin-roasted-baked,Chicken meat and skin roasted/baked,2,Poultry Meat,9.870000,direct poultry match
+1451,off:en:chicken-meat-balls,Chicken meat balls,2,Poultry Meat,9.870000,direct poultry match
+1452,off:en:chicken-meat-without-skin,chicken meat without skin,2,Poultry Meat,9.870000,direct poultry match
+1454,off:en:chicken-nuggets,Chicken nuggets,2,Poultry Meat,9.870000,direct poultry match
+1456,off:en:chicken-patties,Chicken patties,2,Poultry Meat,9.870000,direct poultry match
+1458,off:en:chicken-preparations,Chicken preparations,2,Poultry Meat,9.870000,direct poultry match
+1464,off:en:chicken-sausages,Chicken sausages,2,Poultry Meat,9.870000,direct poultry match
+1466,off:en:chicken-skewers,chicken skewers,2,Poultry Meat,9.870000,direct poultry match
+1469,off:en:chicken-stewing-leg-frozen,Chicken stewing leg frozen,2,Poultry Meat,9.870000,direct poultry match
+1470,off:en:chicken-stewing-leg-raw,Chicken stewing leg raw,2,Poultry Meat,9.870000,direct poultry match
+1475,off:en:chicken-thighs,Chicken thighs,2,Poultry Meat,9.870000,direct poultry match
+1480,off:en:chicken-white-race-meat-and-skin-raw,Chicken white race meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+1481,off:en:chicken-wing-meat-and-skin-raw,Chicken wing meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+1483,off:en:chickens,Chickens,2,Poultry Meat,9.870000,direct poultry match
+1485,off:en:chickpea-pasta,Chickpea pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1486,off:en:chickpeas,Chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1494,off:en:chinese-cabbage,Chinese cabbage,4,Brassicas,0.510000,direct brassica-family match
+1504,off:en:chirimuyas,Chirimuyas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1569,off:en:chocolate-puffed-rice,Chocolate puffed rice,14,Rice,4.450000,direct/basic rice match
+1570,off:en:chocolate-puffed-rice-fortified-with-vitamins-and-chemical-elements,Chocolate puffed rice fortified with vitamins and chemical elements,14,Rice,4.450000,direct/basic rice match
+1571,off:en:chocolate-puffed-rice-not-fortified-with-vitamins-and-chemical-elements,Chocolate puffed rice not fortified with vitamins and chemical elements,14,Rice,4.450000,direct/basic rice match
+1574,off:en:chocolate-puffed-wheat-grains-fortified-with-vitamins-and-chemical-elements,Chocolate puffed wheat grains fortified with vitamins and chemical elements,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+1594,off:en:chocolate-wheat-grain-flakes-fortified-with-vitamins-and-chemical-elements,Chocolate wheat grain flakes fortified with vitamins and chemical elements,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+1605,off:en:chop-grilled-lamb-rib,Chop grilled lamb rib,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1617,off:en:chubut-cheese,Chubut Cheese,1,Cheese,23.880000,direct dairy product match
+1630,off:en:citrus,Citrus,5,Citrus Fruit,0.390000,direct citrus match
+1644,off:en:clementine-pulp,Clementine pulp,5,Citrus Fruit,0.390000,direct citrus match
+1645,off:en:clementines,Clementines,5,Citrus Fruit,0.390000,direct citrus match
+1646,off:en:clementines-from-corsica,Clementines from Corsica,5,Citrus Fruit,0.390000,direct citrus match
+1647,off:en:clemenvillas,Clemenvillas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1661,off:en:coco-white-beans,Coco white beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1680,off:en:coconuts,Coconuts,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1693,off:en:coffee-milks,Coffee milks,1,Milk,3.150000,direct fluid milk match
+1707,off:en:colby-cheese,Colby cheese,1,Cheese,23.880000,direct dairy product match
+1710,off:en:coleraine-cheddar,Coleraine cheddar,1,Cheese,23.880000,direct dairy product match
+1712,off:en:collard-greens,Collard greens,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1715,off:en:comeragh-mountain-lamb,Comeragh Mountain Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1716,off:en:comice-pears,Comice pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1720,off:en:common-bilberries,Common bilberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+1726,off:en:common-wheat-flours,Common wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+1744,off:en:conference-pears,Conference pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+1747,off:en:connemara-hill-lamb,Connemara Hill Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1750,off:en:cooked-beef-heart,Cooked beef heart,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1751,off:en:cooked-beef-kidney,Cooked beef kidney,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1752,off:en:cooked-beef-meat,Cooked beef meat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1753,off:en:cooked-beef-round,Cooked beef round,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1754,off:en:cooked-beef-tongue,Cooked beef tongue,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1755,off:en:cooked-beetroots,Cooked beetroots,4,Root Vegetables,0.430000,direct root-vegetable match
+1756,off:en:cooked-blond-lentils,Cooked blond lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1757,off:en:cooked-broad-beans,Cooked broad beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1758,off:en:cooked-broccoli,Cooked broccoli,4,Brassicas,0.510000,direct brassica-family match
+1759,off:en:cooked-brown-rices,Cooked brown rices,14,Rice,4.450000,direct/basic rice match
+1760,off:en:cooked-brussels-sprouts,Cooked Brussels sprouts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1764,off:en:cooked-cardoons,Cooked cardoons,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1765,off:en:cooked-carrots,Cooked carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+1766,off:en:cooked-cassava,Cooked cassava,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1767,off:en:cooked-cauliflowers,Cooked cauliflowers,4,Brassicas,0.510000,direct brassica-family match
+1770,off:en:cooked-chick-peas,Cooked chick peas,14,Peas,0.980000,direct dry pea match
+1771,off:en:cooked-chicken,Cooked chicken,2,Poultry Meat,9.870000,direct poultry match
+1772,off:en:cooked-chicken-breast-slices,Cooked chicken breast slices,2,Poultry Meat,9.870000,direct poultry match
+1773,off:en:cooked-chicken-breast-without-skin,Cooked chicken breast without skin,2,Poultry Meat,9.870000,direct poultry match
+1774,off:en:cooked-chicken-heart,Cooked chicken heart,2,Poultry Meat,9.870000,direct poultry match
+1775,off:en:cooked-chicken-liver,Cooked chicken liver,2,Poultry Meat,9.870000,direct poultry match
+1776,off:en:cooked-chinese-cabbage,Cooked Chinese cabbage,4,Brassicas,0.510000,direct brassica-family match
+1782,off:en:cooked-curly-kale,Cooked curly kale,4,Brassicas,0.510000,direct brassica-family match
+1784,off:en:cooked-egg-yolk,Cooked egg yolk,18,Eggs,4.670000,direct egg match
+1789,off:en:cooked-french-beans,Cooked French beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1794,off:en:cooked-garden-peas,Cooked garden peas,4,Peas,0.980000,direct peas match
+1795,off:en:cooked-globe-artichoke,Cooked globe artichoke,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1797,off:en:cooked-green-lentils,Cooked green lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1798,off:en:cooked-ground-beef-steaks,Cooked ground beef steaks,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1800,off:en:cooked-jerusalem-artichoke,Cooked Jerusalem artichoke,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1802,off:en:cooked-lamb-brains,Cooked lamb brains,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1803,off:en:cooked-lamb-chops,Cooked lamb chops,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1804,off:en:cooked-lamb-hearts,Cooked lamb hearts,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1805,off:en:cooked-lamb-liver,Cooked lamb liver,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1806,off:en:cooked-lamb-meat,Cooked lamb meat,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1807,off:en:cooked-lamb-sweetbread,Cooked lamb sweetbread,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+1808,off:en:cooked-leeks,Cooked leeks,4,Onions & Leeks,0.500000,direct allium match
+1809,off:en:cooked-lentils,Cooked lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1813,off:en:cooked-minced-beef-steak-with-10-fat,Cooked minced beef steak with 10% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1814,off:en:cooked-minced-beef-steak-with-15-fat,Cooked minced beef steak with 15% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1815,off:en:cooked-minced-beef-steak-with-20-fat,Cooked minced beef steak with 20% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1816,off:en:cooked-minced-beef-steak-with-5-fat,Cooked minced beef steak with 5% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+1818,off:en:cooked-mung-beans,Cooked Mung beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1819,off:en:cooked-new-zealand-spinach,Cooked New Zealand spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1821,off:en:cooked-oat-flakes,Cooked oat flakes,14,Oatmeal,2.480000,direct/basic oat match
+1825,off:en:cooked-parsnip,Cooked parsnip,4,Root Vegetables,0.430000,direct root-vegetable match
+1826,off:en:cooked-pink-lentils,Cooked pink lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1827,off:en:cooked-plantain-bananas,Cooked plantain bananas,5,Bananas,0.860000,direct fruit match
+1828,off:en:cooked-pork-filet-mignon,Cooked pork filet mignon,2,Pig Meat,12.310000,direct pig/pork match
+1829,off:en:cooked-pork-ham-escalope,Cooked pork ham escalope,2,Pig Meat,12.310000,direct pig/pork match
+1830,off:en:cooked-pork-kidneys,Cooked pork kidneys,2,Pig Meat,12.310000,direct pig/pork match
+1831,off:en:cooked-pork-liver,Cooked pork liver,2,Pig Meat,12.310000,direct pig/pork match
+1832,off:en:cooked-pork-loin,Cooked pork loin,2,Pig Meat,12.310000,direct pig/pork match
+1833,off:en:cooked-pork-meat,Cooked pork meat,2,Pig Meat,12.310000,direct pig/pork match
+1834,off:en:cooked-pork-racks,Cooked pork racks,2,Pig Meat,12.310000,direct pig/pork match
+1835,off:en:cooked-pork-roast,Cooked pork roast,2,Pig Meat,12.310000,direct pig/pork match
+1836,off:en:cooked-pork-round-steak,Cooked pork round steak,2,Pig Meat,12.310000,direct pig/pork match
+1837,off:en:cooked-pork-shoulder,Cooked pork shoulder,2,Pig Meat,12.310000,direct pig/pork match
+1838,off:en:cooked-pork-shoulder-choice,Cooked pork shoulder choice,2,Pig Meat,12.310000,direct pig/pork match
+1839,off:en:cooked-pork-tenderloin-roast,Cooked pork tenderloin roast,2,Pig Meat,12.310000,direct pig/pork match
+1843,off:en:cooked-pulp-and-peel-courgette,Cooked pulp and peel courgette,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1846,off:en:cooked-quail-eggs,Cooked quail eggs,18,Eggs,4.670000,direct egg match
+1847,off:en:cooked-quail-with-meat-and-skin,Cooked quail with meat and skin,2,Poultry Meat,9.870000,direct poultry match
+1850,off:en:cooked-red-kidney-beans,Cooked red kidney beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1852,off:en:cooked-rutabaga,Cooked rutabaga,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1854,off:en:cooked-salsify,Cooked salsify,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1863,off:en:cooked-snow-peas,Cooked snow peas,14,Peas,0.980000,direct dry pea match
+1864,off:en:cooked-spinach,Cooked spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1865,off:en:cooked-split-peas,Cooked split peas,14,Peas,0.980000,direct dry pea match
+1867,off:en:cooked-sweet-green-peppers,Cooked sweet green peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1868,off:en:cooked-sweet-peppers,Cooked sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1869,off:en:cooked-sweet-potatoes,Cooked sweet potatoes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1870,off:en:cooked-sweet-red-peppers,Cooked sweet red peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1871,off:en:cooked-sweet-yellow-peppers,Cooked sweet yellow peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1872,off:en:cooked-swiss-chard,Cooked Swiss chard,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1873,off:en:cooked-taro-tubes,Cooked taro tubes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1875,off:en:cooked-turkey-heart,Cooked turkey heart,2,Poultry Meat,9.870000,direct poultry match
+1876,off:en:cooked-turkey-liver,Cooked turkey liver,2,Poultry Meat,9.870000,direct poultry match
+1877,off:en:cooked-turnips,Cooked turnips,4,Root Vegetables,0.430000,direct root-vegetable match
+1890,off:en:cooked-white-beans-in-tomato-sauce,Cooked white beans in tomato sauce,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+1900,off:en:cooking-wines,Cooking wines,7,Wine,1.790000,direct wine match
+1903,off:en:coquetdale-cheese,Coquetdale cheese,1,Cheese,23.880000,direct dairy product match
+1918,off:en:corn-salad,corn salad,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1930,off:en:cornmeal,Cornmeal,14,Maize,1.700000,direct/basic maize match
+1935,off:en:cotija-cheese,Cotija cheese,1,Cheese,23.880000,direct dairy product match
+1936,off:en:cottage-cheeses,Cottage cheeses,1,Cheese,23.880000,direct dairy product match
+1943,off:en:courgette-pulp-and-peel,Courgette pulp and peel,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+1949,off:en:cow-camemberts,Cow camemberts,1,Cheese,23.880000,direct dairy product match
+1950,off:en:cow-cheeses,Cow cheeses,1,Cheese,23.880000,direct dairy product match
+1952,off:en:cow-milks,Cow milks,1,Milk,3.150000,direct fluid milk match
+1953,off:en:cow-mozzarella,Cow mozzarella,1,Cheese,23.880000,direct dairy product match
+1962,off:en:cranberries,Cranberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+1967,off:en:cream-cheeses,Cream cheeses,1,Cheese,23.880000,direct dairy product match
+2007,off:en:crimson-sweet-watermelons,Crimson Sweet watermelons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2016,off:en:croatian-cheeses,Croatian cheeses,1,Cheese,23.880000,direct dairy product match
+2029,off:en:crottin-cheese-from-goat-s-milk,Crottin cheese from goat's milk,1,Cheese,23.880000,direct dairy product match
+2030,off:en:crottin-cheese-from-goat-s-milk-from-raw-milk,Crottin cheese from goat's milk from raw milk,1,Cheese,23.880000,direct dairy product match
+2031,off:en:crottin-de-chavignol-cheese,Crottin de Chavignol cheese,1,Cheese,23.880000,direct dairy product match
+2058,off:en:cubed-appetizer-cheese,Cubed appetizer cheese,1,Cheese,23.880000,direct dairy product match
+2061,off:en:cucumbers,Cucumbers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2068,off:en:cured-cheeses,Cured cheeses,1,Cheese,23.880000,direct dairy product match
+2070,off:en:cured-pork-loin,Cured pork loin,2,Pig Meat,12.310000,direct pig/pork match
+2071,off:en:curly-endives,Curly endives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2072,off:en:curly-kale,Curly kale,4,Brassicas,0.510000,direct brassica-family match
+2084,off:en:cypriot-cheeses,Cypriot cheeses,1,Cheese,23.880000,direct dairy product match
+2085,off:en:czech-cheeses,Czech cheeses,1,Cheese,23.880000,direct dairy product match
+2088,off:en:daikon-radishes,Daikon radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+2114,off:en:danish-cheeses,Danish cheeses,1,Cheese,23.880000,direct dairy product match
+2116,off:en:danish-wines,Danish wines,7,Wine,1.790000,direct wine match
+2148,off:en:dates,Dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2149,off:en:datterini-tomatoes,Datterini tomatoes,4,Tomatoes,2.090000,direct vegetable match
+2153,off:en:decorticated-blonde-lentils,Decorticated blonde lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2155,off:en:decorticated-lentils,Decorticated lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2156,off:en:decorticated-red-lentils,Decorticated red lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2157,off:en:decorticated-split-red-lentils,Decorticated split red lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2158,off:en:decorticated-whole-red-lentils,Decorticated whole red lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2168,off:en:deglet-noor-dates,Deglet Noor dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2174,off:en:dehydrated-carrots,Dehydrated carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+2193,off:en:derby-cheese,Derby cheese,1,Cheese,23.880000,direct dairy product match
+2195,off:en:desi-chickpeas,Desi chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2197,off:en:dessert-wines,Dessert wines,7,Wine,1.790000,direct wine match
+2198,off:en:devilled-pork-shoulder-in-mustard-sauce,Devilled pork shoulder in mustard sauce,2,Pig Meat,12.310000,direct pig/pork match
+2201,off:en:diced-vegetables,Diced vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2238,off:en:dorset-blue-cheese,Dorset Blue Cheese,1,Cheese,23.880000,direct dairy product match
+2244,off:en:double-cream-cheeses,Double cream cheeses,1,Cheese,23.880000,direct dairy product match
+2248,off:en:double-toned-milks,Double-toned milks,1,Milk,3.150000,direct fluid milk match
+2255,off:en:dovedale-cheese,Dovedale cheese,1,Cheese,23.880000,direct dairy product match
+2263,off:en:dried-blackcurrants,Dried blackcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2264,off:en:dried-blond-lentils,Dried blond lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2267,off:en:dried-broad-beans,Dried broad beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2269,off:en:dried-cherries,Dried cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2270,off:en:dried-chickpeas,Dried chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2274,off:en:dried-coconut-kernel,Dried coconut kernel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2275,off:en:dried-coffee-milks,Dried Coffee milks,1,Milk,3.150000,direct fluid milk match
+2276,off:en:dried-dates,Dried dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2281,off:en:dried-durian,Dried Durian,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2289,off:en:dried-green-lentils,Dried green lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2294,off:en:dried-jackfruit,Dried jackfruit,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2296,off:en:dried-kiwifruits,Dried kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2298,off:en:dried-lemons,Dried Lemons,5,Citrus Fruit,0.390000,direct citrus match
+2299,off:en:dried-lentils,Dried lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2309,off:en:dried-papayas,Dried papayas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2311,off:en:dried-peas,Dried peas,14,Peas,0.980000,direct dry pea match
+2313,off:en:dried-pink-lentils,Dried pink lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2317,off:en:dried-red-kidney-beans,Dried red kidney beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2328,off:en:dried-split-peas,Dried split peas,14,Peas,0.980000,direct dry pea match
+2344,off:en:dry-cheese-from-goat-s-milk,Dry cheese from goat's milk,1,Cheese,23.880000,direct dairy product match
+2345,off:en:dry-chickpea-pasta,Dry chickpea pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2350,off:en:dry-lentil-pasta,Dry lentil pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2351,off:en:dry-mung-beans,Dry mung beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2353,off:en:dry-white-wines,Dry white wines,7,Wine,1.790000,direct wine match
+2354,off:en:duck-breasts,Duck breasts,2,Poultry Meat,9.870000,direct poultry match
+2355,off:en:duck-breasts-cooked-in-pan,Duck breasts cooked in pan,2,Poultry Meat,9.870000,direct poultry match
+2356,off:en:duck-confit,Duck confit,2,Poultry Meat,9.870000,direct poultry match
+2358,off:en:duck-eggs,Duck eggs,18,Eggs,4.670000,direct egg match
+2359,off:en:duck-feet,Duck feet,2,Poultry Meat,9.870000,direct poultry match
+2360,off:en:duck-fillets,Duck fillets,2,Poultry Meat,9.870000,direct poultry match
+2361,off:en:duck-gizzards,Duck gizzards,2,Poultry Meat,9.870000,direct poultry match
+2362,off:en:duck-leg-meat-with-skin,Duck leg meat with skin,2,Poultry Meat,9.870000,direct poultry match
+2363,off:en:duck-legs,Duck legs,2,Poultry Meat,9.870000,direct poultry match
+2364,off:en:duck-liver,Duck liver,2,Poultry Meat,9.870000,direct poultry match
+2365,off:en:duck-meat-and-skin,Duck meat and skin,2,Poultry Meat,9.870000,direct poultry match
+2367,off:en:duck-neck,Duck neck,2,Poultry Meat,9.870000,direct poultry match
+2368,off:en:duck-offals,Duck offals,2,Poultry Meat,9.870000,direct poultry match
+2370,off:en:duck-sausages,Duck sausages,2,Poultry Meat,9.870000,direct poultry match
+2371,off:en:duck-wings,Duck wings,2,Poultry Meat,9.870000,direct poultry match
+2372,off:en:ducks,Ducks,2,Poultry Meat,9.870000,direct poultry match
+2373,off:en:ducks-prepared,Ducks (prepared),2,Poultry Meat,9.870000,direct poultry match
+2374,off:en:duddleswell-cheese,Duddleswell cheese,1,Cheese,23.880000,direct dairy product match
+2379,off:en:durum-wheat-flours,Durum wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+2380,off:en:durum-wheat-groats,Durum wheat groats,14,Oatmeal,2.480000,direct/basic oat match
+2395,off:en:dutch-fruits,Dutch fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2396,off:en:dutch-wines,Dutch wines,7,Wine,1.790000,direct wine match
+2412,off:en:egg-powder,Egg powder,18,Eggs,4.670000,direct egg match
+2420,off:en:egg-white,Egg white,18,Eggs,4.670000,direct egg match
+2421,off:en:egg-white-cooked,Egg white cooked,18,Eggs,4.670000,direct egg match
+2422,off:en:egg-white-powder,Egg white powder,18,Eggs,4.670000,direct egg match
+2423,off:en:egg-yolk,Egg yolk,18,Eggs,4.670000,direct egg match
+2425,off:en:egg-yolk-powder,Egg yolk powder,18,Eggs,4.670000,direct egg match
+2429,off:en:eggs,Eggs,18,Eggs,4.670000,direct egg match
+2430,off:en:eggs-and-their-products,Eggs and their products,18,Eggs,4.670000,direct egg match
+2431,off:en:einkorn-wheat-flours,Einkorn wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+2434,off:en:elderberries,Elderberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2437,off:en:elstar-apples,Elstar apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2438,off:en:emmental-slices,Emmental slices,1,Cheese,23.880000,direct dairy product match
+2439,off:en:emmentaler,Emmentaler,1,Cheese,23.880000,direct dairy product match
+2440,off:en:emmentals-of-savoy,Emmentals of Savoy,1,Cheese,23.880000,direct dairy product match
+2441,off:en:emmer-wheat-flours,Emmer wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+2444,off:en:emu-eggs,Emu eggs,18,Eggs,4.670000,direct egg match
+2445,off:en:endives,Endives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2457,off:en:escacena-chickpeas,Escacena chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2458,off:en:esl-milks,ESL milks,1,Milk,3.150000,direct fluid milk match
+2461,off:en:estonian-cheeses,Estonian cheeses,1,Cheese,23.880000,direct dairy product match
+2464,off:en:eureka-lemons,Eureka lemons,5,Citrus Fruit,0.390000,direct citrus match
+2478,off:en:exmoor-blue-cheese,Exmoor Blue Cheese,1,Cheese,23.880000,direct dairy product match
+2482,off:en:extra-mature-cheddar,Extra-mature cheddar,1,Cheese,23.880000,direct dairy product match
+2483,off:en:extra-matured-gouda,Extra matured Gouda,1,Cheese,23.880000,direct dairy product match
+2484,off:en:extra-old-goudas,Extra old Goudas,1,Cheese,23.880000,direct dairy product match
+2525,off:en:fat-free-plain-fresh-cream-cheese,Fat free plain fresh cream cheese,1,Cheese,23.880000,direct dairy product match
+2532,off:en:fennel-bulbs,Fennel bulbs,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2546,off:en:fermented-milk-products,Fermented milk products,1,Milk,3.150000,direct fluid milk match
+2553,off:en:feta,Feta,1,Cheese,23.880000,direct dairy product match
+2554,off:en:feta-blocs,Feta blocs,1,Cheese,23.880000,direct dairy product match
+2555,off:en:feta-cubes,Feta cubes,1,Cheese,23.880000,direct dairy product match
+2556,off:en:feta-type-cheese,Feta-type cheese,1,Cheese,23.880000,direct dairy product match
+2557,off:en:feta-type-cheese-from-cow-s-milk,Feta-type cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+2558,off:en:feta-type-cheese-from-cow-s-milk-in-oil-and-spices,Feta-type cheese from cow's milk in oil and spices,1,Cheese,23.880000,direct dairy product match
+2562,off:en:figs,Figs,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2605,off:en:firm-cheese-around-27-fat-maasdam-type-cheese,Firm cheese around 27% fat Maasdam-type cheese,1,Cheese,23.880000,direct dairy product match
+2635,off:en:five-counties-cheese,Five Counties cheese,1,Cheese,23.880000,direct dairy product match
+2645,off:en:flat-beans,Flat beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2646,off:en:flat-peaches,Flat peaches,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2686,off:en:flavoured-uncured-soft-cheese-spreadable-with-around-30-40-fat,Flavoured uncured soft cheese spreadable with around 30-40% fat,1,Cheese,23.880000,direct dairy product match
+2689,off:en:flavoured-wines,Flavoured wines,7,Wine,1.790000,direct wine match
+2711,off:en:fortified-wines,Fortified wines,7,Wine,1.790000,direct wine match
+2712,off:en:fortified-wines-such-as-natural-sweet-wines,Fortified wines such as natural sweet wines,7,Wine,1.790000,direct wine match
+2714,off:en:fourme-d-ambert-cheese-from-cow-s-milk,Fourme d'Ambert cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+2715,off:en:fourme-de-montbrison-cheese,Fourme de Montbrison cheese,1,Cheese,23.880000,direct dairy product match
+2723,off:en:frecinette-bananas,Frecinette Bananas,5,Bananas,0.860000,direct fruit match
+2724,off:en:free-range-chicken-eggs,Free-range chicken eggs,18,Eggs,4.670000,direct egg match
+2727,off:en:french-blue-veined-cheeses,French blue-veined cheeses,1,Cheese,23.880000,direct dairy product match
+2731,off:en:french-cheeses,French cheeses,1,Cheese,23.880000,direct dairy product match
+2736,off:en:french-emmentaler,French emmentaler,1,Cheese,23.880000,direct dairy product match
+2738,off:en:french-fruits,French fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2744,off:en:french-pork,French pork,2,Pig Meat,12.310000,direct pig/pork match
+2749,off:en:french-sparkling-wines,French sparkling wines,7,Wine,1.790000,direct wine match
+2753,off:en:french-vegetables,French vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2755,off:en:fresh-apples,Fresh apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2756,off:en:fresh-apricots,Fresh apricots,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2758,off:en:fresh-artichokes,Fresh artichokes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2759,off:en:fresh-asian-pears,Fresh Asian pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2760,off:en:fresh-asparagus,Fresh Asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2761,off:en:fresh-aubergines,Fresh aubergines,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2762,off:en:fresh-bananas,Fresh bananas,5,Bananas,0.860000,direct fruit match
+2763,off:en:fresh-bananas-from-the-canary-islands,Fresh Bananas from the Canary Islands,5,Bananas,0.860000,direct fruit match
+2766,off:en:fresh-beef-preparations,Fresh beef preparations,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+2767,off:en:fresh-beetroot,Fresh beetroot,4,Root Vegetables,0.430000,direct root-vegetable match
+2768,off:en:fresh-belgian-endives,Fresh Belgian endives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2769,off:en:fresh-black-radishes,Fresh black radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+2770,off:en:fresh-black-splendor-plums,Fresh Black Splendor plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2771,off:en:fresh-blackberries,Fresh blackberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2772,off:en:fresh-blackcurrants,Fresh blackcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2773,off:en:fresh-blueberries,Fresh blueberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2775,off:en:fresh-broad-beans,Fresh broad beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2776,off:en:fresh-broad-beans-to-shell,Fresh broad beans to shell,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2777,off:en:fresh-broad-green-beans,Fresh broad green beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2778,off:en:fresh-broccoli,Fresh broccoli,4,Brassicas,0.510000,direct brassica-family match
+2779,off:en:fresh-brussels-sprouts,Fresh Brussels sprouts,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2780,off:en:fresh-cabbages,Fresh cabbages,4,Brassicas,0.510000,direct brassica-family match
+2782,off:en:fresh-carrots,Fresh carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+2783,off:en:fresh-cauliflowers,Fresh cauliflowers,4,Brassicas,0.510000,direct brassica-family match
+2784,off:en:fresh-cavendish-bananas,Fresh Cavendish Bananas,5,Bananas,0.860000,direct fruit match
+2785,off:en:fresh-chards,Fresh chards,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2786,off:en:fresh-cheeses,Fresh cheeses,1,Cheese,23.880000,direct dairy product match
+2787,off:en:fresh-cherries,Fresh cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2788,off:en:fresh-cherry-plum-tomatoes,Fresh cherry plum tomatoes,4,Tomatoes,2.090000,direct vegetable match
+2790,off:en:fresh-chickpea-pasta,Fresh chickpea pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2792,off:en:fresh-clementines,Fresh clementines,5,Citrus Fruit,0.390000,direct citrus match
+2793,off:en:fresh-conference-pears,Fresh Conference pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2797,off:en:fresh-cranberries,Fresh cranberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2798,off:en:fresh-cream-cheese-cake,Fresh cream cheese cake,1,Cheese,23.880000,direct dairy product match
+2799,off:en:fresh-cream-cheese-with-cow-s-milk,Fresh cream cheese with cow's milk,1,Cheese,23.880000,direct dairy product match
+2800,off:en:fresh-cucumbers,Fresh cucumbers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2803,off:en:fresh-eggs,Fresh eggs,18,Eggs,4.670000,direct egg match
+2804,off:en:fresh-eureka-lemons,Fresh Eureka lemons,5,Citrus Fruit,0.390000,direct citrus match
+2805,off:en:fresh-fennel-bulbs,Fresh fennel bulbs,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2807,off:en:fresh-figs,Fresh figs,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2808,off:en:fresh-flat-green-beans,Fresh flat green beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2809,off:en:fresh-frecinette-bananas,Fresh Frecinette Bananas,5,Bananas,0.860000,direct fruit match
+2810,off:en:fresh-fruits,Fresh fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2812,off:en:fresh-garofa-nectarines,Fresh Garofa nectarines,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2813,off:en:fresh-giga-apples,Fresh Giga apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2815,off:en:fresh-goat-cheese,Fresh goat cheese,1,Cheese,23.880000,direct dairy product match
+2816,off:en:fresh-grape-mixes,Fresh grape mixes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2818,off:en:fresh-grapefruits,Fresh grapefruits,5,Berries & Grapes,1.530000,direct berries/grapes match
+2819,off:en:fresh-grapes,Fresh grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2820,off:en:fresh-green-beans,Fresh green beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2821,off:en:fresh-green-grapes,Fresh green grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2822,off:en:fresh-green-peas,Fresh green peas,4,Peas,0.980000,direct peas match
+2824,off:en:fresh-green-pigeon-peas,Fresh green pigeon peas,14,Peas,0.980000,direct dry pea match
+2825,off:en:fresh-greengage-plums,Fresh Greengage plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2826,off:en:fresh-ground-beef-preparations,Fresh ground beef preparations,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+2827,off:en:fresh-ground-beef-steaks,Fresh ground beef steaks,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+2830,off:en:fresh-hayward-kiwifruits,Fresh Hayward kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2832,off:en:fresh-immature-coconut-kernel,Fresh immature coconut kernel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2833,off:en:fresh-jerusalem-artichoke,Fresh Jerusalem artichoke,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2834,off:en:fresh-jonagold-apples,Fresh Jonagold apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2835,off:en:fresh-kiwifruits,Fresh kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2836,off:en:fresh-leeks,Fresh leeks,4,Onions & Leeks,0.500000,direct allium match
+2839,off:en:fresh-lemons,Fresh lemons,5,Citrus Fruit,0.390000,direct citrus match
+2840,off:en:fresh-lentil-pasta,Fresh lentil pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2841,off:en:fresh-lentil-sprouts,Fresh lentil sprouts,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2842,off:en:fresh-mandarin-oranges,Fresh mandarin oranges,5,Citrus Fruit,0.390000,direct citrus match
+2843,off:en:fresh-mangoes,Fresh mangoes,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2848,off:en:fresh-milks,Fresh milks,1,Milk,3.150000,direct fluid milk match
+2850,off:en:fresh-mixed-vegetables,Fresh mixed vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2851,off:en:fresh-mung-bean-sprouts,Fresh mung bean sprouts,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+2852,off:en:fresh-muskmelons,Fresh muskmelons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2853,off:en:fresh-nectarines,Fresh nectarines,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2855,off:en:fresh-oranges,Fresh oranges,5,Citrus Fruit,0.390000,direct citrus match
+2857,off:en:fresh-papayas,Fresh papayas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2859,off:en:fresh-parsnip,Fresh parsnip,4,Root Vegetables,0.430000,direct root-vegetable match
+2867,off:en:fresh-peaches,Fresh peaches,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2868,off:en:fresh-pears,Fresh pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2870,off:en:fresh-pineapple,Fresh pineapple,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2872,off:en:fresh-plums,Fresh plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2874,off:en:fresh-pomegranates,Fresh pomegranates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2875,off:en:fresh-pomelos,Fresh pomelos,5,Citrus Fruit,0.390000,direct citrus match
+2876,off:en:fresh-prime-seedless-grapes,Fresh Prime Seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2877,off:en:fresh-quinces,Fresh quinces,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2878,off:en:fresh-radishes,Fresh radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+2879,off:en:fresh-raspberries,Fresh raspberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2881,off:en:fresh-red-bananas,Fresh Red Bananas,5,Bananas,0.860000,direct fruit match
+2882,off:en:fresh-red-cabbage,Fresh red cabbage,4,Brassicas,0.510000,direct brassica-family match
+2883,off:en:fresh-red-grapes,Fresh red grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2885,off:en:fresh-red-plums,Fresh red plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2886,off:en:fresh-red-radishes,Fresh red radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+2887,off:en:fresh-red-seedless-grapes,Fresh red seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2888,off:en:fresh-redcurrants,Fresh redcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2889,off:en:fresh-rhubarb,Fresh rhubarb,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2890,off:en:fresh-ripe-coconut-kernel,Fresh ripe coconut kernel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2892,off:en:fresh-royal-gala-apples,Fresh Royal Gala apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+2894,off:en:fresh-salsify,Fresh salsify,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2896,off:en:fresh-seedless-green-grapes,Fresh seedless green grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2898,off:en:fresh-sorrel,Fresh sorrel,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2900,off:en:fresh-spinachs,Fresh spinachs,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2901,off:en:fresh-starlight-grapes,Fresh Starlight grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2902,off:en:fresh-strawberries,Fresh strawberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+2905,off:en:fresh-sweet-peppers,Fresh sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2906,off:en:fresh-sweet-potatoes,Fresh sweet potatoes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2908,off:en:fresh-taro-tubers,Fresh taro tubers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2910,off:en:fresh-thompson-seedless-grapes,Fresh Thompson Seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+2912,off:en:fresh-tomatoes,Fresh tomatoes,4,Tomatoes,2.090000,direct vegetable match
+2913,off:en:fresh-turnips,Fresh turnips,4,Root Vegetables,0.430000,direct root-vegetable match
+2914,off:en:fresh-verna-lemons,Fresh Verna lemons,5,Citrus Fruit,0.390000,direct citrus match
+2918,off:en:fresh-yellow-sweet-peppers,Fresh yellow sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2919,off:en:fresh-zucchini,Fresh zucchini,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2925,off:en:fried-cheese,Fried cheese,1,Cheese,23.880000,direct dairy product match
+2927,off:en:fried-egg,Fried egg,18,Eggs,4.670000,direct egg match
+2930,off:en:fried-pork-rind,Fried pork rind,2,Pig Meat,12.310000,direct pig/pork match
+2934,off:en:fried-tofu,Fried tofu,16,Tofu,3.160000,direct tofu match
+2941,off:en:frillice-iceberg-lettuces,Frillice iceberg lettuces,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+2972,off:en:frozen-baked-potatoes,Frozen baked potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+2975,off:en:frozen-bananas,Frozen bananas,8,Bananas,0.860000,single-ingredient frozen banana represented by banana EF
+2993,off:en:frozen-berries,Frozen berries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+2994,off:en:frozen-blackberries,Frozen blackberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+2995,off:en:frozen-blueberries,Frozen blueberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+2998,off:en:frozen-breaded-chicken,Frozen breaded chicken,2,Poultry Meat,9.870000,direct poultry match
+3023,off:en:frozen-chicken-breast-without-skin-raw,Frozen chicken breast without skin raw,2,Poultry Meat,9.870000,direct poultry match
+3025,off:en:frozen-chicken-leg-meat-and-skin-raw,Frozen chicken leg meat and skin raw,2,Poultry Meat,9.870000,direct poultry match
+3026,off:en:frozen-chicken-nuggets,Frozen chicken nuggets,2,Poultry Meat,9.870000,direct poultry match
+3027,off:en:frozen-chicken-skewers,Frozen chicken skewers,2,Poultry Meat,9.870000,direct poultry match
+3028,off:en:frozen-chicken-wings,Frozen chicken wings,2,Poultry Meat,9.870000,direct poultry match
+3029,off:en:frozen-chickens,Frozen chickens,2,Poultry Meat,9.870000,direct poultry match
+3042,off:en:frozen-chopped-onions,Frozen chopped onions,8,Onions & Leeks,0.500000,single-ingredient frozen allium represented by OWID EF
+3045,off:en:frozen-chopped-shallots,Frozen chopped shallots,8,Onions & Leeks,0.500000,single-ingredient frozen allium represented by OWID EF
+3067,off:en:frozen-cooked-pre-fried-potato-cubes,Frozen cooked pre-fried potato cubes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3079,off:en:frozen-cranberries,Frozen cranberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3099,off:en:frozen-duchesse-potatoes,Frozen duchesse potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3134,off:en:frozen-fried-potato-cubes,Frozen fried potato cubes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3135,off:en:frozen-fried-potatoes,Frozen fried potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3156,off:en:frozen-gooseberries,Frozen Gooseberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3168,off:en:frozen-ground-chicken-meat,Frozen ground chicken meat,2,Poultry Meat,9.870000,direct poultry match
+3173,off:en:frozen-ground-pork-meat,Frozen ground pork meat,2,Pig Meat,12.310000,direct pig/pork match
+3177,off:en:frozen-ground-turkey-meat,Frozen ground turkey meat,2,Poultry Meat,9.870000,direct poultry match
+3203,off:en:frozen-lamb-breast,Frozen lamb breast,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3204,off:en:frozen-lamb-fat,Frozen lamb fat,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3205,off:en:frozen-lamb-leg,Frozen lamb leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3206,off:en:frozen-lamb-loin,Frozen lamb loin,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3207,off:en:frozen-lamb-meat,Frozen lamb meat,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3208,off:en:frozen-lamb-offals,Frozen lamb offals,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3209,off:en:frozen-lamb-rack,Frozen lamb rack,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3210,off:en:frozen-lamb-shank,Frozen lamb shank,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3214,off:en:frozen-leeks,Frozen leeks,8,Onions & Leeks,0.500000,single-ingredient frozen allium represented by OWID EF
+3218,off:en:frozen-lingonberries,Frozen lingonberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3223,off:en:frozen-marbled-beef-ribs,Frozen marbled beef ribs,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3228,off:en:frozen-mashed-potatoes,Frozen mashed potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3238,off:en:frozen-mixed-berries,Frozen mixed berries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3254,off:en:frozen-mutton-shoulder,Frozen mutton shoulder,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3258,off:en:frozen-onions,Frozen onions,8,Onions & Leeks,0.500000,single-ingredient frozen allium represented by OWID EF
+3281,off:en:frozen-pineapples,Frozen pineapples,8,Apples,0.430000,single-ingredient frozen apple represented by apple EF
+3294,off:en:frozen-pork-belly,Frozen pork belly,2,Pig Meat,12.310000,direct pig/pork match
+3295,off:en:frozen-pork-jowl,Frozen pork jowl,2,Pig Meat,12.310000,direct pig/pork match
+3296,off:en:frozen-pork-knuckle,Frozen pork knuckle,2,Pig Meat,12.310000,direct pig/pork match
+3297,off:en:frozen-pork-loin,Frozen pork loin,2,Pig Meat,12.310000,direct pig/pork match
+3298,off:en:frozen-pork-meat,Frozen pork meat,2,Pig Meat,12.310000,direct pig/pork match
+3299,off:en:frozen-pork-offals,Frozen pork offals,2,Pig Meat,12.310000,direct pig/pork match
+3300,off:en:frozen-pork-shoulders,Frozen pork shoulders,2,Pig Meat,12.310000,direct pig/pork match
+3301,off:en:frozen-pork-tenderloin-lean,Frozen pork tenderloin lean,2,Pig Meat,12.310000,direct pig/pork match
+3302,off:en:frozen-pork-way-leg-without-rind-fat-and-bone,Frozen pork way leg without rind fat and bone,2,Pig Meat,12.310000,direct pig/pork match
+3303,off:en:frozen-potato-buns,Frozen potato buns,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3306,off:en:frozen-potato-rostis,Frozen potato rostis,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3308,off:en:frozen-potatoes,Frozen potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3321,off:en:frozen-quail-meat,Frozen quail meat,2,Poultry Meat,9.870000,direct poultry match
+3328,off:en:frozen-raspberries,Frozen raspberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3331,off:en:frozen-raw-onions,Frozen raw onions,8,Onions & Leeks,0.500000,single-ingredient frozen allium represented by OWID EF
+3379,off:en:frozen-strawberries,Frozen strawberries,8,Berries & Grapes,1.530000,single-ingredient frozen berries/grapes represented by OWID EF
+3388,off:en:frozen-sweet-potatoes,Frozen sweet potatoes,8,Potatoes,0.460000,single-ingredient frozen potato represented by potato EF
+3392,off:en:frozen-tomatoes,Frozen tomatoes,8,Tomatoes,2.090000,single-ingredient frozen tomato represented by tomato EF
+3396,off:en:frozen-turkey-fillets,Frozen turkey fillets,2,Poultry Meat,9.870000,direct poultry match
+3397,off:en:frozen-turkey-meat,Frozen turkey meat,2,Poultry Meat,9.870000,direct poultry match
+3398,off:en:frozen-turkey-neck,Frozen turkey neck,2,Poultry Meat,9.870000,direct poultry match
+3399,off:en:frozen-turkey-offals,Frozen turkey offals,2,Poultry Meat,9.870000,direct poultry match
+3400,off:en:frozen-turkey-skewers,Frozen turkey skewers,2,Poultry Meat,9.870000,direct poultry match
+3401,off:en:frozen-turkey-thighs,Frozen turkey thighs,2,Poultry Meat,9.870000,direct poultry match
+3402,off:en:frozen-turkey-wings,Frozen turkey wings,2,Poultry Meat,9.870000,direct poultry match
+3447,off:en:frozen-yakitori-chicken-skewers,Frozen Yakitori chicken skewers,2,Poultry Meat,9.870000,direct poultry match
+3457,off:en:fruit-and-soy-beverages,Fruit and soy beverages,7,Soy milk,0.980000,direct soy beverage match
+3472,off:en:fruit-cottage-cheeses,Fruit cottage cheeses,1,Cheese,23.880000,direct dairy product match
+3500,off:en:fruits,Fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3504,off:en:fruits-flavoured-fat-fresh-cream-cheese,Fruits flavoured fat fresh cream cheese,1,Cheese,23.880000,direct dairy product match
+3507,off:en:fruits-shelf-stable,Fruits (shelf stable),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3511,off:en:fuentesauco-chickpeas,Fuentesaúco chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+3512,off:en:fuji-apples,Fuji apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3515,off:en:gala-apples,Gala apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3516,off:en:galia-melons,Galia melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3522,off:en:garden-cress,Garden cress,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3523,off:en:garden-strawberries,Garden strawberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+3534,off:en:garofa-nectarines,Garofa nectarines,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3545,off:en:german-cheeses,German cheeses,1,Cheese,23.880000,direct dairy product match
+3554,off:en:gex-blue-cheese,Gex blue cheese,1,Cheese,23.880000,direct dairy product match
+3558,off:en:giga-apples,Giga apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3577,off:en:gloucester-cheese,Gloucester cheese,1,Cheese,23.880000,direct dairy product match
+3598,off:en:glutinous-rices,Glutinous rices,14,Rice,4.450000,direct/basic rice match
+3603,off:en:goat-cheeses,Goat cheeses,1,Cheese,23.880000,direct dairy product match
+3606,off:en:goat-milks,Goat milks,1,Milk,3.150000,direct fluid milk match
+3608,off:en:goat-s-haymilk,Goat's Haymilk,1,Milk,3.150000,direct fluid milk match
+3611,off:en:golden-apple-pulp-and-skin,Golden apple pulp and skin,5,Apples,0.430000,direct fruit match
+3612,off:en:golden-ball-turnips,Golden Ball turnips,4,Root Vegetables,0.430000,direct root-vegetable match
+3613,off:en:golden-berries,Golden berries,5,Berries & Grapes,1.530000,direct berries/grapes match
+3614,off:en:golden-delicious-apples,Golden Delicious apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3619,off:en:goose-eggs,Goose eggs,18,Eggs,4.670000,direct egg match
+3626,off:en:gooseberries,Gooseberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+3629,off:en:gouda,Gouda,1,Cheese,23.880000,direct dairy product match
+3630,off:en:gouda-holland,Gouda Holland,1,Cheese,23.880000,direct dairy product match
+3631,off:en:goudas-with-cumin,Goudas with cumin,1,Cheese,23.880000,direct dairy product match
+3633,off:en:gower-salt-marsh-lamb,Gower Salt Marsh Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3636,off:en:graffiti-eggplants,Graffiti eggplants,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3642,off:en:granny-smith-apples,Granny Smith apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3647,off:en:grape-mixes,Grape mixes,5,Berries & Grapes,1.530000,direct berries/grapes match
+3653,off:en:grapefruit-pulps,Grapefruit pulps,5,Berries & Grapes,1.530000,direct berries/grapes match
+3655,off:en:grapefruits,Grapefruits,5,Berries & Grapes,1.530000,direct berries/grapes match
+3657,off:en:grapes,Grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+3659,off:en:grated-carrots,Grated carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+3660,off:en:grated-cheese,Grated cheese,1,Cheese,23.880000,direct dairy product match
+3661,off:en:grated-cheeses-for-fondue,Grated cheeses for fondue,1,Cheese,23.880000,direct dairy product match
+3662,off:en:grated-coconut,Grated coconut,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3663,off:en:grated-emmentaler,Grated emmentaler,1,Cheese,23.880000,direct dairy product match
+3665,off:en:grated-mozzarella,Grated Mozzarella,1,Cheese,23.880000,direct dairy product match
+3672,off:en:greek-cheeses,Greek cheeses,1,Cheese,23.880000,direct dairy product match
+3677,off:en:green-asparagus,Green asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3678,off:en:green-beans,Green beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3679,off:en:green-beans-imported-by-plane,Green beans imported by plane,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3680,off:en:green-beans-not-imported-by-plane,Green beans not imported by plane,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3681,off:en:green-cabbage,Green cabbage,4,Brassicas,0.510000,direct brassica-family match
+3684,off:en:green-endive,Green endive,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3685,off:en:green-garlics,Green garlics,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3686,off:en:green-grapes,Green grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+3687,off:en:green-jumbo,Green Jumbo,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3688,off:en:green-kiwifruits,Green kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3689,off:en:green-lentils,Green lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+3691,off:en:green-peas,Green peas,4,Peas,0.980000,direct peas match
+3697,off:en:green-seedless-grapes,Green seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+3698,off:en:green-sweet-peppers,Green sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3702,off:en:green-tomatoes,Green tomatoes,4,Tomatoes,2.090000,direct vegetable match
+3704,off:en:greengage-plums,Greengage plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3711,off:en:grilled-beef-bolar-blade,Grilled beef bolar-blade,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3712,off:en:grilled-beef-flank-steak,Grilled beef flank steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3713,off:en:grilled-beef-hanger-steak,Grilled beef hanger steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3714,off:en:grilled-beef-rump-steak,Grilled beef rump steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3715,off:en:grilled-beef-sirloin-steak,Grilled beef sirloin steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3716,off:en:grilled-beef-steaks,Grilled beef steaks,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3717,off:en:grilled-beef-thin-flank,Grilled beef thin flank,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3718,off:en:grilled-beef-topside,Grilled beef topside,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3726,off:en:grilled-lamb-chop-fillet,Grilled lamb chop fillet,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3727,off:en:grilled-lamb-chops,Grilled lamb chops,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3728,off:en:grilled-lamb-cutlet,Grilled lamb cutlet,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3729,off:en:grilled-lamb-leg,Grilled lamb leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3730,off:en:grilled-lamb-saddle,Grilled lamb saddle,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+3731,off:en:grilled-lean-beef-rib-steak,Grilled lean beef rib steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3732,off:en:grilled-pork-chops,Grilled pork chops,2,Pig Meat,12.310000,direct pig/pork match
+3738,off:en:grilling-cheeses,Grilling cheeses,1,Cheese,23.880000,direct dairy product match
+3740,off:en:groats,Groats,14,Oatmeal,2.480000,direct/basic oat match
+3744,off:en:ground-beef-meats,Ground beef meats,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3745,off:en:ground-beef-steaks,Ground beef steaks,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+3748,off:en:ground-chicken-meat,Ground chicken meat,2,Poultry Meat,9.870000,direct poultry match
+3778,off:en:ground-pork-meat,Ground pork meat,2,Pig Meat,12.310000,direct pig/pork match
+3782,off:en:ground-turkey-meat,Ground turkey meat,2,Poultry Meat,9.870000,direct poultry match
+3792,off:en:guava-pulp,Guava pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3793,off:en:guavas,Guavas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3801,off:en:guineafowl-eggs,Guineafowl eggs,18,Eggs,4.670000,direct egg match
+3803,off:en:gull-eggs,Gull eggs,18,Eggs,4.670000,direct egg match
+3812,off:en:guyot-pears,Guyot pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3820,off:en:half-cooked-pressed-cheeses,Half-cooked pressed cheeses,1,Cheese,23.880000,direct dairy product match
+3825,off:en:half-skimmed-pasteurized-goat-milk-uht,Half skimmed pasteurized goat milk UHT,1,Milk,3.150000,direct fluid milk match
+3826,off:en:halloumi,Halloumi,1,Cheese,23.880000,direct dairy product match
+3836,off:en:hard-boiled-egg,Hard-boiled egg,18,Eggs,4.670000,direct egg match
+3838,off:en:hard-cheese-emmental-type-cheese-reduced-fat,Hard cheese emmental-type cheese reduced fat,1,Cheese,23.880000,direct dairy product match
+3839,off:en:hard-cheeses,Hard cheeses,1,Cheese,23.880000,direct dairy product match
+3850,off:en:harrow-sweet-pears,Harrow Sweet pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3853,off:en:hass-avocados,Hass avocados,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3855,off:en:haymilk,Haymilk,1,Milk,3.150000,direct fluid milk match
+3856,off:en:hayward-kiwifruits,Hayward kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3868,off:en:hazelnuts-from-reus,Hazelnuts from Reus,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3871,off:en:hearts-of-palm,Hearts of palm,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+3875,off:en:heirloom-tomatoe,Heirloom tomatoe,4,Tomatoes,2.090000,direct vegetable match
+3881,off:en:herb-cottage-cheeses,Herb cottage cheeses,1,Cheese,23.880000,direct dairy product match
+3884,off:en:herb-marinated-tofu,Herb marinated tofu,16,Tofu,3.160000,direct tofu match
+3897,off:en:high-digestible-milk,High digestible milk,1,Milk,3.150000,direct fluid milk match
+3913,off:en:homogenized-milks,Homogenized milks,1,Milk,3.150000,direct fluid milk match
+3930,off:en:honeydew-melon-pulp,Honeydew melon pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3931,off:en:honeydew-melons,Honeydew melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+3962,off:en:hungarian-cheeses,Hungarian cheeses,1,Cheese,23.880000,direct dairy product match
+3973,off:en:iberian-hard-cheeses,Iberian hard cheeses,1,Cheese,23.880000,direct dairy product match
+3998,off:en:idared-apples,Idared apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4000,off:en:immature-tamarind-pulp,Immature tamarind pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4003,off:en:indian-goosberry-powders,Indian goosberry powders,5,Berries & Grapes,1.530000,direct berries/grapes match
+4004,off:en:indian-gooseberries,Indian Gooseberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+4006,off:en:indica-rices,Indica rices,14,Rice,4.450000,direct/basic rice match
+4008,off:en:industrial-cheese,Industrial cheese,1,Cheese,23.880000,direct dairy product match
+4032,off:en:irish-cheeses,Irish cheeses,1,Cheese,23.880000,direct dairy product match
+4041,off:en:isle-of-man-manx-loaghtan-lamb,Isle of Man Manx Loaghtan Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4043,off:en:isle-of-mull-cheddar,Isle of Mull Cheddar,1,Cheese,23.880000,direct dairy product match
+4045,off:en:italian-cheeses,Italian cheeses,1,Cheese,23.880000,direct dairy product match
+4065,off:en:japonica-rices,Japonica rices,14,Rice,4.450000,direct/basic rice match
+4066,off:en:jasmine-rice,Jasmine rice,14,Rice,4.450000,direct/basic rice match
+4070,off:en:jerusalem-artichoke,Jerusalem artichoke,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4074,off:en:jonagold-apples,Jonagold apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4079,off:en:jujube-dates,Jujube dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4081,off:en:juliet-apples,Juliet apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4085,off:en:jura-blue-cheese,Jura blue cheese,1,Cheese,23.880000,direct dairy product match
+4086,off:en:kabuli-chickpeas,Kabuli chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4090,off:en:kakis,Kakis,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4098,off:en:kanzi-apples,Kanzi apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4126,off:en:khorasan-wheat-flours,Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+4135,off:en:kiwifruit-pulp-and-seeds,Kiwifruit pulp and seeds,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4138,off:en:kiwifruits,Kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4142,off:en:kohlrabi,Kohlrabi,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4146,off:en:kolam-rices,Kolam rices,14,Rice,4.450000,direct/basic rice match
+4157,off:en:koshihikari-rices,Koshihikari rices,14,Rice,4.450000,direct/basic rice match
+4162,off:en:kumquat-without-pips,Kumquat without pips,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4163,off:en:kumquats,Kumquats,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4168,off:en:lactose-free-cheeses,Lactose-free cheeses,1,Cheese,23.880000,direct dairy product match
+4170,off:en:lactose-free-milk,Lactose-free milk,1,Milk,3.150000,direct fluid milk match
+4175,off:en:lamb-bone,Lamb bone,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4176,off:en:lamb-brain,Lamb brain,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4177,off:en:lamb-breast,Lamb breast,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4178,off:en:lamb-carcass,Lamb carcass,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4179,off:en:lamb-chop-fillet,Lamb chop fillet,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4181,off:en:lamb-cutlet,Lamb cutlet,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4182,off:en:lamb-fat,Lamb fat,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4183,off:en:lamb-heart,Lamb heart,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4185,off:en:lamb-kidneys,Lamb kidneys,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4186,off:en:lamb-liver,Lamb liver,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4187,off:en:lamb-loin,Lamb loin,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4188,off:en:lamb-meat,Lamb meat,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4189,off:en:lamb-neck,Lamb neck,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4190,off:en:lamb-offals,Lamb offals,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4191,off:en:lamb-on-skewer,Lamb on skewer,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4192,off:en:lamb-rack,Lamb rack,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4193,off:en:lamb-rib-chop,Lamb rib chop,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4195,off:en:lamb-saddle,Lamb saddle,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4196,off:en:lamb-sweetbread,Lamb sweetbread,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4200,off:en:lancashire-cheese,Lancashire cheese,1,Cheese,23.880000,direct dairy product match
+4218,off:en:leaf-salads,Leaf salads,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4219,off:en:leaf-vegetables,Leaf vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4223,off:en:lean-lamb-shoulder,Lean lamb shoulder,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4225,off:en:lechoso-chickpeas,Lechoso chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4229,off:en:leeks,Leeks,4,Onions & Leeks,0.500000,direct allium match
+4248,off:en:lemon-pulp,Lemon pulp,5,Citrus Fruit,0.390000,direct citrus match
+4255,off:en:lemon-zest,Lemon zest,5,Citrus Fruit,0.390000,direct citrus match
+4261,off:en:lemons,Lemons,5,Citrus Fruit,0.390000,direct citrus match
+4263,off:en:lemons-primofiori,Lemons Primofiori,5,Citrus Fruit,0.390000,direct citrus match
+4266,off:en:lentil-pasta,Lentil pasta,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4270,off:en:lentil-sprouts,Lentil sprouts,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4271,off:en:lentils,Lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4274,off:en:lettuces,Lettuces,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4279,off:en:light-cheese-buche-from-goat-s-milk,Light cheese buche from goat's milk,1,Cheese,23.880000,direct dairy product match
+4298,off:en:lime-pulp,Lime pulp,5,Citrus Fruit,0.390000,direct citrus match
+4300,off:en:limes,Limes,5,Citrus Fruit,0.390000,direct citrus match
+4303,off:en:lincolnshire-poacher-cheese,Lincolnshire Poacher cheese,1,Cheese,23.880000,direct dairy product match
+4306,off:en:lingonberries,Lingonberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+4324,off:en:lithuanian-cheeses,Lithuanian cheeses,1,Cheese,23.880000,direct dairy product match
+4325,off:en:lithuanian-curd-cheese,Lithuanian curd cheese,1,Cheese,23.880000,direct dairy product match
+4342,off:en:long-grain-rices,Long grain rices,14,Rice,4.450000,direct/basic rice match
+4345,off:en:loose-lettuce-leaves,Loose lettuce leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4358,off:en:low-lactose-milk,Low-lactose milk,1,Milk,3.150000,direct fluid milk match
+4373,off:en:lychee-pulp,Lychee pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4374,off:en:lychees,Lychees,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4376,off:en:lymeswold-cheese,Lymeswold cheese,1,Cheese,23.880000,direct dairy product match
+4404,off:en:maconnais-wines,Maconnais wines,7,Wine,1.790000,direct wine match
+4405,off:en:madeira-wine,Madeira Wine,7,Wine,1.790000,direct wine match
+4413,off:en:maize-bran,Maize bran,14,Maize,1.700000,direct/basic maize match
+4421,off:en:mandarin-pulp,Mandarin pulp,5,Citrus Fruit,0.390000,direct citrus match
+4423,off:en:mandarins,Mandarins,5,Citrus Fruit,0.390000,direct citrus match
+4427,off:en:mango-imported-by-boat,Mango imported by boat,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4428,off:en:mango-imported-by-plane,Mango imported by plane,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4431,off:en:mango-pulp,Mango pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4434,off:en:mangoes,Mangoes,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4446,off:en:marbled-beef-ribs,Marbled beef ribs,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+4448,off:en:mare-s-milk,Mare's milk,1,Milk,3.150000,direct fluid milk match
+4460,off:en:marinated-chicken-breasts,Marinated chicken breasts,2,Poultry Meat,9.870000,direct poultry match
+4461,off:en:marinated-chicken-drumsticks,Marinated chicken drumsticks,2,Poultry Meat,9.870000,direct poultry match
+4462,off:en:marinated-chicken-meats,Marinated chicken meats,2,Poultry Meat,9.870000,direct poultry match
+4465,off:en:marinated-hacked-chicken,Marinated hacked chicken,2,Poultry Meat,9.870000,direct poultry match
+4468,off:en:marinated-tofu,Marinated tofu,16,Tofu,3.160000,direct tofu match
+4475,off:en:maroilles-fermier-cheese,Maroilles fermier cheese,1,Cheese,23.880000,direct dairy product match
+4476,off:en:maroilles-laitier-cheese,Maroilles laitier cheese,1,Cheese,23.880000,direct dairy product match
+4479,off:en:marrowfat-peas,Marrowfat peas,14,Peas,0.980000,direct dry pea match
+4491,off:en:mascarpone,Mascarpone,1,Cheese,23.880000,direct dairy product match
+4492,off:en:mashed-cauliflower,Mashed cauliflower,4,Brassicas,0.510000,direct brassica-family match
+4493,off:en:mashua,Mashua,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4498,off:en:matooke-bananas,Matooke bananas,5,Bananas,0.860000,direct fruit match
+4499,off:en:mature-cheddar,Mature cheddar,1,Cheese,23.880000,direct dairy product match
+4500,off:en:matured-gouda,Matured Gouda,1,Cheese,23.880000,direct dairy product match
+4504,off:en:mazafati-dates,Mazafati dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4539,off:en:medium-grain-rices,Medium grain rices,14,Rice,4.450000,direct/basic rice match
+4541,off:en:medjool-dates,Medjool dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4542,off:en:medlars,Medlars,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4543,off:en:medoc-wines,Medoc wines,7,Wine,1.790000,direct wine match
+4550,off:en:melons,Melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4554,off:en:mesclun,Mesclun,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4557,off:en:mexican-cheeses,Mexican cheeses,1,Cheese,23.880000,direct dairy product match
+4560,off:en:microfiltered-milks,Microfiltered milks,1,Milk,3.150000,direct fluid milk match
+4563,off:en:mild-cheddar,Mild cheddar,1,Cheese,23.880000,direct dairy product match
+4589,off:en:milk-permeate,Milk permeate,1,Milk,3.150000,direct fluid milk match
+4595,off:en:milks,Milks,1,Milk,3.150000,direct fluid milk match
+4597,off:en:milks-from-austria,Milks from Austria,1,Milk,3.150000,direct fluid milk match
+4609,off:en:millet-groats,Millet groats,14,Oatmeal,2.480000,direct/basic oat match
+4611,off:en:mimolette-cheese,Mimolette cheese,1,Cheese,23.880000,direct dairy product match
+4612,off:en:minced-beef-steak-with-10-fat,Minced beef steak with 10% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+4613,off:en:minced-beef-steak-with-15-fat,Minced beef steak with 15% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+4614,off:en:minced-beef-steak-with-20-fat,Minced beef steak with 20% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+4615,off:en:minced-beef-steak-with-5-fat,Minced beef steak with 5% fat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+4616,off:en:minced-turkey-ham,Minced turkey ham,2,Poultry Meat,9.870000,direct poultry match
+4629,off:en:miniature-asparagus,Miniature asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4643,off:en:mix-of-salad-leaves,Mix of salad leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4645,off:en:mixed-bell-peppers,Mixed bell peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4660,off:en:mixed-rices,Mixed rices,14,Rice,4.450000,direct/basic rice match
+4663,off:en:mixed-vegetables,Mixed vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4664,off:en:mixed-vegetables-for-soups,Mixed vegetables for soups,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4667,off:en:mixtures-of-vegetables-for-broth,Mixtures of vegetables for broth,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4681,off:en:morello-cherries,Morello cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4687,off:en:mountain-cheeses,Mountain cheeses,1,Cheese,23.880000,direct dairy product match
+4688,off:en:mountain-milks,Mountain milks,1,Milk,3.150000,direct fluid milk match
+4691,off:en:mozzarella,Mozzarella,1,Cheese,23.880000,direct dairy product match
+4692,off:en:mozzarella-di-bufala-campana,Mozzarella di Bufala Campana,1,Cheese,23.880000,direct dairy product match
+4693,off:en:mozzarella-sticks,Mozzarella sticks,1,Cheese,23.880000,direct dairy product match
+4694,off:en:mozzarellas-from-gioia-del-colle,Mozzarellas from Gioia del Colle,1,Cheese,23.880000,direct dairy product match
+4695,off:en:mozzarellas-with-herbs,Mozzarellas with herbs,1,Cheese,23.880000,direct dairy product match
+4696,off:en:muenster-cheese,Muenster cheese,1,Cheese,23.880000,direct dairy product match
+4706,off:en:mulled-wines,Mulled wines,7,Wine,1.790000,direct wine match
+4720,off:en:mung-beans,Mung beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+4724,off:en:munsters-with-raw-milk,Munsters with raw milk,1,Milk,3.150000,direct fluid milk match
+4732,off:en:muskmelons,Muskmelons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4738,off:en:mustard-greens,Mustard greens,4,Brassicas,0.510000,direct brassica-family match
+4744,off:en:mutton-leg,Mutton leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4746,off:en:mutton-shoulder,Mutton shoulder,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+4759,off:en:navel-oranges,Navel oranges,5,Citrus Fruit,0.390000,direct citrus match
+4762,off:en:nectarine-pulp-and-peel,Nectarine pulp and peel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4763,off:en:nectarines,Nectarines,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4766,off:en:neufchatel-cheese-from-cow-s-milk,Neufchâtel cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+4769,off:en:new-zealand-spinach,New Zealand spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4787,off:en:non-alcoholic-wines,Non-alcoholic wines,7,Wine,1.790000,direct wine match
+4793,off:en:non-homogenized-milks,non-homogenized milks,1,Milk,3.150000,direct fluid milk match
+4805,off:en:northern-highbush-blueberries,Northern Highbush Blueberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+4839,off:en:oat-groats,Oat groats,14,Oatmeal,2.480000,direct/basic oat match
+4850,off:en:okra-cooked-without-salt,Okra cooked without salt,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+4851,off:en:okra-powders,Okra powders,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4852,off:en:okras,Okras,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+4855,off:en:old-goudas,Old Goudas,1,Cheese,23.880000,direct dairy product match
+4858,off:en:old-sheep-cheese,Old sheep cheese,1,Cheese,23.880000,direct dairy product match
+5015,off:en:opal-apples,Opal apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5027,off:en:orange-pulp,Orange pulp,5,Citrus Fruit,0.390000,direct citrus match
+5030,off:en:oranges,Oranges,5,Citrus Fruit,0.390000,direct citrus match
+5032,off:en:oranges-tarocco,Oranges (Tarocco),5,Citrus Fruit,0.390000,direct citrus match
+5036,off:en:organic-red-wines,Organic red wines,7,Wine,1.790000,direct wine match
+5037,off:en:organic-semi-skimmed-milks,Organic semi-skimmed milks,1,Milk,3.150000,direct fluid milk match
+5038,off:en:organic-sungold,Organic SunGold,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5042,off:en:originario-rices,Originario rices,14,Rice,4.450000,direct/basic rice match
+5043,off:en:orkney-beef,Orkney beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5044,off:en:orkney-lamb,Orkney lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+5045,off:en:orkney-scottish-island-cheddar,Orkney Scottish Island Cheddar,1,Cheese,23.880000,direct dairy product match
+5047,off:en:osmancik-rices,Osmancik rices,14,Rice,4.450000,direct/basic rice match
+5048,off:en:ossau-iraty-cheeses,Ossau-Iraty cheeses,1,Cheese,23.880000,direct dairy product match
+5052,off:en:ostrich-eggs,Ostrich eggs,18,Eggs,4.670000,direct egg match
+5068,off:en:packham-s-triumph-pears,Packham's Triumph pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5071,off:en:paddy-rices,Paddy rices,14,Rice,4.450000,direct/basic rice match
+5092,off:en:paneer,Paneer,1,Cheese,23.880000,direct dairy product match
+5095,off:en:panela-cheeses,Panela cheeses,1,Cheese,23.880000,direct dairy product match
+5107,off:en:papaya-pulp,Papaya pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5108,off:en:papayas,Papayas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5113,off:en:parboiled-rices,Parboiled rices,14,Rice,4.450000,direct/basic rice match
+5114,off:en:parboiled-white-rices,Parboiled white rices,14,Rice,4.450000,direct/basic rice match
+5116,off:en:parlick-fell-cheese,Parlick Fell cheese,1,Cheese,23.880000,direct dairy product match
+5117,off:en:parmal-rices,Parmal rices,14,Rice,4.450000,direct/basic rice match
+5120,off:en:parsnip,Parsnip,4,Root Vegetables,0.430000,direct root-vegetable match
+5128,off:en:passion-fruit-pulp-and-pips,Passion fruit pulp and pips,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5130,off:en:passion-fruits,Passion fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5154,off:en:pasteurised-milk-munsters,Pasteurised milk Munsters,1,Milk,3.150000,direct fluid milk match
+5155,off:en:pasteurised-milks,Pasteurised milks,1,Milk,3.150000,direct fluid milk match
+5156,off:en:pasteurised-milks-fortified-with-vitamins,Pasteurised milks fortified with vitamins,1,Milk,3.150000,direct fluid milk match
+5157,off:en:pasteurised-skimmed-milk,Pasteurised skimmed milk,1,Milk,3.150000,direct fluid milk match
+5158,off:en:pasteurized-buffalo-milks,Pasteurized buffalo milks,1,Milk,3.150000,direct fluid milk match
+5160,off:en:pasteurized-cheeses,Pasteurized cheeses,1,Cheese,23.880000,direct dairy product match
+5161,off:en:pasteurized-milk-cantal,Pasteurized milk cantal,1,Milk,3.150000,direct fluid milk match
+5167,off:en:patna-rices,Patna rices,14,Rice,4.450000,direct/basic rice match
+5177,off:en:peach-pulp-and-peel,Peach pulp and peel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5180,off:en:peaches,Peaches,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5197,off:en:pear-pulp-and-peel,Pear pulp and peel,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5201,off:en:pearled-barley,Pearled barley,14,Barley,1.180000,direct/basic barley match
+5202,off:en:pears,Pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5204,off:en:peas,Peas,14,Peas,0.980000,direct dry pea match
+5209,off:en:pedrosillano-chickpeas,Pedrosillano chickpeas,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+5210,off:en:peeled-asparagus,Peeled asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5211,off:en:peeled-pear,Peeled pear,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5212,off:en:peeled-sweet-potatoes,Peeled sweet potatoes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5214,off:en:peeled-turnips,Peeled turnips,4,Root Vegetables,0.430000,direct root-vegetable match
+5215,off:en:peeled-white-asparagus,Peeled white asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5216,off:en:peking-duck,Peking duck,2,Poultry Meat,9.870000,direct poultry match
+5233,off:en:persimmon-pulp,Persimmon pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5243,off:en:pheasant-eggs,Pheasant eggs,18,Eggs,4.670000,direct egg match
+5261,off:en:piel-de-sapo-melons,Piel de sapo melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5270,off:en:pigeon-peas,Pigeon peas,14,Peas,0.980000,direct dry pea match
+5276,off:en:pilavlik-rices,Pilavlik rices,14,Rice,4.450000,direct/basic rice match
+5289,off:en:pineapple-pulps,Pineapple pulps,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5290,off:en:pineapple-slices,Pineapple slices,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5293,off:en:pineapples,Pineapples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5296,off:en:pink-lady,Pink Lady,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5301,off:en:pinto-beans,Pinto beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+5302,off:en:piquillo-pepper,Piquillo pepper,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5316,off:en:pitayas,Pitayas,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5317,off:en:pitted-apricot,Pitted apricot,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5318,off:en:pitted-cherries,Pitted cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5319,off:en:pitted-dates,Pitted dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5320,off:en:pitted-dried-cherries,Pitted dried cherries,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5321,off:en:pixie-apples,Pixie apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5339,off:en:plain-cottage-cheeses,Plain cottage cheeses,1,Cheese,23.880000,direct dairy product match
+5341,off:en:plain-creamy-fresh-cream-cheese-around-8-fat,Plain creamy fresh cream cheese around 8% fat,1,Cheese,23.880000,direct dairy product match
+5352,off:en:plain-fresh-cream-cheese-around-1-fat,Plain fresh cream cheese around 1% fat,1,Cheese,23.880000,direct dairy product match
+5353,off:en:plain-fresh-cream-cheese-around-3-fat,Plain fresh cream cheese around 3% fat,1,Cheese,23.880000,direct dairy product match
+5354,off:en:plain-fresh-cream-cheese-reduced-fat,Plain fresh cream cheese reduced fat,1,Cheese,23.880000,direct dairy product match
+5374,off:en:plain-puffed-rice,Plain puffed rice,14,Rice,4.450000,direct/basic rice match
+5388,off:en:plain-tofu,Plain tofu,16,Tofu,3.160000,direct tofu match
+5410,off:en:plantain-bananas,Plantain bananas,5,Bananas,0.860000,direct fruit match
+5411,off:en:platerines,Platerines,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5418,off:en:plum-tomatoes,Plum tomatoes,4,Tomatoes,2.090000,direct vegetable match
+5420,off:en:plums,Plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5421,off:en:poached-eggs,Poached eggs,18,Eggs,4.670000,direct egg match
+5422,off:en:pointed-cabbages,Pointed cabbages,4,Brassicas,0.510000,direct brassica-family match
+5423,off:en:polish-cheeses,Polish cheeses,1,Cheese,23.880000,direct dairy product match
+5433,off:en:pomegranate-seeds,Pomegranate seeds,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5435,off:en:pomegranates,Pomegranates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5436,off:en:pomelos,Pomelos,5,Citrus Fruit,0.390000,direct citrus match
+5437,off:en:pomelos-from-corsica,Pomelos from Corsica,5,Citrus Fruit,0.390000,direct citrus match
+5443,off:en:popped-wheat-grain-with-caramel-fortified-with-vitamins-and-chemical-elements,Popped wheat grain with caramel fortified with vitamins and chemical elements,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+5444,off:en:popped-wheat-grain-with-honey-fortified-with-vitamins-and-chemical-elements,Popped wheat grain with honey fortified with vitamins and chemical elements,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+5446,off:en:pork,Pork,2,Pig Meat,12.310000,direct pig/pork match
+5447,off:en:pork-80-20-trimming,Pork 80/20 trimming,2,Pig Meat,12.310000,direct pig/pork match
+5448,off:en:pork-90-10-trimming,Pork 90/10 trimming,2,Pig Meat,12.310000,direct pig/pork match
+5449,off:en:pork-belly-with-flank-removed,Pork belly with flank removed,2,Pig Meat,12.310000,direct pig/pork match
+5450,off:en:pork-bones,Pork bones,2,Pig Meat,12.310000,direct pig/pork match
+5451,off:en:pork-brain,Pork brain,2,Pig Meat,12.310000,direct pig/pork match
+5454,off:en:pork-eye-of-shortloin,Pork eye of shortloin,2,Pig Meat,12.310000,direct pig/pork match
+5455,off:en:pork-fat,Pork fat,2,Pig Meat,12.310000,direct pig/pork match
+5456,off:en:pork-filet-mignon,Pork filet mignon,2,Pig Meat,12.310000,direct pig/pork match
+5457,off:en:pork-ham-escalope,Pork ham escalope,2,Pig Meat,12.310000,direct pig/pork match
+5458,off:en:pork-jowl,Pork jowl,2,Pig Meat,12.310000,direct pig/pork match
+5459,off:en:pork-kidney,Pork kidney,2,Pig Meat,12.310000,direct pig/pork match
+5460,off:en:pork-knuckle,Pork knuckle,2,Pig Meat,12.310000,direct pig/pork match
+5461,off:en:pork-liver-mousse,Pork liver mousse,2,Pig Meat,12.310000,direct pig/pork match
+5462,off:en:pork-liver-mousse-superior-quality,Pork liver mousse superior quality,2,Pig Meat,12.310000,direct pig/pork match
+5465,off:en:pork-offals,Pork offals,2,Pig Meat,12.310000,direct pig/pork match
+5467,off:en:pork-racks,Pork racks,2,Pig Meat,12.310000,direct pig/pork match
+5469,off:en:pork-rind,Pork rind,2,Pig Meat,12.310000,direct pig/pork match
+5470,off:en:pork-roasts,Pork roasts,2,Pig Meat,12.310000,direct pig/pork match
+5471,off:en:pork-round-steak,Pork round steak,2,Pig Meat,12.310000,direct pig/pork match
+5472,off:en:pork-salami,Pork salami,2,Pig Meat,12.310000,direct pig/pork match
+5475,off:en:pork-shoulder-lower-half-without-rind-fat-and-bone-raw,Pork shoulder lower half without rind fat and bone raw,2,Pig Meat,12.310000,direct pig/pork match
+5476,off:en:pork-shoulder-upper-half-without-rind-fat-and-bone,Pork shoulder upper half without rind fat and bone,2,Pig Meat,12.310000,direct pig/pork match
+5477,off:en:pork-shoulders,Pork shoulders,2,Pig Meat,12.310000,direct pig/pork match
+5479,off:en:pork-spare-ribs,Pork spare-ribs,2,Pig Meat,12.310000,direct pig/pork match
+5480,off:en:pork-tenderloin-lean,Pork tenderloin lean,2,Pig Meat,12.310000,direct pig/pork match
+5481,off:en:pork-tongue,Pork tongue,2,Pig Meat,12.310000,direct pig/pork match
+5482,off:en:pork-way-leg-without-rind-fat-and-bone,Pork way leg without rind fat and bone,2,Pig Meat,12.310000,direct pig/pork match
+5487,off:en:portuguese-cheeses,Portuguese cheeses,1,Cheese,23.880000,direct dairy product match
+5510,off:en:potted-berry-bushes,Potted berry bushes,5,Berries & Grapes,1.530000,direct berries/grapes match
+5511,off:en:potted-blackcurrants,Potted blackcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5542,off:en:powdered-rice-milks,Powdered rice milks,14,Rice,4.450000,direct/basic rice match
+5554,off:en:pre-cooked-oat-flakes,Pre-cooked oat flakes,14,Oatmeal,2.480000,direct/basic oat match
+5555,off:en:pre-cooked-oat-flakes-with-sugar,Pre-cooked oat flakes with sugar,14,Oatmeal,2.480000,direct/basic oat match
+5560,off:en:precooked-rices,Precooked rices,14,Rice,4.450000,direct/basic rice match
+5568,off:en:prepared-chicken-meats,Prepared chicken meats,2,Poultry Meat,9.870000,direct poultry match
+5571,off:en:prepared-fresh-fruits,Prepared fresh fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5584,off:en:prepared-zucchini,Prepared zucchini,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5585,off:en:preserved-duck-gizzards,preserved duck gizzards,2,Poultry Meat,9.870000,direct poultry match
+5586,off:en:preserved-pork-liver,Preserved pork liver,2,Pig Meat,12.310000,direct pig/pork match
+5589,off:en:prickly-pear-pulp-and-seeds,Prickly pear pulp and seeds,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5590,off:en:prickly-pears,Prickly pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5591,off:en:prime-seedless-grapes,Prime Seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+5593,off:en:processed-cheese-around-20-fat-in-wedges,Processed cheese around 20% fat in wedges,1,Cheese,23.880000,direct dairy product match
+5594,off:en:processed-cheese-double-cream-around-31-fat,Processed cheese double cream around 31% fat,1,Cheese,23.880000,direct dairy product match
+5595,off:en:processed-cheese-in-slices,Processed cheese in slices,1,Cheese,23.880000,direct dairy product match
+5596,off:en:processed-cheese-with-fresh-cream-cheese-and-walnuts,Processed cheese with fresh cream cheese and walnuts,1,Cheese,23.880000,direct dairy product match
+5597,off:en:processed-cheeses,Processed cheeses,1,Cheese,23.880000,direct dairy product match
+5604,off:en:provencal-style-tomatoes,Provencal-style tomatoes,4,Tomatoes,2.090000,direct vegetable match
+5621,off:en:puffed-barley,Puffed barley,14,Barley,1.180000,direct/basic barley match
+5637,off:en:puffed-rice,Puffed rice,14,Rice,4.450000,direct/basic rice match
+5643,off:en:puffed-rice-fortified-with-vitamins-and-chemical-elements,Puffed rice fortified with vitamins and chemical elements,14,Rice,4.450000,direct/basic rice match
+5660,off:en:pummelo-pulp,Pummelo pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5666,off:en:pumpkin-tomatoes,Pumpkin tomatoes,4,Tomatoes,2.090000,direct vegetable match
+5683,off:en:purple-asparagus,Purple asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5685,off:en:pyrenees-cheeses,Pyrénées cheeses,1,Cheese,23.880000,direct dairy product match
+5688,off:en:quail,Quail,2,Poultry Meat,9.870000,direct poultry match
+5689,off:en:quail-eggs,Quail eggs,18,Eggs,4.670000,direct egg match
+5690,off:en:quail-fresh-meat,Quail fresh meat,2,Poultry Meat,9.870000,direct poultry match
+5691,off:en:quail-meat,Quail meat,2,Poultry Meat,9.870000,direct poultry match
+5692,off:en:quail-meat-and-skin,quail meat and skin,2,Poultry Meat,9.870000,direct poultry match
+5709,off:en:quinces,Quinces,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5727,off:en:radish-pickles,Radish pickles,4,Root Vegetables,0.430000,direct root-vegetable match
+5728,off:en:radishes,Radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+5738,off:en:raspberries,Raspberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+5760,off:en:raw-beetroot,Raw beetroot,4,Root Vegetables,0.430000,direct root-vegetable match
+5764,off:en:raw-milk-cantal,Raw milk cantal,1,Milk,3.150000,direct fluid milk match
+5765,off:en:raw-milks,Raw milks,1,Milk,3.150000,direct fluid milk match
+5778,off:en:ready-to-eat-avocados,Ready-to-eat avocados,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5780,off:en:ready-to-eat-hass-avocados,Ready-to-eat Hass avocados,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5786,off:en:reconstituted-chicken-breast-slices,Reconstituted chicken breast slices,2,Poultry Meat,9.870000,direct poultry match
+5787,off:en:reconstituted-chicken-cordons-bleus,Reconstituted chicken cordons bleus,2,Poultry Meat,9.870000,direct poultry match
+5788,off:en:reconstituted-chicken-nuggets,Reconstituted chicken nuggets,2,Poultry Meat,9.870000,direct poultry match
+5792,off:en:red-bananas,Red bananas,5,Bananas,0.860000,direct fruit match
+5793,off:en:red-beans,Red beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+5794,off:en:red-bell-peppers,Red bell peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5795,off:en:red-cabbage,Red cabbage,4,Brassicas,0.510000,direct brassica-family match
+5796,off:en:red-cabbage-with-apple,Red cabbage with apple,4,Brassicas,0.510000,direct brassica-family match
+5798,off:en:red-delicious-apples,Red Delicious apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5799,off:en:red-endives,Red endives,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5802,off:en:red-grapefruit-pulps,Red grapefruit pulps,5,Berries & Grapes,1.530000,direct berries/grapes match
+5803,off:en:red-grapefruits,Red grapefruits,5,Berries & Grapes,1.530000,direct berries/grapes match
+5807,off:en:red-lentils,Red lentils,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+5812,off:en:red-plums,Red plums,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5815,off:en:red-radish-pickles,Red radish pickles,4,Root Vegetables,0.430000,direct root-vegetable match
+5816,off:en:red-radishes,Red radishes,4,Root Vegetables,0.430000,direct root-vegetable match
+5818,off:en:red-rices,Red rices,14,Rice,4.450000,direct/basic rice match
+5823,off:en:red-wines,Red wines,7,Wine,1.790000,direct wine match
+5825,off:en:redcurrants,Redcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+5830,off:en:reduced-fat-tomme-cheese,Reduced fat Tomme cheese,1,Cheese,23.880000,direct dairy product match
+5856,off:en:refrigerated-ground-beef-meats,Refrigerated ground beef meats,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5859,off:en:refrigerated-milks,Refrigerated milks,1,Milk,3.150000,direct fluid milk match
+5893,off:en:reheated-duck-confit-conserved-in-rendered-fat-without-skin,Reheated duck confit conserved in rendered fat without skin,2,Poultry Meat,9.870000,direct poultry match
+5915,off:en:rhubarb,Rhubarb,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+5920,off:en:ribe-rices,Ribe rices,14,Rice,4.450000,direct/basic rice match
+5922,off:en:rice-based-creams-for-cooking,Rice-based creams for cooking,14,Rice,4.450000,direct/basic rice match
+5924,off:en:rice-beans,Rice beans,14,Rice,4.450000,direct/basic rice match
+5926,off:en:rice-brans,Rice brans,14,Rice,4.450000,direct/basic rice match
+5930,off:en:rice-flakes,Rice flakes,14,Rice,4.450000,direct/basic rice match
+5931,off:en:rice-flours,Rice flours,14,Rice,4.450000,direct/basic rice match
+5932,off:en:rice-from-valencia,Rice from Valencia,14,Rice,4.450000,direct/basic rice match
+5935,off:en:rice-paper,Rice paper,14,Rice,4.450000,direct/basic rice match
+5936,off:en:rice-pasta,Rice pasta,14,Rice,4.450000,direct/basic rice match
+5938,off:en:rice-semolinas,Rice semolinas,14,Rice,4.450000,direct/basic rice match
+5939,off:en:rice-starch,Rice starch,14,Rice,4.450000,direct/basic rice match
+5940,off:en:rice-syrups,Rice syrups,14,Rice,4.450000,direct/basic rice match
+5944,off:en:rice-wines,Rice wines,7,Wine,1.790000,direct wine match
+5945,off:en:rices,Rices,14,Rice,4.450000,direct/basic rice match
+5946,off:en:rices-for-paella,Rices for paella,14,Rice,4.450000,direct/basic rice match
+5947,off:en:rices-for-porridge,Rices for porridge,14,Rice,4.450000,direct/basic rice match
+5948,off:en:rices-for-risotto,Rices for risotto,14,Rice,4.450000,direct/basic rice match
+5949,off:en:ricotta,Ricotta,1,Cheese,23.880000,direct dairy product match
+5955,off:en:rindless-pork-back-fat,Rindless pork back fat,2,Pig Meat,12.310000,direct pig/pork match
+5956,off:en:rindless-pork-jowl,Rindless pork jowl,2,Pig Meat,12.310000,direct pig/pork match
+5963,off:en:roast-beef,Roast beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5964,off:en:roast-chicken,Roast chicken,2,Poultry Meat,9.870000,direct poultry match
+5968,off:en:roasted-apple-pulp,Roasted apple pulp,5,Apples,0.430000,direct fruit match
+5969,off:en:roasted-beef-bolar-blade,Roasted beef bolar-blade,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5970,off:en:roasted-beef-sirloin-steak,Roasted beef sirloin steak,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5971,off:en:roasted-beef-topside,Roasted beef topside,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+5974,off:en:roasted-chicken-breast-with-meat-and-skin,Roasted chicken breast with meat and skin,2,Poultry Meat,9.870000,direct poultry match
+5976,off:en:roasted-chicken-leg-meat,Roasted chicken leg meat,2,Poultry Meat,9.870000,direct poultry match
+5977,off:en:roasted-chicken-leg-meat-and-skin,Roasted chicken leg meat and skin,2,Poultry Meat,9.870000,direct poultry match
+5978,off:en:roasted-chicken-wing-meat-and-skin,Roasted chicken wing meat and skin,2,Poultry Meat,9.870000,direct poultry match
+5981,off:en:roasted-duck-meat,Roasted duck meat,2,Poultry Meat,9.870000,direct poultry match
+5982,off:en:roasted-duck-with-meat-and-skin,Roasted duck with meat and skin,2,Poultry Meat,9.870000,direct poultry match
+5996,off:en:roasted-lamb-leg,Roasted lamb leg,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+5997,off:en:roasted-lamb-shoulders,Roasted lamb shoulders,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+5998,off:en:roasted-lean-lamb-saddle,Roasted lean lamb saddle,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+5999,off:en:roasted-lean-lamb-shoulders,Roasted lean lamb shoulders,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+6017,off:en:roasted-turkey-escalope,Roasted turkey escalope,2,Poultry Meat,9.870000,direct poultry match
+6018,off:en:roasted-turkey-meat,Roasted turkey meat,2,Poultry Meat,9.870000,direct poultry match
+6025,off:en:rocha-pears,Rocha pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6026,off:en:rochet-melons,Rochet melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6029,off:en:rocket,rocket,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6031,off:en:rolled-escalope-of-pork-with-pistachios,Rolled escalope of pork with pistachios,2,Pig Meat,12.310000,direct pig/pork match
+6032,off:en:rolled-oats,Rolled oats,14,Oatmeal,2.480000,direct/basic oat match
+6033,off:en:rolled-oats-small,Rolled oats (small),14,Oatmeal,2.480000,direct/basic oat match
+6037,off:en:roma-rices,Roma rices,14,Rice,4.450000,direct/basic rice match
+6038,off:en:romaine-lettuce,Romaine lettuce,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6039,off:en:romanesco,Romanesco,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6040,off:en:romanian-cheeses,Romanian cheeses,1,Cheese,23.880000,direct dairy product match
+6043,off:en:romanian-wines,Romanian wines,7,Wine,1.790000,direct wine match
+6044,off:en:romanian-wines-spirit,Romanian wines spirit,7,Wine,1.790000,direct wine match
+6047,off:en:root-vegetables,Root vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6048,off:en:roquefort-cheeses,Roquefort cheeses,1,Cheese,23.880000,direct dairy product match
+6053,off:en:rose-wines,Rosé wines,7,Wine,1.790000,direct wine match
+6062,off:en:royal-gala-apples,Royal Gala apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6072,off:en:runner-beans-from-styria,Runner beans from Styria,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6076,off:en:russet-apples,Russet apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6078,off:en:russian-cheeses,Russian cheeses,1,Cheese,23.880000,direct dairy product match
+6080,off:en:rutabaga,Rutabaga,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6087,off:en:rye-flours,Rye flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6088,off:en:rye-flours-type-1150,Rye flours Type 1150,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6089,off:en:rye-flours-type-130,Rye flours Type 130,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6090,off:en:rye-flours-type-1370,Rye flours Type 1370,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6091,off:en:rye-flours-type-1740,Rye flours Type 1740,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6092,off:en:rye-flours-type-815,Rye flours Type 815,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6093,off:en:rye-flours-type-997,Rye flours Type 997,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6094,off:en:rye-groats,Rye groats,14,Oatmeal,2.480000,direct/basic oat match
+6104,off:en:saint-felicien-cheese,Saint-Félicien cheese,1,Cheese,23.880000,direct dairy product match
+6108,off:en:saint-nectaire-cheese-from-milk-collected-in-an-unique-farm,Saint-Nectaire cheese from milk collected in an unique farm,1,Cheese,23.880000,direct dairy product match
+6109,off:en:saint-nectaire-from-milks-collected-in-many-farms,Saint-Nectaire from milks collected in many farms,1,Milk,3.150000,direct fluid milk match
+6110,off:en:saint-paulin-cheese,Saint-Paulin cheese,1,Cheese,23.880000,direct dairy product match
+6122,off:en:salads-without-dressing,Salads without dressing,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6126,off:en:salers-cheese,Salers cheese,1,Cheese,23.880000,direct dairy product match
+6152,off:en:salsifis,Salsifis,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6156,off:en:salt-cured-pork-belly,salt-cured pork belly,2,Pig Meat,12.310000,direct pig/pork match
+6158,off:en:salt-cured-pork-ear,Salt-cured pork ear,2,Pig Meat,12.310000,direct pig/pork match
+6159,off:en:salt-cured-pork-trotters,Salt-cured pork trotters,2,Pig Meat,12.310000,direct pig/pork match
+6203,off:en:sant-andrea-rices,Sant'Andrea Rices,14,Rice,4.450000,direct/basic rice match
+6226,off:en:sauteed-turkey-escalope-with-salt,Sautéed turkey escalope with salt,2,Poultry Meat,9.870000,direct poultry match
+6239,off:en:scallions,scallions,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6250,off:en:scotch-beef,Scotch Beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+6252,off:en:scotch-lamb,Scotch Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+6258,off:en:scrambled-egg,Scrambled egg,18,Eggs,4.670000,direct egg match
+6282,off:en:seedless-grapes,Seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+6285,off:en:self-raising-wheat-flour,Self-raising wheat flour,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6287,off:en:semi-cured-cheeses,Semi-cured cheeses,1,Cheese,23.880000,direct dairy product match
+6288,off:en:semi-dry-cheese-from-goat-s-milk,Semi-dry cheese from goat's milk,1,Cheese,23.880000,direct dairy product match
+6289,off:en:semi-hard-cheeses-from-ewe-s-milk,Semi-hard cheeses from ewe's milk,1,Cheese,23.880000,direct dairy product match
+6290,off:en:semi-milled-basmati-rices,Semi-milled Basmati rices,14,Rice,4.450000,direct/basic rice match
+6291,off:en:semi-milled-camargue-rices,Semi-milled Camargue rices,14,Rice,4.450000,direct/basic rice match
+6292,off:en:semi-milled-jasmine-rices,Semi-milled Jasmine rices,14,Rice,4.450000,direct/basic rice match
+6293,off:en:semi-milled-rices,Semi-milled rices,14,Rice,4.450000,direct/basic rice match
+6294,off:en:semi-polished-common-wheat-flours,Semi-polished common wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6295,off:en:semi-polished-einkorn-wheat-flours,Semi-polished einkorn wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6296,off:en:semi-polished-wheat-flours,Semi-polished wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6302,off:en:semi-skimmed-goat-milks,Semi-skimmed goat milks,1,Milk,3.150000,direct fluid milk match
+6304,off:en:semi-skimmed-milk-uht,Semi-skimmed milk UHT,1,Milk,3.150000,direct fluid milk match
+6305,off:en:semi-skimmed-milk-with-reduced-lactose,Semi-skimmed milk with reduced lactose,1,Milk,3.150000,direct fluid milk match
+6306,off:en:semi-skimmed-milks,Semi-skimmed milks,1,Milk,3.150000,direct fluid milk match
+6307,off:en:semi-skimmed-pasteurised-milk,Semi-skimmed pasteurised milk,1,Milk,3.150000,direct fluid milk match
+6308,off:en:semi-skimmed-uht-buffalo-milks,Semi-skimmed UHT Buffalo milks,1,Milk,3.150000,direct fluid milk match
+6309,off:en:semi-skimmed-uht-milk-fortified-with-vitamins,Semi-skimmed UHT milk fortified with vitamins,1,Milk,3.150000,direct fluid milk match
+6315,off:en:senia-rices,Sénia rices,14,Rice,4.450000,direct/basic rice match
+6317,off:en:septmoncel-blue-cheese-from-cow-s-milk,Septmoncel blue cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+6318,off:en:serbian-wines,Serbian wines,7,Wine,1.790000,direct wine match
+6339,off:en:sheep-milks,Sheep milks,1,Milk,3.150000,direct fluid milk match
+6340,off:en:sheep-s-haymilk,Sheep's Haymilk,1,Milk,3.150000,direct fluid milk match
+6341,off:en:sheep-s-milk-cheeses,sheep's-milk cheeses,1,Cheese,23.880000,direct dairy product match
+6363,off:en:shetland-lamb,Shetland Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+6366,off:en:short-grain-rices,Short grain rices,14,Rice,4.450000,direct/basic rice match
+6398,off:en:silken-tofu,Silken tofu,16,Tofu,3.160000,direct tofu match
+6407,off:en:skimmed-milks,Skimmed milks,1,Milk,3.150000,direct fluid milk match
+6408,off:en:skimmed-uht-buffalo-milks,Skimmed UHT Buffalo milks,1,Milk,3.150000,direct fluid milk match
+6415,off:en:sliced-cheeses,Sliced cheeses,1,Cheese,23.880000,direct dairy product match
+6419,off:en:sliced-mozzarellas,Sliced mozzarellas,1,Cheese,23.880000,direct dairy product match
+6427,off:en:slovakian-cheeses,Slovakian cheeses,1,Cheese,23.880000,direct dairy product match
+6429,off:en:slovakian-wines,Slovakian wines,7,Wine,1.790000,direct wine match
+6430,off:en:slovenian-cheeses,Slovenian cheeses,1,Cheese,23.880000,direct dairy product match
+6434,off:en:slovenian-wines,Slovenian wines,7,Wine,1.790000,direct wine match
+6438,off:en:small-cucumbers,Small cucumbers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6460,off:en:smoked-cheeses,Smoked cheeses,1,Cheese,23.880000,direct dairy product match
+6461,off:en:smoked-chicken-breast,Smoked chicken breast,2,Poultry Meat,9.870000,direct poultry match
+6464,off:en:smoked-cooked-beef-meat,Smoked cooked beef meat,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+6466,off:en:smoked-cooked-pork-meat,Smoked cooked pork meat,2,Pig Meat,12.310000,direct pig/pork match
+6467,off:en:smoked-cooked-turkey,Smoked cooked turkey,2,Poultry Meat,9.870000,direct poultry match
+6469,off:en:smoked-duck-breasts,Smoked duck breasts,2,Poultry Meat,9.870000,direct poultry match
+6478,off:en:smoked-pork-belly,Smoked pork belly,2,Pig Meat,12.310000,direct pig/pork match
+6487,off:en:smoked-tofu,Smoked tofu,16,Tofu,3.160000,direct tofu match
+6500,off:en:snow-peas,snow peas,14,Peas,0.980000,direct dry pea match
+6501,off:en:snow-peas-boiled-in-water,Snow peas boiled in water,14,Peas,0.980000,direct dry pea match
+6507,off:en:soft-boiled-eggs,Soft-boiled eggs,18,Eggs,4.670000,direct egg match
+6514,off:en:soft-cheese-with-a-natural-rind,Soft cheese with a natural rind,1,Cheese,23.880000,direct dairy product match
+6515,off:en:soft-cheeses,Soft cheeses,1,Cheese,23.880000,direct dairy product match
+6516,off:en:soft-cheeses-with-a-red-rind,Soft cheeses with a red rind,1,Cheese,23.880000,direct dairy product match
+6517,off:en:soft-cheeses-with-bloomy-rind,Soft cheeses with bloomy rind,1,Cheese,23.880000,direct dairy product match
+6518,off:en:soft-cheeses-with-washed-rind,Soft cheeses with washed rind,1,Cheese,23.880000,direct dairy product match
+6521,off:en:soft-ripened-cheese-double-cream-around-30-fat,Soft-ripened cheese double cream around 30% fat,1,Cheese,23.880000,direct dairy product match
+6522,off:en:soft-ripened-cheese-triple-cream-around-40-fat,Soft-ripened cheese triple cream around 40% fat,1,Cheese,23.880000,direct dairy product match
+6523,off:en:soft-ripened-cheese-with-bloomy-rind,Soft-ripened cheese with bloomy rind,1,Cheese,23.880000,direct dairy product match
+6524,off:en:soft-ripened-cheese-with-bloomy-rind-from-goat-s-milk,Soft-ripened cheese with bloomy rind from goat's milk,1,Cheese,23.880000,direct dairy product match
+6525,off:en:soft-ripened-round-cheese-with-bloomy-rind-5-to-11-fat,Soft-ripened round cheese with bloomy rind 5 to 11% fat,1,Cheese,23.880000,direct dairy product match
+6526,off:en:soft-ripened-round-cheese-with-bloomy-rind-around-11-fat-coulommiers-type-cheese-reduced-fat,Soft-ripened round cheese with bloomy rind around 11% fat Coulommiers-type cheese reduced fat,1,Cheese,23.880000,direct dairy product match
+6527,off:en:soft-ripened-round-cheese-with-bloomy-rind-around-5-fat-camembert-type-cheese-reduced-fat,Soft-ripened round cheese with bloomy rind around 5% fat Camembert-type cheese reduced fat,1,Cheese,23.880000,direct dairy product match
+6528,off:en:soft-ripened-washed-bloomy-and-coloured-rind-cheese,Soft -ripened washed bloomy and coloured rind cheese,1,Cheese,23.880000,direct dairy product match
+6529,off:en:soft-ripened-washed-rind-cheese-from-pasteurised-milk,Soft-ripened washed-rind cheese from pasteurised milk,1,Cheese,23.880000,direct dairy product match
+6530,off:en:soft-ripened-washed-rind-cheese-reduced-fat-around-13-fat,Soft-ripened washed-rind cheese reduced fat around 13% fat,1,Cheese,23.880000,direct dairy product match
+6536,off:en:sona-masoori-rices,Sona Masoori rices,14,Rice,4.450000,direct/basic rice match
+6543,off:en:sorrel,Sorrel,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6561,off:en:soured-milk-quark,Soured milk quark,1,Milk,3.150000,direct fluid milk match
+6562,off:en:south-australian-wine,South Australian wine,7,Wine,1.790000,direct wine match
+6563,off:en:soy-and-ginger-marinated-tofu,Soy and ginger marinated tofu,16,Tofu,3.160000,direct tofu match
+6569,off:en:soy-marinated-tofu,Soy marinated tofu,16,Tofu,3.160000,direct tofu match
+6581,off:en:spanish-cheeses,Spanish cheeses,1,Cheese,23.880000,direct dairy product match
+6582,off:en:spanish-fruits,Spanish fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6583,off:en:spanish-hard-cheeses,Spanish hard cheeses,1,Cheese,23.880000,direct dairy product match
+6587,off:en:spanish-milks,Spanish milks,1,Milk,3.150000,direct fluid milk match
+6597,off:en:sparkling-fruit-wine,Sparkling fruit wine,7,Wine,1.790000,direct wine match
+6598,off:en:sparkling-red-wine,Sparkling red wine,7,Wine,1.790000,direct wine match
+6599,off:en:sparkling-rose-wine,Sparkling Rosé wine,7,Wine,1.790000,direct wine match
+6600,off:en:sparkling-white-wine,Sparkling white wine,7,Wine,1.790000,direct wine match
+6601,off:en:sparkling-wines,Sparkling wines,7,Wine,1.790000,direct wine match
+6632,off:en:spinach-young-leaves,Spinach young leaves,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6633,off:en:spinachs,Spinachs,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6638,off:en:split-pea-pasta,Split pea pasta,14,Peas,0.980000,direct dry pea match
+6646,off:en:spreadable-goat-cheese,Spreadable goat cheese,1,Cheese,23.880000,direct dairy product match
+6654,off:en:sprouted-mung-beans,Sprouted mung beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+6679,off:en:staffordshire-cheese,Staffordshire Cheese,1,Cheese,23.880000,direct dairy product match
+6680,off:en:standard-rindless-and-fatless-cooked-pork-shoulder,Standard rindless and fatless cooked pork shoulder,2,Pig Meat,12.310000,direct pig/pork match
+6682,off:en:star-ruby-grapefruits,Star Ruby grapefruits,5,Berries & Grapes,1.530000,direct berries/grapes match
+6683,off:en:starlight-grapes,Starlight grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+6713,off:en:stilton-cheese,Stilton cheese,1,Cheese,23.880000,direct dairy product match
+6714,off:en:stinking-bishop-cheese,Stinking Bishop cheese,1,Cheese,23.880000,direct dairy product match
+6719,off:en:story-apples,Story apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6724,off:en:strawberries,Strawberries,5,Berries & Grapes,1.530000,direct berries/grapes match
+6730,off:en:strawberry-in-season-raw,Strawberry in-season raw,5,Berries & Grapes,1.530000,direct berries/grapes match
+6735,off:en:strawberry-off-season-raw,Strawberry off-season raw,5,Berries & Grapes,1.530000,direct berries/grapes match
+6741,off:en:stretched-curd-cheeses,Stretched-curd cheeses,1,Cheese,23.880000,direct dairy product match
+6742,off:en:string-cheeses,String cheeses,1,Cheese,23.880000,direct dairy product match
+6757,off:en:suffolk-gold-cheese,Suffolk Gold cheese,1,Cheese,23.880000,direct dairy product match
+6758,off:en:sugar-baby-watermelons,Sugar Baby watermelons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6783,off:en:sungold,Sungold,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6784,off:en:sungold-jumbo,Sungold Jumbo,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6789,off:en:surinam-rices,Surinam rices,14,Rice,4.450000,direct/basic rice match
+6794,off:en:sushi-rice,Sushi rice,14,Rice,4.450000,direct/basic rice match
+6800,off:en:swaledale-cheese,Swaledale cheese,1,Cheese,23.880000,direct dairy product match
+6802,off:en:swedish-cheeses,Swedish cheeses,1,Cheese,23.880000,direct dairy product match
+6810,off:en:sweet-apples,Sweet apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6823,off:en:sweet-peppers,Sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6828,off:en:sweet-potatoes,Sweet potatoes,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6832,off:en:sweet-wines,Sweet wines,7,Wine,1.790000,direct wine match
+6839,off:en:sweetened-puffed-rice,Sweetened puffed rice,14,Rice,4.450000,direct/basic rice match
+6846,off:en:swiss-wines,Swiss wines,7,Wine,1.790000,direct wine match
+6851,off:en:t110-buckwheat-flour,T110 buckwheat flour,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6852,off:en:t110-khorasan-wheat-flours,T110 Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6854,off:en:t130-khorasan-wheat-flours,T130 Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6855,off:en:t150-buckwheat-flour,T150 buckwheat flour,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6857,off:en:t70-khorasan-wheat-flours,T70 Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6858,off:en:t80-buckwheat-flour,T80 buckwheat flour,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+6870,off:en:tahibonet-rices,Tahibonet rices,14,Rice,4.450000,direct/basic rice match
+6885,off:en:tangerines,Tangerines,5,Citrus Fruit,0.390000,direct citrus match
+6890,off:en:taro-tubers,Taro tubers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6911,off:en:tendral-melons,Tendral melons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6917,off:en:tetilla-cheese,Tetilla cheese,1,Cheese,23.880000,direct dairy product match
+6918,off:en:teviotdale-cheese,Teviotdale Cheese,1,Cheese,23.880000,direct dairy product match
+6919,off:en:the-cheese-shop,The Cheese Shop,1,Cheese,23.880000,direct dairy product match
+6920,off:en:thermised-milk-cheeses,Thermised milk cheeses,1,Cheese,23.880000,direct dairy product match
+6932,off:en:thinly-shredded-vegetables,Thinly-shredded vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+6933,off:en:thompson-seedless-grapes,Thompson Seedless grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+6948,off:en:titania-blackcurrants,Titania blackcurrants,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+6958,off:en:tomato-in-season-raw,Tomato in season raw,4,Tomatoes,2.090000,direct vegetable match
+6964,off:en:tomato-off-season-raw,Tomato off season raw,4,Tomatoes,2.090000,direct vegetable match
+6981,off:en:tomatoes,Tomatoes,4,Tomatoes,2.090000,direct vegetable match
+6984,off:en:tomme-cheese-from-cow-s-milk,Tomme cheese from cow's milk,1,Cheese,23.880000,direct dairy product match
+6985,off:en:tomme-cheese-from-savoy,Tomme cheese from Savoy,1,Cheese,23.880000,direct dairy product match
+6986,off:en:tomme-cheese-from-the-french-bauges-mountains,Tomme cheese from the French Bauges mountains,1,Cheese,23.880000,direct dairy product match
+6987,off:en:toned-milks,Toned milks,1,Milk,3.150000,direct fluid milk match
+6995,off:en:top-red-apples,Top red apples,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7009,off:en:traditionally-farmed-gloucestershire-old-spots-pork,Traditionally Farmed Gloucestershire Old Spots Pork,2,Pig Meat,12.310000,direct pig/pork match
+7010,off:en:traditionally-reared-pedigree-welsh-pork,Traditionally Reared Pedigree Welsh Pork,2,Pig Meat,12.310000,direct pig/pork match
+7020,off:en:tropical-fruits,Tropical fruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7059,off:en:turkey-bacon,Turkey bacon,2,Poultry Meat,9.870000,direct poultry match
+7060,off:en:turkey-breasts,Turkey breasts,2,Poultry Meat,9.870000,direct poultry match
+7061,off:en:turkey-cutlets,Turkey cutlets,2,Poultry Meat,9.870000,direct poultry match
+7063,off:en:turkey-eggs,Turkey eggs,18,Eggs,4.670000,direct egg match
+7064,off:en:turkey-fillets,Turkey fillets,2,Poultry Meat,9.870000,direct poultry match
+7065,off:en:turkey-heart,Turkey heart,2,Poultry Meat,9.870000,direct poultry match
+7066,off:en:turkey-leg-meat-only,Turkey leg meat only,2,Poultry Meat,9.870000,direct poultry match
+7067,off:en:turkey-liver,Turkey liver,2,Poultry Meat,9.870000,direct poultry match
+7068,off:en:turkey-meat-for-osso-buco,Turkey meat for osso buco,2,Poultry Meat,9.870000,direct poultry match
+7069,off:en:turkey-neck,Turkey neck,2,Poultry Meat,9.870000,direct poultry match
+7070,off:en:turkey-offals,Turkey offals,2,Poultry Meat,9.870000,direct poultry match
+7072,off:en:turkey-skewers,Turkey skewers,2,Poultry Meat,9.870000,direct poultry match
+7073,off:en:turkey-thighs,Turkey thighs,2,Poultry Meat,9.870000,direct poultry match
+7074,off:en:turkey-wings,Turkey wings,2,Poultry Meat,9.870000,direct poultry match
+7075,off:en:turkeys,Turkeys,2,Poultry Meat,9.870000,direct poultry match
+7076,off:en:turkish-cheeses,Turkish cheeses,1,Cheese,23.880000,direct dairy product match
+7081,off:en:turnip,Turnip,4,Root Vegetables,0.430000,direct root-vegetable match
+7088,off:en:uht-buffalo-milks,UHT buffalo milks,1,Milk,3.150000,direct fluid milk match
+7091,off:en:uht-milk-fortified-with-vitamins,UHT milk fortified with vitamins,1,Milk,3.150000,direct fluid milk match
+7092,off:en:uht-milks,UHT Milks,1,Milk,3.150000,direct fluid milk match
+7095,off:en:uht-skimmed-milks,UHT Skimmed milks,1,Milk,3.150000,direct fluid milk match
+7103,off:en:uncooked-pressed-cheeses,Uncooked pressed cheeses,1,Cheese,23.880000,direct dairy product match
+7104,off:en:uncured-soft-cheese-spreadable-with-around-20-fat,Uncured soft cheese spreadable with around 20% fat,1,Cheese,23.880000,direct dairy product match
+7105,off:en:uncured-soft-cheese-spreadable-with-around-25-fat,Uncured soft cheese spreadable with around 25% fat,1,Cheese,23.880000,direct dairy product match
+7111,off:en:unpasteurised-cheeses,Unpasteurised cheeses,1,Cheese,23.880000,direct dairy product match
+7119,off:en:unsalted-boiled-pearled-barley,Unsalted boiled pearled barley,14,Barley,1.180000,direct/basic barley match
+7125,off:en:unsalted-cooked-brown-rices,Unsalted cooked brown rices,14,Rice,4.450000,direct/basic rice match
+7127,off:en:unsalted-cooked-parboiled-rice,Unsalted cooked parboiled rice,14,Rice,4.450000,direct/basic rice match
+7128,off:en:unsalted-cooked-red-rice,Unsalted cooked red rice,14,Rice,4.450000,direct/basic rice match
+7129,off:en:unsalted-cooked-rice,Unsalted cooked rice,14,Rice,4.450000,direct/basic rice match
+7132,off:en:unsalted-cooked-wild-rice,Unsalted cooked wild rice,14,Rice,4.450000,direct/basic rice match
+7140,off:en:unseasoned-grated-carrots,Unseasoned grated carrots,4,Root Vegetables,0.430000,direct root-vegetable match
+7155,off:en:unwaxed-lemons,Unwaxed lemons,5,Citrus Fruit,0.390000,direct citrus match
+7157,off:en:vacuum-packed-beetroot,Vacuum-packed beetroot,4,Root Vegetables,0.430000,direct root-vegetable match
+7158,off:en:vale-of-evesham-asparagus,Vale of Evesham Asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7159,off:en:valencay-cheese,Valençay cheese,1,Cheese,23.880000,direct dairy product match
+7160,off:en:valencay-wine,Valençay Wine,7,Wine,1.790000,direct wine match
+7228,off:en:vegan-sausages-from-tofu,Vegan sausages from tofu,16,Tofu,3.160000,direct tofu match
+7231,off:en:vegan-wines,Vegan wines,7,Wine,1.790000,direct wine match
+7263,off:en:vegetable-rods,Vegetable rods,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7268,off:en:vegetables,Vegetables,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7270,off:en:vegetables-from-germany,Vegetables from Germany,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7271,off:en:vegetables-from-italy,Vegetables from Italy,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7272,off:en:vegetables-from-spain,Vegetables from Spain,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7273,off:en:vegetables-from-the-netherlands,Vegetables from the Netherlands,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7306,off:en:verna-lemons,Verna lemons,5,Citrus Fruit,0.390000,direct citrus match
+7307,off:en:vialone-nano-rices,Vialone Nano rices,14,Rice,4.450000,direct/basic rice match
+7350,off:en:watercress-fresh,Watercress (fresh),4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7352,off:en:waterloo-cheese,Waterloo cheese,1,Cheese,23.880000,direct dairy product match
+7354,off:en:watermelon-pulp,Watermelon pulp,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7358,off:en:watermelons,Watermelons,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7365,off:en:welsh-beef,Welsh Beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7366,off:en:welsh-lamb,Welsh Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7369,off:en:wensleydale-cheese,Wensleydale cheese,1,Cheese,23.880000,direct dairy product match
+7370,off:en:west-australian-wine,West Australian wine,7,Wine,1.790000,direct wine match
+7372,off:en:west-country-beef,West Country Beef,2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7373,off:en:west-country-farmhouse-cheddar-cheese,West Country farmhouse Cheddar cheese,1,Cheese,23.880000,direct dairy product match
+7374,off:en:west-country-lamb,West Country Lamb,2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7388,off:en:wheat-flour-t110,Wheat flour T110,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7389,off:en:wheat-flour-t405,Wheat flour T405,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7390,off:en:wheat-flour-t45,Wheat flour T45,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7391,off:en:wheat-flour-type-150,Wheat flour type 150,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7392,off:en:wheat-flour-type-55-for-bread,Wheat flour type 55 for bread,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7393,off:en:wheat-flour-type-65,Wheat flour type 65,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7394,off:en:wheat-flours,Wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7397,off:en:wheat-groats,Wheat groats,14,Oatmeal,2.480000,direct/basic oat match
+7418,off:en:white-asparagus,White asparagus,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7419,off:en:white-basmati-rices,White Basmati rices,14,Rice,4.450000,direct/basic rice match
+7421,off:en:white-beans,White beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+7424,off:en:white-cabbage,White cabbage,4,Brassicas,0.510000,direct brassica-family match
+7436,off:en:white-common-wheat-flours,White common wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7437,off:en:white-einkorn-wheat-flours,White einkorn wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7447,off:en:white-jasmine-rices,White Jasmine rices,14,Rice,4.450000,direct/basic rice match
+7448,off:en:white-khorasan-wheat-flours,White Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7449,off:en:white-kidney-beans,White kidney beans,14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+7456,off:en:white-rice-cooked-with-chicken,White rice cooked with chicken,14,Rice,4.450000,direct/basic rice match
+7457,off:en:white-rice-cooked-with-vegetables-and-meat,White rice cooked with vegetables and meat,14,Rice,4.450000,direct/basic rice match
+7459,off:en:white-rices,White rices,14,Rice,4.450000,direct/basic rice match
+7461,off:en:white-sparkling-flavoured-wines,White sparkling flavoured wines,7,Wine,1.790000,direct wine match
+7463,off:en:white-stilton-cheese,White Stilton cheese,1,Cheese,23.880000,direct dairy product match
+7469,off:en:white-wheat-flours,White wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7472,off:en:white-wines,White wines,7,Wine,1.790000,direct wine match
+7480,off:en:whole-barley,Whole barley,14,Barley,1.180000,direct/basic barley match
+7483,off:en:whole-chickens,Whole chickens,2,Poultry Meat,9.870000,direct poultry match
+7485,off:en:whole-common-wheat-flours,Whole common wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7489,off:en:whole-dates,Whole dates,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7493,off:en:whole-einkorn-wheat-flours,Whole einkorn wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7495,off:en:whole-goat-milk,Whole goat milk,1,Milk,3.150000,direct fluid milk match
+7496,off:en:whole-goat-milk-uht,Whole goat milk UHT,1,Milk,3.150000,direct fluid milk match
+7497,off:en:whole-khorasan-wheat-flours,Whole Khorasan wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7498,off:en:whole-mare-s-milk,Whole mare's milk,1,Milk,3.150000,direct fluid milk match
+7500,off:en:whole-milk-uht,Whole milk UHT,1,Milk,3.150000,direct fluid milk match
+7502,off:en:whole-milks,Whole milks,1,Milk,3.150000,direct fluid milk match
+7510,off:en:whole-pasteurised-milks,Whole pasteurised milks,1,Milk,3.150000,direct fluid milk match
+7518,off:en:whole-wheat-flours,Whole wheat flours,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7538,off:en:wild-rice,Wild rice,14,Rice,4.450000,direct/basic rice match
+7539,off:en:wild-rice-flakes,Wild rice flakes,14,Rice,4.450000,direct/basic rice match
+7546,off:en:williams-bon-chretien-pears,Williams' bon chrétien pears,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7547,off:en:wine-based-alcoholic-beverages,Wine-based alcoholic beverages,7,Wine,1.790000,direct wine match
+7548,off:en:wine-based-aperitif,Wine-based aperitif,7,Wine,1.790000,direct wine match
+7549,off:en:wine-based-drinks,Wine-based drinks,7,Wine,1.790000,direct wine match
+7555,off:en:wine-without-geographic-indication,Wine without geographic indication,7,Wine,1.790000,direct wine match
+7556,off:en:wines,Wines,7,Wine,1.790000,direct wine match
+7557,off:en:wines-from-albania,Wines from Albania,7,Wine,1.790000,direct wine match
+7558,off:en:wines-from-algeria,Wines from Algeria,7,Wine,1.790000,direct wine match
+7559,off:en:wines-from-america,Wines from America,7,Wine,1.790000,direct wine match
+7560,off:en:wines-from-argentina,Wines from Argentina,7,Wine,1.790000,direct wine match
+7561,off:en:wines-from-armenia,Wines from Armenia,7,Wine,1.790000,direct wine match
+7562,off:en:wines-from-australia,Wines from Australia,7,Wine,1.790000,direct wine match
+7563,off:en:wines-from-austria,Wines from Austria,7,Wine,1.790000,direct wine match
+7564,off:en:wines-from-belgium,Wines from Belgium,7,Wine,1.790000,direct wine match
+7565,off:en:wines-from-brazil,Wines from Brazil,7,Wine,1.790000,direct wine match
+7566,off:en:wines-from-bulgaria,Wines from Bulgaria,7,Wine,1.790000,direct wine match
+7567,off:en:wines-from-california,Wines from California,7,Wine,1.790000,direct wine match
+7568,off:en:wines-from-canada,Wines from Canada,7,Wine,1.790000,direct wine match
+7569,off:en:wines-from-chile,Wines from Chile,7,Wine,1.790000,direct wine match
+7570,off:en:wines-from-croatia,Wines from Croatia,7,Wine,1.790000,direct wine match
+7571,off:en:wines-from-cyprus,Wines from Cyprus,7,Wine,1.790000,direct wine match
+7572,off:en:wines-from-czech-republic,Wines from Czech Republic,7,Wine,1.790000,direct wine match
+7573,off:en:wines-from-france,Wines from France,7,Wine,1.790000,direct wine match
+7574,off:en:wines-from-georgia,Wines from Georgia,7,Wine,1.790000,direct wine match
+7575,off:en:wines-from-germany,Wines from Germany,7,Wine,1.790000,direct wine match
+7576,off:en:wines-from-greece,Wines from Greece,7,Wine,1.790000,direct wine match
+7577,off:en:wines-from-hungary,Wines from Hungary,7,Wine,1.790000,direct wine match
+7578,off:en:wines-from-italy,Wines from Italy,7,Wine,1.790000,direct wine match
+7579,off:en:wines-from-luxembourg,Wines from Luxembourg,7,Wine,1.790000,direct wine match
+7580,off:en:wines-from-malta,Wines from Malta,7,Wine,1.790000,direct wine match
+7581,off:en:wines-from-portugal,Wines from Portugal,7,Wine,1.790000,direct wine match
+7582,off:en:wines-from-south-africa,Wines from South Africa,7,Wine,1.790000,direct wine match
+7583,off:en:wines-from-spain,Wines from Spain,7,Wine,1.790000,direct wine match
+7584,off:en:winter-barley,Winter barley,14,Barley,1.180000,direct/basic barley match
+7592,off:en:yakitori-chicken-skewers,Yakitori chicken skewers,2,Poultry Meat,9.870000,direct poultry match
+7595,off:en:yellow-cheeses,Yellow cheeses,1,Cheese,23.880000,direct dairy product match
+7597,off:en:yellow-grapefruit-pulps,Yellow grapefruit pulps,5,Berries & Grapes,1.530000,direct berries/grapes match
+7598,off:en:yellow-kiwifruits,Yellow kiwifruits,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7601,off:en:yellow-sweet-peppers,Yellow sweet peppers,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7622,off:en:young-goudas,Young Goudas,1,Cheese,23.880000,direct dairy product match
+7623,off:en:young-goudas-with-herbs,Young Goudas with herbs,1,Cheese,23.880000,direct dairy product match
+7624,off:en:young-matured-goudas,Young matured Goudas,1,Cheese,23.880000,direct dairy product match
+7626,off:en:yuzu,Yuzu,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7631,off:en:zucchini,Zucchini,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7635,pricecatcher:496847fc5e93,Dressed Chicken - Standard,2,Poultry Meat,9.870000,direct poultry match
+7636,pricecatcher:3d1afd4447cc,Dressed Chicken - Super,2,Poultry Meat,9.870000,direct poultry match
+7637,pricecatcher:c4f2ae70919e,Imported Mutton (With Bones) (Australia - Boxed),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7638,pricecatcher:0b54507248d2,Imported Mutton (With Bones) (New Zealand - Box),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7639,pricecatcher:04d2602fb018,Imported Mutton (Boneless) (Excluding Leg - Australia),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7640,pricecatcher:57737b8f85d6,Imported Mutton (Boneless) (Excluding Leg - New Zealand),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7642,pricecatcher:d22fe9162be6,Regular Papaya,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7643,pricecatcher:0257c02c1b91,Berangan Banana,5,Bananas,0.860000,direct fruit match
+7644,pricecatcher:61783643598f,Lady Finger Banana (Musa Acuminata 'Lady Finger'),5,Bananas,0.860000,direct fruit match
+7645,pricecatcher:5892ad495778,Seeded Red Watermelon,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7646,pricecatcher:d0c977b8e891,Seedless Red Watermelon,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7647,pricecatcher:a14ad4f4bf37,Red Dragon Fruit,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7648,pricecatcher:9db1f072c2c3,Regular Pineapple (Josapine/Morris/Sarawak),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7649,pricecatcher:1c6cf701e27d,Seeded Green Grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+7650,pricecatcher:01b86a25df05,Seeded Red Grapes,5,Berries & Grapes,1.530000,direct berries/grapes match
+7651,pricecatcher:c3adadc926ef,Yellow Lai (Size M),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7652,pricecatcher:7edbc17980a8,Seeded Guava,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7653,pricecatcher:64e18fc06243,Seedless Guava,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7662,pricecatcher:faf646d39bdb,Red Chili - Kulai,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7663,pricecatcher:0718c667f095,Red Chili - Minyak,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7664,pricecatcher:594536c9cf2f,Wet Ginger (Mature),4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7665,pricecatcher:00a445c01d7e,Okra/Ladies' Finger,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7666,pricecatcher:3255da7c2868,Green/French Beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7667,pricecatcher:15d2aa70f490,Long/Asparagus Beans,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7668,pricecatcher:c59060e93b8b,Whole Coconut,5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7669,pricecatcher:04b15c1f8abe,Grated Coconut Palm (Regular),5,Other Fruit,1.050000,OWID broad representative: Other Fruit
+7671,pricecatcher:41c81da83757,Imported Round Cabbage (China),4,Brassicas,0.510000,direct brassica-family match
+7672,pricecatcher:644b7ff32141,Round Cabbage (Local),4,Brassicas,0.510000,direct brassica-family match
+7673,pricecatcher:c236b4bd1434,Fresh Turmeric,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7674,pricecatcher:9ca90ea72728,Chicken Eggs Grade A (Weight 65.0 Gm To 69.9 Gm Each),18,Eggs,4.670000,direct egg match
+7675,pricecatcher:70871a6747b5,Chicken Eggs Grade B (Weight 60.0 Gm To 64.9 Gm),18,Eggs,4.670000,direct egg match
+7676,pricecatcher:28ee0ddf9a62,Chicken Eggs Grade C (Weight 55.0 Gm To 59.9 Gm Each),18,Eggs,4.670000,direct egg match
+7677,pricecatcher:1ba592f1976c,Big Yellow/Holland Onion,4,Onions & Leeks,0.500000,direct allium match
+7678,pricecatcher:72fbcef1a7b6,Imported Rose Shallots (India),4,Onions & Leeks,0.500000,direct allium match
+7679,pricecatcher:b79e2f46d9cd,Imported Shallots (Thailand),4,Onions & Leeks,0.500000,direct allium match
+7683,pricecatcher:8c240e268969,Mainland Chesdale Cheddar Cheese Spread 12 Cheddar,1,Cheese,23.880000,direct dairy product match
+7710,pricecatcher:7ca3b3956e61,Peanuts (Imported),14,Groundnuts,3.230000,direct groundnut/peanut match
+7711,pricecatcher:34d9031e5e9a,Green Bird's Eye Chili,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7716,pricecatcher:9f1fc9eddb5d,Holland Potato,4,Potatoes,0.460000,direct vegetable match
+7719,pricecatcher:1885941f2c1a,Rambutan Brand Super Rice 5% (Imported),14,Rice,4.450000,direct/basic rice match
+7720,pricecatcher:6c3ff3688b8a,"Ngp Wheat Flour (Packed, Sauh Brand)",14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7722,pricecatcher:dffa078ff0e2,Jati Brand Rice (Sst5%),14,Rice,4.450000,direct/basic rice match
+7726,pricecatcher:72085ac6dfff,Chicken Eggs Grade A,18,Eggs,4.670000,direct egg match
+7727,pricecatcher:67efa76819d2,Chicken Eggs Grade B,18,Eggs,4.670000,direct egg match
+7728,pricecatcher:29a406d23ab4,Chicken Eggs Grade C,18,Eggs,4.670000,direct egg match
+7729,pricecatcher:7271833e87ed,Green Capsicum,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7730,pricecatcher:944e5c28baf5,Imported Potato (China),4,Potatoes,0.460000,direct vegetable match
+7739,pricecatcher:04637ce6c641,Imported Bone-In Goat/Mutton Leg (Mutton) (Australia),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7740,pricecatcher:7b3af21c1de1,Imported Bone-In Goat/Mutton Leg (Mutton) (New Zealand),2,Lamb & Mutton,39.720000,direct lamb/mutton match
+7742,pricecatcher:05df77256781,Imported Beef (Topside),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7743,pricecatcher:dde4182d1b0b,Imported Beef (Blade),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7744,pricecatcher:5c06392589cd,Imported Beef (Chuck Tender),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7745,pricecatcher:8cceb8406e17,Imported Beef (Knuckle),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7750,pricecatcher:fb67b9ceb53d,Pork (Lean & Fat),2,Pig Meat,12.310000,direct pig/pork match
+7752,pricecatcher:80c76e0b047c,Imported Round Cabbage (Indonesia),4,Brassicas,0.510000,direct brassica-family match
+7753,pricecatcher:183f0717e20d,Imported Leek,4,Onions & Leeks,0.500000,direct allium match
+7754,pricecatcher:a16071ad85d7,Chinese Long Cabbage - Large,4,Brassicas,0.510000,direct brassica-family match
+7755,pricecatcher:1066a6d3c96c,Regular Dhal (India),14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+7756,pricecatcher:237693a9285c,Malavi Dhal (India),14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+7757,pricecatcher:3b15ff7a3ace,Dhal (Australia),14,Other Pulses,1.790000,OWID broad representative: Other Pulses
+7758,pricecatcher:d1765a11fe76,Local Beef (Part 1 Leg Meat (Excluding Tenderloin)),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7759,pricecatcher:6b0745ce3b6d,Local Beef (Part 2 Hard/Lean Meat (Excluding Tenderloin)),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7763,pricecatcher:1a4146e0bec2,Imported Big Onion (India),4,Onions & Leeks,0.500000,direct allium match
+7764,pricecatcher:78a3ee7e51bc,Imported Big Onion (China),4,Onions & Leeks,0.500000,direct allium match
+7765,pricecatcher:365140f5c506,Imported Regular Shallots (India),4,Onions & Leeks,0.500000,direct allium match
+7766,pricecatcher:206c86792677,Imported Shallots (China),4,Onions & Leeks,0.500000,direct allium match
+7767,pricecatcher:b5477f12c577,Imported Shallots (Myanmar),4,Onions & Leeks,0.500000,direct allium match
+7768,pricecatcher:fd30a51d37f9,Faiza Emas Brand Rice (Sst5%),14,Rice,4.450000,direct/basic rice match
+7769,pricecatcher:0a38c6d87ab3,Imported Round Cabbage (Beijing),4,Brassicas,0.510000,direct brassica-family match
+7773,pricecatcher:4ccc32a70fab,Long Cabbage (Local),4,Brassicas,0.510000,direct brassica-family match
+7776,pricecatcher:288d5296136c,Thai Glutinous Rice (Milk) Assorted Brands,14,Rice,4.450000,direct/basic rice match
+7777,pricecatcher:3300934971c2,Thai Glutinous Rice (Regular) Assorted Brands,14,Rice,4.450000,direct/basic rice match
+7784,pricecatcher:4eeb91262b22,Chicken Leg (Chicken Drumstick),2,Poultry Meat,9.870000,direct poultry match
+7785,pricecatcher:187fc6b6f9ba,Chicken Breast (Chicken Keel),2,Poultry Meat,9.870000,direct poultry match
+7786,pricecatcher:933125c3443b,Whole Chicken Leg,2,Poultry Meat,9.870000,direct poultry match
+7788,pricecatcher:417dcdd2bc57,White Prawn/Vannamei (Farmed) (Between 41 And 60 Pcs Per Kilogram),3,Prawns (farmed),26.870000,direct farmed prawn/shrimp match
+7789,pricecatcher:1286d90ee79f,Green Spinach,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7790,pricecatcher:efbf6bf415e4,Green Mustard Greens,4,Brassicas,0.510000,direct brassica-family match
+7791,pricecatcher:80a76ceae680,Water Spinach (Kangkung),4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7792,pricecatcher:c39e888e4482,Kailan (Chinese Kale),4,Brassicas,0.510000,direct brassica-family match
+7795,pricecatcher:73155e408c2f,Imported Garlic (China),4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7800,pricecatcher:67c861c2d6e8,Rambutan Brand Rice (Sst5%),14,Rice,4.450000,direct/basic rice match
+7801,pricecatcher:c227529c8ad7,Jasmine Brand Rice (Sst5%),14,Rice,4.450000,direct/basic rice match
+7802,pricecatcher:a075efd36dd6,Jati Twr 5% Brand Super Rice (Imported),14,Rice,4.450000,direct/basic rice match
+7819,pricecatcher:0c9f8fdfe9c7,Yeo's Soya (Box),7,Soy milk,0.980000,direct soy beverage match
+7820,pricecatcher:6fe404d5289b,Imported White Rice Sabah Rice Vagas Tokou,14,Rice,4.450000,direct/basic rice match
+7821,pricecatcher:89207db9cf6e,Tkc Sabah Rice Tqr 5% Brand,14,Rice,4.450000,direct/basic rice match
+7822,pricecatcher:6977292afb3a,Tkc Super Huma Kelisa Emas Brand Rice (Sabah),14,Rice,4.450000,direct/basic rice match
+7823,pricecatcher:13c206555cbb,Sazarice Super Anggur Brand Rice (Imported White Rice),14,Rice,4.450000,direct/basic rice match
+7824,pricecatcher:c3990998df4a,Sazarice Super Roda Brand Rice (Imported White Rice),14,Rice,4.450000,direct/basic rice match
+7825,pricecatcher:df6b2a184ef0,"Ngp Wheat Flour (Packed, Muhibah Brand)",14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7826,pricecatcher:e36e542b11be,Bao-Bao Golden Sarawak Brand Rice (Super Import),14,Rice,4.450000,direct/basic rice match
+7827,pricecatcher:52303dd4966b,Uncle Tan Brand Premium Rice (Super Import),14,Rice,4.450000,direct/basic rice match
+7829,pricecatcher:9d7eb21cef8e,"Ngp Wheat Flour (Packed, Faiza Brand)",14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7835,pricecatcher:b3d5a5fbdd0f,Imported Beef (Block),2,Beef (beef herd),99.480000,project assumption: generic fresh beef represented by beef-herd EF
+7841,pricecatcher:d2e641e010d2,Round Eggplant,4,Other Vegetables,0.530000,OWID broad representative: Other Vegetables
+7842,pricecatcher:b2d05a2e805b,Kasturi Lime (Calamansi),5,Citrus Fruit,0.390000,direct citrus match
+7844,pricecatcher:a9c1e7dc0f11,Imported Big Onion (Pakistan),4,Onions & Leeks,0.500000,direct allium match
+7849,pricecatcher:0811bba4afe0,3A Boy Brand Premium Rice (Super Import),14,Rice,4.450000,direct/basic rice match
+7852,pricecatcher:9265980ade0e,Farm Fresh Dates Milk,1,Milk,3.150000,direct fluid milk match
+7854,pricecatcher:816c52f48a95,Quaker Oats Instant Oatmeals,14,Oatmeal,2.480000,direct/basic oat match
+7858,pricecatcher:6d32a316461a,Family Brand Super Import Rice,14,Rice,4.450000,direct/basic rice match
+7870,pricecatcher:314435128643,Kuda Hijau Brand Wheat Flour,14,Wheat & Rye,1.570000,direct/basic wheat or rye match
+7875,pricecatcher:acd1a3642407,Faiza Emas Brand White Rice (Imported),14,Rice,4.450000,direct/basic rice match
+7876,pricecatcher:7420cd4b909e,Jasmine Super 5 Special Brand Rice (Imported),14,Rice,4.450000,direct/basic rice match
+7877,pricecatcher:1dfea2bb834b,Short/Japanese Mustard Greens/Siow Pak Choy (1Kg),4,Brassicas,0.510000,direct brassica-family match
+7878,pricecatcher:dcce749c62a3,White Radish (1Kg),4,Root Vegetables,0.430000,direct root-vegetable match
+7881,pricecatcher:1c2414611891,Imported Potato (Pakistan),4,Potatoes,0.460000,direct vegetable match
+480,off:en:banana-crisps,Banana crisps,6,Bananas,0.860000,documented representative mapping: banana-based snack → OWID Bananas
+439,off:en:baby-food-jar-with-banana,Baby food jar with banana,11,Bananas,0.860000,documented representative mapping: banana-based baby food → OWID Bananas
+456,off:en:baguettes,Baguettes,12,Wheat & Rye,1.570000,documented representative mapping: wheat-based bread → OWID Wheat & Rye
+1135,off:en:canned-peas,Canned peas,13,Peas,0.980000,documented representative mapping: canned peas → OWID Peas
+526,off:en:bean-dishes,Bean dishes,17,Other Pulses,1.790000,documented representative mapping: bean-based prepared food → OWID Other Pulses

@@ -27,7 +27,7 @@ class PeriodSummary {
     required this.donated,
     required this.stored,
     required this.score,
-    this.previousScore,
+    this.previousWasted,
   });
 
   final int consumed;
@@ -38,18 +38,26 @@ class PeriodSummary {
   final int stored;
   /// 0-100 — see [InsightsService.calculateScore] for the formula.
   final int score;
-  /// The same score for the immediately preceding period, if there's
-  /// enough history to compute one — powers the "X% less waste" line.
-  final int? previousScore;
+  /// Items wasted in the previous period, or null if that period had no
+  /// activity at all (nothing meaningful to compare with).
+  ///
+  /// Replaces the old "X% more/less waste" figure, which was a percentage
+  /// change of the reduction score: its direction was inverted (a higher
+  /// score means LESS waste, but it was shown as "more waste"), and a %
+  /// change of a % is hard to read. A plain item difference is neither.
+  final int? previousWasted;
 
-  int get percentChangeVsPrevious {
-    if (previousScore == null || previousScore == 0) return 0;
-    final raw = (((score - previousScore!) / previousScore!) * 100).round();
-    // A period compared against a very low previous score (or a default
-    // "no activity" score — see calculateScore) can otherwise produce a
-    // mathematically huge but meaningless percentage (e.g. 400%+) —
-    // clamp to a sane, always-readable range.
-    return raw.clamp(-100, 100);
+  /// Positive = more items wasted than the previous period.
+  int? get wastedChangeVsPrevious => previousWasted == null ? null : wasted - previousWasted!;
+
+  /// % change in items wasted vs the previous period, e.g. 5 -> 2 = -60.
+  /// Null when there's nothing to compare with, or when the previous
+  /// period had 0 wasted (any increase from 0 is "infinitely" more, so
+  /// the card shows the item count instead). Not clamped: 2 -> 6 really
+  /// is 200% more, and the item counts are always shown alongside it.
+  int? get wastedPercentChangeVsPrevious {
+    if (previousWasted == null || previousWasted == 0) return null;
+    return ((wasted - previousWasted!) / previousWasted! * 100).round();
   }
 }
 
