@@ -106,7 +106,10 @@ class _AddEditItemScreenState extends State<AddEditItemScreen> {
       _notesController.text = existing.notes ?? '';
       _priceController.text = existing.price == null ? '' : _formatPriceForInput(existing.price!);
     } else {
-      _unit = kUnitOptions.first; // sensible default for a new item: 'pcs'
+      // Default to kg: a weight lets the Impact tab (Epic 8) estimate CO2e for
+      // the item and makes recipe quantities comparable (Epic 6). 'pcs' has
+      // no reliable weight for most foods, so those items were left out.
+      _unit = 'kg';
     }
     _nameController.addListener(_scheduleSuggestionFetch);
     _nameController.addListener(_checkForDuplicate);

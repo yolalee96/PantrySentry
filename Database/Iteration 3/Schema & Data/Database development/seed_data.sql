@@ -495,3 +495,16 @@ VALUES
    NULL, NULL, NULL, 'v1', NULL, 'EXCLUDED',
    'No active emission factor for category 4 (Vegetables)',
    'Weight already expressed in kilograms; only the factor is missing.', DATE_SUB(NOW(), INTERVAL 1 DAY), DATE_SUB(NOW(), INTERVAL 1 DAY));
+
+-- ------------------------------------------------------------
+-- recipe_ai_generations (Epic 6 AI recipe cache)
+-- One local-development placeholder row that mimics a Gemini reply, so the
+-- cached-suggestion path can be exercised without calling the API. The row
+-- uses generation_id 900001 to stay clear of runtime AUTO_INCREMENT values.
+-- Production rows are written by the backend; this row is safe to delete.
+-- input_item_ids points at seed inventory items, recipe_ids at seed recipes.
+-- ------------------------------------------------------------
+INSERT INTO recipe_ai_generations
+  (generation_id, team_id, model, input_item_ids, recipe_ids, created_by)
+VALUES
+  (900001, 1, 'gemini-flash-latest', '[101, 102, 105]', '[1, 2]', 1);

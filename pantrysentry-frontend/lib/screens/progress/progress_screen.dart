@@ -151,7 +151,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
 
   List<Widget> _buildStatsSection(AppState state, DateRange range) {
     final items = state.items;
-    final summary = InsightsService.summarize(items, range);
+    final summary = InsightsService.summarize(items, range, previousRange: InsightsService.shift(range, _period, forward: false));
     final trend = InsightsService.trend(items, range);
     final breakdown = InsightsService.categoryBreakdown(items, range);
     final reasonBreakdown = InsightsService.discardReasonBreakdown(items, range);
@@ -168,7 +168,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
     return [
       _buildStatCardsRow(summary),
       const SizedBox(height: 16),
-      _buildComparisonCard(summary),
+      _buildComparisonCard(summary, range),
       const SizedBox(height: 16),
       _buildTrendCard(trend),
       const SizedBox(height: 16),
@@ -218,56 +218,78 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  /// The "X% less/more waste" comparison card — kept from the original
-  /// design even though the score ring next to it was removed. Compares
-  /// this period's reduction score to the immediately preceding period's.
-  Widget _buildComparisonCard(PeriodSummary summary) {
-    final change = summary.percentChangeVsPrevious;
-    final improved = change <= 0; // score dropping = less waste = good
+  /// Compares items wasted this period with the previous one as a
+  /// percentage of the item count ("60% less waste"), with the actual
+  /// counts underneath so a big % from small numbers is easy to read in
+  /// context. If last period had 0 wasted, a % isn't possible, so it
+  /// shows the item difference instead. While the period is
+  /// still running it says "so far", so a half-finished week isn't
+  /// presented as an improvement over a full one.
+  Widget _buildComparisonCard(PeriodSummary summary, DateRange range) {
+    final periodWord = _period == InsightsPeriod.weekly ? 'week' : 'month';
+    final change = summary.wastedChangeVsPrevious;
 
-    if (summary.previousScore == null) {
+    if (change == null) {
       return Card(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Text('Not enough history yet to compare with the previous period.',
+          child: Text('No activity last $periodWord to compare with yet.',
               style: TextStyle(color: Colors.grey.shade700, fontSize: 13)),
         ),
       );
     }
 
+    final soFar = range.end.isAfter(DateTime.now()) ? ' so far' : '';
+    final previous = summary.previousWasted!;
+    final percent = summary.wastedPercentChangeVsPrevious;
+    String plural(int n) => n == 1 ? 'item' : 'items';
+
+    final IconData icon;
+    final Color color;
+    final Color background;
+    final String headline;
+    final String detail;
+    if (change < 0) {
+      icon = Icons.trending_down;
+      color = AppTheme.seedColor;
+      background = AppTheme.basilLight;
+      headline = '${percent!.abs()}% less waste'; // change < 0 means previous > 0, so percent is never null here
+      detail = 'Great job! ${summary.wasted} ${plural(summary.wasted)} wasted this $periodWord$soFar, down from $previous last $periodWord.';
+    } else if (change > 0) {
+      icon = Icons.trending_up;
+      color = AppTheme.paprika;
+      background = AppTheme.paprikaLight;
+      headline = percent == null ? '$change more ${plural(change)} wasted' : '$percent% more waste';
+      detail = '${summary.wasted} ${plural(summary.wasted)} wasted this $periodWord$soFar, up from $previous last $periodWord — check the tips below.';
+    } else if (summary.wasted == 0) {
+      icon = Icons.eco_outlined;
+      color = AppTheme.seedColor;
+      background = AppTheme.basilLight;
+      headline = 'No food wasted';
+      detail = 'Nothing wasted last $periodWord or this $periodWord$soFar. Keep it up!';
+    } else {
+      icon = Icons.trending_flat;
+      color = Colors.grey.shade800;
+      background = Colors.grey.shade100;
+      headline = '0% change in waste';
+      detail = '${summary.wasted} ${plural(summary.wasted)} wasted, the same as last $periodWord$soFar.';
+    }
+
     return Card(
-      color: improved ? AppTheme.basilLight : AppTheme.paprikaLight,
+      color: background,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(improved ? Icons.trending_up : Icons.trending_down,
-                color: improved ? AppTheme.seedColor : AppTheme.paprika),
+            Icon(icon, color: color),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: [
-                        TextSpan(
-                          text: '${change.abs()}% ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800, fontSize: 17,
-                            color: improved ? AppTheme.seedColor : AppTheme.paprika,
-                          ),
-                        ),
-                        TextSpan(text: improved ? 'less waste' : 'more waste', style: const TextStyle(fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
+                  Text(headline, style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: color)),
                   const SizedBox(height: 4),
-                  Text(
-                    improved ? 'Great job! You wasted less food this period.' : 'A bit more waste than last period — check the tip below.',
-                    style: TextStyle(color: Colors.grey.shade700, fontSize: 12.5),
-                  ),
+                  Text(detail, style: TextStyle(color: Colors.grey.shade700, fontSize: 12.5)),
                 ],
               ),
             ),

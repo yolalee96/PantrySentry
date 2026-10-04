@@ -1,31 +1,27 @@
-# Epic 8 -- Environmental Impact Data
+﻿# Epic 8 – Environmental Impact Data
 
 ## Overview
 
-Epic 8 estimates the environmental impact of discarded food in **kg
-CO₂e**.
+Epic 8 estimates the environmental impact of discarded food in **kg CO₂e**.
 
 The calculation follows:
 
-**Environmental Impact (kg CO₂e) = Discarded Food Weight (kg) × Emission
-Factor (kg CO₂e/kg)**
+**Environmental Impact (kg CO₂e) = Discarded Food Weight (kg) × Emission Factor (kg CO₂e/kg)**
 
-All discarded quantities must first be converted to kilograms before the
-environmental impact is calculated.
+All discarded quantities must first be converted to kilograms before the environmental impact is calculated.
 
 The static data for Epic 8 is provided in:
 
--   `emission_factors.csv`
--   `quantity_conversions.csv`
+- `emission_factors.csv`
+- `quantity_conversions.csv`
 
 An additional file is provided for mapping verification:
 
--   `emission_factor_mapping_audit.csv`
+- `emission_factor_mapping_audit.csv`
 
-The audit file is used for reference and validation only and is **not
-intended to be imported as a database table**.
+The audit file is used for reference and validation only and is **not intended to be imported as a database table**.
 
-------------------------------------------------------------------------
+---
 
 ## 1. Emission Factor Data
 
@@ -41,84 +37,74 @@ Dataset:
 
 https://ourworldindata.org/grapher/ghg-per-kg-poore
 
-The emission factors represent lifecycle greenhouse gas emissions and
-are expressed as:
+The emission factors represent lifecycle greenhouse gas emissions and are expressed as:
 
 `kg CO₂e / kg food`
 
-Therefore, no additional Global Warming Potential (GWP) conversion is
-required.
+Therefore, no additional Global Warming Potential (GWP) conversion is required.
 
-------------------------------------------------------------------------
+---
 
 ## 2. Product-to-Emission-Factor Mapping
 
-Emission factors are primarily mapped at the **product reference
-level**.
+Emission factors are primarily mapped at the **product reference level**.
 
-Where a product can be reasonably matched to an OWID food type, the
-corresponding OWID emission factor is assigned.
+Where a product can be reasonably matched to an OWID food type, the corresponding OWID emission factor is assigned.
 
 Examples:
 
-  Product         OWID Food Type     Emission Factor (kg CO₂e/kg)
-  --------------- ---------------- ------------------------------
-  Chicken         Poultry Meat                               9.87
-  Pork            Pig Meat                                  12.31
-  Lamb / Mutton   Lamb & Mutton                             39.72
-  Rice            Rice                                       4.45
-  Eggs            Eggs                                       4.67
-  Milk            Milk                                       3.15
-  Banana          Bananas                                    0.86
+| Product | OWID Food Type | Emission Factor (kg CO₂e/kg) |
+|---|---|---:|
+| Chicken | Poultry Meat | 9.87 |
+| Pork | Pig Meat | 12.31 |
+| Lamb / Mutton | Lamb & Mutton | 39.72 |
+| Rice | Rice | 4.45 |
+| Eggs | Eggs | 4.67 |
+| Milk | Milk | 3.15 |
+| Banana | Bananas | 0.86 |
 
 Specific OWID food types are preferred where a clear match exists.
 
 Where OWID itself provides a broader representative food type, such as:
 
--   `Other Fruit`
--   `Other Vegetables`
--   `Other Pulses`
+- `Other Fruit`
+- `Other Vegetables`
+- `Other Pulses`
 
-the broader factor may be used for products that clearly belong to that
-food group but do not have a more specific OWID factor.
+the broader factor may be used for products that clearly belong to that food group but do not have a more specific OWID factor.
 
-Complex or mixed foods are not automatically assigned an unrelated
-emission factor solely to increase coverage.
+Complex or mixed foods are not automatically assigned an unrelated emission factor solely to increase coverage.
 
-------------------------------------------------------------------------
+---
 
 ## 3. Beef Mapping Assumption
 
 The OWID dataset contains two different beef emission factors:
 
-  OWID Food Type        Emission Factor (kg CO₂e/kg)
-  ------------------- ------------------------------
-  Beef (beef herd)                             99.48
-  Beef (dairy herd)                            33.30
+| OWID Food Type | Emission Factor (kg CO₂e/kg) |
+|---|---:|
+| Beef (beef herd) | 99.48 |
+| Beef (dairy herd) | 33.30 |
 
-The current product reference data does not identify whether a generic
-retail beef product originates from a beef herd or a dairy herd.
+The current product reference data does not identify whether a generic retail beef product originates from a beef herd or a dairy herd.
 
 For this project, generic fresh beef products such as:
 
--   Beef Striploin
--   Beef Tenderloin
--   Beef Mince
+- Beef Striploin
+- Beef Tenderloin
+- Beef Mince
 
 are mapped to:
 
 **Beef (beef herd) = 99.48 kg CO₂e/kg**
 
-This is a **project mapping assumption** used as a representative factor
-for generic fresh beef. It does not mean that every individual beef
-product is confirmed to originate from a beef herd.
+This is a **project mapping assumption** used as a representative factor for generic fresh beef. It does not mean that every individual beef product is confirmed to originate from a beef herd.
 
-------------------------------------------------------------------------
+---
 
 ## 4. Quantity Conversion
 
-Environmental impact can only be calculated after the discarded quantity
-has been converted to kilograms.
+Environmental impact can only be calculated after the discarded quantity has been converted to kilograms.
 
 The conversion process is:
 
@@ -142,8 +128,7 @@ Therefore, a universal conversion such as:
 
 is **not applied to all food products**.
 
-Where reliable density or specific-gravity information is available for
-a particular food type, a product-specific conversion can be used.
+Where reliable density or specific-gravity information is available for a particular food type, a product-specific conversion can be used.
 
 Sources used for food density and specific-gravity information include:
 
@@ -151,57 +136,50 @@ Sources used for food density and specific-gravity information include:
 
 https://www.fao.org/infoods/infoods/tables-and-databases/faoinfoods-databases/
 
-**Food Standards Australia New Zealand (FSANZ) -- Specific Gravities**
+**Food Standards Australia New Zealand (FSANZ) – Specific Gravities**
 
 https://www.foodstandards.gov.au/business/labelling/nutrition-panel-calculator/specific-gravities
 
-For example, suitable density or specific-gravity data can be used for
-products such as milk, soy beverages and wine.
+For example, suitable density or specific-gravity data can be used for products such as milk, soy beverages and wine.
 
 ### 4.3 Pieces to Kilograms
 
-There is no universal `pcs → kg` conversion because the weight of one
-item varies between different foods and products.
+There is no universal `pcs → kg` conversion because the weight of one item varies between different foods and products.
 
 For example:
 
 `1 egg ≠ 1 apple ≠ 1 whole chicken`
 
-A `pcs → kg` conversion is only created where suitable supporting data
-is available, such as:
+A `pcs → kg` conversion is only created where suitable supporting data is available, such as:
 
--   Weight per piece
--   Weight range per piece
--   Pieces per kilogram
--   Food-specific portion weight
+- Weight per piece
+- Weight range per piece
+- Pieces per kilogram
+- Food-specific portion weight
 
 Possible supporting sources include:
 
--   Product data
--   Malaysia PriceCatcher data
--   FAO/INFOODS
--   AUSNUT Food Measures
+- Product data
+- Malaysia PriceCatcher data
+- FAO/INFOODS
+- AUSNUT Food Measures
 
-Where a weight range is provided, the midpoint may be used as an
-explicit assumption and the conversion is marked as assumed.
+Where a weight range is provided, the midpoint may be used as an explicit assumption and the conversion is marked as assumed.
 
-If a reliable conversion cannot be found, the system does not estimate
-the weight.
+If a reliable conversion cannot be found, the system does not estimate the weight.
 
-------------------------------------------------------------------------
+---
 
 ## 5. Handling Missing Data
 
-The system does not invent an emission factor or quantity conversion
-when there is insufficient supporting data.
+The system does not invent an emission factor or quantity conversion when there is insufficient supporting data.
 
 An environmental impact assessment requires both:
 
-1.  A suitable emission factor.
-2.  A discarded quantity that can be converted to kilograms.
+1. A suitable emission factor.
+2. A discarded quantity that can be converted to kilograms.
 
-If either requirement is missing, the environmental impact is not
-calculated.
+If either requirement is missing, the environmental impact is not calculated.
 
 The assessment should be recorded as:
 
@@ -211,8 +189,8 @@ The assessment should be recorded as:
 
 An appropriate `exclusion_reason` should also be recorded, for example:
 
--   Missing emission factor
--   Missing quantity conversion
+- Missing emission factor
+- Missing quantity conversion
 
 The frontend can display:
 
@@ -224,14 +202,14 @@ A missing calculation must **not** be stored as:
 
 because `0` represents zero emissions rather than unavailable data.
 
-------------------------------------------------------------------------
+---
 
 ## 6. Reference ID Handling
 
 The source product-reference data is provided in:
 
--   `product_reference.csv`
--   `product_reference_additions.csv`
+- `product_reference.csv`
+- `product_reference_additions.csv`
 
 These source files contain a stable:
 
@@ -239,11 +217,9 @@ These source files contain a stable:
 
 while `reference_id` is generated by the database.
 
-The Epic 8 CSV files currently contain `reference_id` values based on
-the expected import order of the product-reference datasets.
+The Epic 8 CSV files currently contain `reference_id` values based on the expected import order of the product-reference datasets.
 
-If the database already contains different `reference_id` values, the
-IDs in the Epic 8 CSV files should **not be used directly**.
+If the database already contains different `reference_id` values, the IDs in the Epic 8 CSV files should **not be used directly**.
 
 Instead, the import process should resolve:
 
@@ -255,26 +231,25 @@ The file:
 
 contains additional mapping information for verification, including:
 
--   `reference_key`
--   `product_name`
--   `category_id`
--   `mapped_food_type`
--   `factor_kg_co2e_per_kg`
--   `mapping_basis`
+- `reference_key`
+- `product_name`
+- `category_id`
+- `mapped_food_type`
+- `factor_kg_co2e_per_kg`
+- `mapping_basis`
 
-This file is for mapping verification only and is not intended to be
-imported as a database table.
+This file is for mapping verification only and is not intended to be imported as a database table.
 
-------------------------------------------------------------------------
+---
 
 ## 7. Environmental Impact Calculation
 
 For an eligible discarded item, the calculation process is:
 
-1.  Identify the discarded product and its `reference_id`.
-2.  Retrieve the applicable emission factor.
-3.  Convert the discarded quantity to kilograms if required.
-4.  Calculate the environmental impact.
+1. Identify the discarded product and its `reference_id`.
+2. Retrieve the applicable emission factor.
+3. Convert the discarded quantity to kilograms if required.
+4. Calculate the environmental impact.
 
 The final calculation is:
 
@@ -306,120 +281,96 @@ Therefore, the environmental impact of discarding 0.5 kg of chicken is:
 
 **4.935 kg CO₂e**
 
-The calculated result and emission-factor information should be stored
-with the waste impact assessment so that the calculation remains
-traceable.
+The calculated result and emission-factor information should be stored with the waste impact assessment so that the calculation remains traceable.
 
-------------------------------------------------------------------------
+---
 
 ## 8. Data Files
 
-  -------------------------------------------------------------------------
-  File                                  Purpose
-  ------------------------------------- -----------------------------------
-  `emission_factors.csv`                Product/reference-level lifecycle
-                                        emission factors
+| File | Purpose |
+|---|---|
+| `emission_factors.csv` | Product/reference-level lifecycle emission factors |
+| `quantity_conversions.csv` | Supported conversions from recorded quantity units to kilograms |
+| `emission_factor_mapping_audit.csv` | Mapping verification and documentation; not imported as a database table |
 
-  `quantity_conversions.csv`            Supported conversions from recorded
-                                        quantity units to kilograms
-
-  `emission_factor_mapping_audit.csv`   Mapping verification and
-                                        documentation; not imported as a
-                                        database table
-  -------------------------------------------------------------------------
-
-------------------------------------------------------------------------
+---
 
 ## 9. Data Quality Principle
 
-The objective is to provide environmental impact estimates for as many
-supported products as reasonably possible while avoiding unsupported
-assumptions.
+The objective is to provide environmental impact estimates for as many supported products as reasonably possible while avoiding unsupported assumptions.
 
 The following rules are applied:
 
--   If a reliable direct mapping is available, use the corresponding
-    emission factor.
--   If an appropriate OWID representative category is available, a
-    documented representative mapping may be used.
--   If a reliable quantity conversion is available, convert the quantity
-    to kilograms and calculate the environmental impact.
--   Project assumptions, such as the generic fresh beef mapping, are
-    explicitly documented.
--   If there is insufficient evidence for either the emission factor or
-    quantity conversion, do not estimate the result.
--   Unsupported assessments are marked as `EXCLUDED`.
+- If a reliable direct mapping is available, use the corresponding emission factor.
+- If an appropriate OWID representative category is available, a documented representative mapping may be used.
+- If a reliable quantity conversion is available, convert the quantity to kilograms and calculate the environmental impact.
+- Project assumptions, such as the generic fresh beef mapping, are explicitly documented.
+- If there is insufficient evidence for either the emission factor or quantity conversion, do not estimate the result.
+- Unsupported assessments are marked as `EXCLUDED`.
 
-This approach prioritises both **data coverage** and **traceability**,
-while avoiding unsupported environmental impact estimates.
+This approach prioritises both **data coverage** and **traceability**, while avoiding unsupported environmental impact estimates.
 
-------------------------------------------------------------------------
+---
 
-## 10. Final Coverage and Unit Validation
+## 10. Full Quantity Conversion Coverage
 
-The final Epic 8 static data contains:
+This release expands Epic 8 quantity conversion across all 7,881 product references.
 
--   `emission_factors.csv`: **1,782 records**
--   `quantity_conversions.csv`: **363 records**
--   `emission_factor_mapping_audit.csv`: **1,782 records** (audit only;
-    not imported)
+### 10.1 Runtime precedence
 
-### Category coverage
+Always select the most specific active conversion:
 
-The emission-factor dataset now contains at least one supported mapping
-for all **16 PantrySentry product categories**:
+1. Direct reference-specific measured/label/PriceCatcher conversion.
+2. Product/reference-specific official food-measure conversion.
+3. Product-level representative conversion.
+4. Reference/category representative fallback.
+5. Generic exact SI conversion.
 
-`1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18`
+A fallback must never override a more specific conversion.
 
-The five categories added in the final review were mapped conservatively
-using a clearly identifiable representative product:
+### 10.2 Mass units
 
--   Category 6 -- Snacks: `Banana crisps` → `Bananas`
--   Category 11 -- Baby Food: `Baby food jar with banana` → `Bananas`
--   Category 12 -- Baked Goods: `Baguettes` → `Wheat & Rye`
--   Category 13 -- Condiments, Sauces & Canned Goods: `Canned peas` →
-    `Peas`
--   Category 17 -- Deli & Prepared Foods: `Bean dishes` → `Other Pulses`
+Exact generic paths are available for `kg`, `g` and `mg`. These are not assumptions.
 
-These are documented representative mappings. They do not imply that
-every product in the corresponding category uses the same emission
-factor. Complex or mixed products remain unmapped unless a sufficiently
-defensible product-level mapping is available.
+### 10.3 Pieces and dozen
 
-### Supported application unit strings
+Every product reference has a final `pcs -> kg` path. Direct piece weights or pieces-per-kilogram data remain preferred. Where no direct evidence exists, a representative household-unit weight is supplied and explicitly marked `is_assumed = 1`.
 
-Unit strings are case-sensitive and follow the application UI:
+Every product reference also has a `dozen -> kg` path. It is derived as `12 x kg per pcs` when no more specific conversion exists.
 
-`pcs, g, kg, mg, mL, L, pack, box, bottle, can, dozen`
+### 10.4 Litre and millilitre
 
-The final conversion file uses `mL` rather than `ml`.
+Every product reference has a final `l -> kg` and `ml -> kg` path. Existing food-specific density conversions remain preferred. Missing densities receive a category-representative density fallback informed by the methodology used in AUSNUT 2023 and the FAO/INFOODS Density Database. These fallbacks are explicitly marked `is_assumed = 1`.
 
-Generic conversions with `reference_id = NULL` include:
+The fallback is intended for environmental-impact estimation when the application already contains a historical volume-unit record. The frontend should still prefer natural units for the food (for example `g/kg` for solid meat).
 
--   `g → kg = 0.001`
--   `mg → kg = 0.000001`
--   `mL → L = 0.001`
--   `dozen → pcs = 12`
+### 10.5 Coverage
 
-Product-specific conversions remain available where reliable evidence
-supports:
+Reference count: 7,881
 
--   `mL → kg`
--   `L → kg`
--   `pcs → kg`
+- `pcs -> kg`: 7881 / 7,881
+- `dozen -> kg`: 7881 / 7,881
+- `l -> kg`: 7881 / 7,881
+- `ml -> kg`: 7881 / 7,881
+- `g -> kg`: generic exact conversion, applies to all references
+- `kg -> kg`: generic exact identity conversion, applies to all references
+- `mg -> kg`: generic exact conversion, applies to all references
 
-No generic `pack`, `box`, `bottle`, or `can` to kilogram conversion is
-provided because package mass is product-specific.
+Therefore every current product reference has a conversion route to kilograms for the supported units above.
 
-### Reference-key mapping
+### 10.6 Sources and assumptions
 
-`emission_factor_mapping_audit.csv` serves as the mapping reference for:
+Primary sources:
+- Malaysia PriceCatcher Item Lookup: https://open.dosm.gov.my/data-catalogue/lookup_item
+- FSANZ AUSNUT 2023 Food Measures: https://www.foodstandards.gov.au/science-data/food-nutrient-databases/ausnut/food-measures
+- FAO/INFOODS Density Database v2: https://www.fao.org/food-composition/tables-and-databases/detail/%28global--2012%29-fao-infoods-density-database---version-2/en
 
-`reference_key → product_name → category_id → mapped_food_type → emission factor`
+AUSNUT 2023 provides food-specific portions and densities and documents the use of measured, label, borrowed and imputed measures. FAO/INFOODS supports density-based volume-to-mass conversion. PriceCatcher is preferred where Malaysian item specifications provide direct unit information.
 
-The audit file should be used to resolve or validate the actual database
-`reference_id` during import. It is not imported as a database table.
+Fallback values are project assumptions for CO2e estimation. They must remain identifiable through `is_assumed = 1` and explanatory notes.
 
-### Encoding
+### 10.7 CO2e rule
 
-All three final Epic 8 CSV files are encoded as **UTF-8 without BOM**.
+`footprint_kg_co2e = converted_weight_kg x factor_kg_co2e_per_kg`
+
+Quantity conversion and emission-factor selection are separate. Full unit-conversion coverage does not justify inventing an emission factor. If no valid emission factor exists after reference/category fallback, the assessment remains `EXCLUDED` with a `NULL` footprint, never zero.

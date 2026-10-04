@@ -616,17 +616,29 @@ class ApiDataStore
   }
 
   @override
+  Future<RecipeSuggestions> getAiRecipeSuggestions({
+    required String householdId,
+    required DateTime today,
+    bool refresh = false,
+  }) async {
+    final query = Uri(queryParameters: {
+      'today': _dateOnly(DateTime(today.year, today.month, today.day)),
+      if (refresh) 'refresh': 'true',
+    }).query;
+    final json = await _get('/households/$householdId/recipe-suggestions/ai?$query');
+    return RecipeSuggestions.fromJson(json as Map<String, dynamic>);
+  }
+
+  @override
   Future<RecipeUsageResult> recordRecipeUsage({
     required String householdId,
-    required String submissionId,
+    required String idempotencyKey,
     required String recipeId,
-    required String recipeTitle,
     required List<IngredientUse> uses,
   }) async {
-    final json = await _post('/households/$householdId/recipe-usage', {
-      'submissionId': submissionId,
+    final json = await _post('/households/$householdId/recipe-cook-sessions', {
+      'idempotencyKey': idempotencyKey,
       'recipeId': recipeId,
-      'recipeTitle': recipeTitle,
       'ingredients': uses.map((u) => u.toJson()).toList(),
     });
     return RecipeUsageResult.fromJson(json as Map<String, dynamic>);

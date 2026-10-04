@@ -288,7 +288,8 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
 
     return [
       _buildHeadlineCard(data),
-      if (data.changeVsPrevious != null) ...[
+      // No comparison when this period's waste couldn't be estimated at all.
+      if (data.changeVsPrevious != null && !(data.wastedItemCount > 0 && data.estimatedItemCount == 0)) ...[
         const SizedBox(height: 12),
         _buildComparison(data),
       ],
@@ -335,6 +336,18 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
             const SizedBox(height: 4),
             Text(
               data.isPeriodInProgress ? 'Nothing thrown out this $_periodWord so far 🌱' : 'Nothing thrown out this $_periodWord 🌱',
+              style: TextStyle(color: Colors.grey.shade800, fontSize: 13),
+            ),
+          ] else if (data.estimatedItemCount == 0) ...[
+            // Food was wasted, but none of it could be converted to CO2e.
+            // Showing "0.0 L / 0 kg" here would claim zero impact — the
+            // data team's rule is that missing data is never shown as 0.
+            Text('Not available yet', style: AppTheme.statNumberStyle.copyWith(fontSize: 26, color: Colors.grey.shade800)),
+            const SizedBox(height: 4),
+            Text(
+              '${data.wastedItemCount} wasted item${data.wastedItemCount == 1 ? '' : 's'} this $_periodWord, but we don\'t have '
+              'the data to estimate ${data.wastedItemCount == 1 ? 'its' : 'their'} carbon footprint. '
+              'See "How each item was counted" below for why.',
               style: TextStyle(color: Colors.grey.shade800, fontSize: 13),
             ),
           ] else ...[
@@ -608,14 +621,17 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
     String detail;
     switch (item.status) {
       case ImpactItemStatus.estimated:
-        final approx = item.weightBasis == WeightBasis.mass ? '' : '≈';
+        final approx = item.weightIsAssumed ? '≈' : '';
         detail = '$qty ${item.unit} → $approx${_formatKg(item.kgWasted!)} kg × ${item.emissionFactor} (${item.factorEntity})';
         break;
       case ImpactItemStatus.noFactor:
-        detail = '$qty ${item.unit} · no emission data for ${item.category.label} yet';
+        // Wording from the data team's Epic 8 README for excluded items.
+        detail = '$qty ${item.unit} · environmental impact data is currently unavailable for this item';
         break;
       case ImpactItemStatus.unknownWeight:
-        detail = '$qty ${item.unit} · no average weight for "${item.unit}" in ${item.category.label} yet';
+        // Usually "pcs"/"pack": there's no reliable weight for one piece of
+        // most foods, so the hint tells people how to get it counted.
+        detail = '$qty ${item.unit} · can\'t convert "${item.unit}" to kg for this item yet (entering it in g or kg lets it be counted)';
         break;
     }
     return Padding(
@@ -655,9 +671,9 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
           '${data.excludedItemCount == 1 ? 'isn\'t' : 'aren\'t'} included.');
     }
     if (data.hasApproximateWeights) {
-      lines.add('Some weights are approximate (items measured in pieces, packs or litres).');
+      lines.add('Some figures are based on assumed values (a typical piece weight or density for that food).');
     }
-    lines.add('Estimates use each item\'s category, quantity and discard record, and cover the food\'s whole lifecycle, not just landfill.');
+    lines.add('Estimates use each item\'s product, quantity and discard record, and cover the food\'s whole lifecycle, not just landfill.');
     return Text(lines.join(' '), style: TextStyle(fontSize: 10.5, color: Colors.grey.shade600));
   }
 
@@ -676,8 +692,10 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
             'show the impact of producing food that was never eaten, not only what happens in landfill.\n\n'
             'To make the number easier to picture, we compare it with burning petrol: 1 litre of petrol produces '
             'about $petrolFactor kg CO₂e.\n\n'
-            'Items entered in pieces, packs or litres use an average weight, so those figures are approximate. '
-            'Items we don\'t have data for are left out rather than guessed.\n\n'
+            'Amounts in g or kg are converted exactly. Litres, millilitres, pieces and dozens are converted with a '
+            'conversion for that specific food: a measured value where one exists, otherwise an assumed typical density '
+            'or piece weight. Figures that use an assumed value are marked ≈. If an item can\'t be matched to our food '
+            'data, it is left out rather than guessed, and never counted as zero.\n\n'
             'Sources: Poore, J. & Nemecek, T. (2018), Science 360(6392), 987–992, via Our World in Data. '
             'Petrol factor: ${_data?.petrolSourceName ?? 'DEFRA 2023, as used by MGTC Malaysia'}. '
             'Calculation method adapted from the GHG Protocol.',

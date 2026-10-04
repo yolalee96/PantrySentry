@@ -3,7 +3,8 @@ const pool = require('../db');
 const { CATEGORY_DART_NAMES } = require('../util/enums');
 const { assertMember } = require('../util/household_access');
 const { ApiError, asyncHandler } = require('../util/errors');
-const { toKilograms, unitWeightKey } = require('../util/weight');
+const { normaliseUnit } = require('../util/weight');
+const { assessPendingDiscards, REASON_NO_CONVERSION } = require('../util/waste_impact');
 const { PETROL_KG_CO2E_PER_LITRE, PETROL_SOURCE_NAME, petrolLitresFor } = require('../util/equivalents');
 
 const router = express.Router();
@@ -26,14 +27,16 @@ const router = express.Router();
 // count uses, so the two numbers always describe the same set of items.
 // Donated items are not waste and are never counted.
 //
-// Reference tables (created/filled by the data team — see
-// migrations/epic8_emission_factors.sql):
-//   emission_factor_reference — one factor per category (reference_id
-//     NULL), plus optional product-specific overrides (reference_id set).
-//   unit_weight_reference — average kg per pcs/pack/box/... per category.
-// Until those tables exist (or while the factor table is empty), this
-// returns { status: 'pendingData' } instead of an error, so the frontend
-// can be deployed ahead of the data.
+// Data (built by the data team, Iteration 3 schema):
+//   emission_factors         — OWID factors per product_reference row
+//   quantity_conversions     — unit -> kg conversions (generic + per product)
+//   waste_impact_assessments — one row per DISCARD transaction, with the
+//                              conversion and factor used snapshotted
+// This route makes sure every discard in the requested span has an
+// assessment (util/waste_impact.js), then reports from those rows, so the
+// numbers shown always match what's stored and auditable in the DB.
+// Items the data can't cover are EXCLUDED (never counted as 0) and shown
+// as "couldn't be estimated".
 
 const MAX_RANGE_DAYS = 366;
 const MAX_TREND_PERIODS = 6; // e.g. 4 weeks or 4 months on screen; 6 allows a little headroom
@@ -67,65 +70,19 @@ function round(n, dp = 3) {
   return Math.round(n * f) / f;
 }
 
-async function loadReferenceData() {
-  try {
-    const [factorRows] = await pool.query(
-      `SELECT category_id, reference_id, owid_entity, kg_co2e_per_kg
-       FROM emission_factor_reference`
-    );
-    const [weightRows] = await pool.query(
-      'SELECT category_id, unit, kg_per_unit FROM unit_weight_reference'
-    );
-    if (factorRows.length === 0) return null;
+const MASS_UNITS = new Set(['g', 'kg', 'mg']);
+const VOLUME_UNITS = new Set(['ml', 'l']);
 
-    const byCategory = new Map();
-    const byReference = new Map();
-    for (const row of factorRows) {
-      const factor = { kgCo2ePerKg: Number(row.kg_co2e_per_kg), entity: row.owid_entity };
-      if (!Number.isFinite(factor.kgCo2ePerKg) || factor.kgCo2ePerKg < 0) continue;
-      if (row.reference_id === null || row.reference_id === undefined) {
-        byCategory.set(Number(row.category_id), factor);
-      } else {
-        byReference.set(Number(row.reference_id), factor);
-      }
-    }
-    const unitWeights = new Map();
-    for (const row of weightRows) {
-      const kg = Number(row.kg_per_unit);
-      if (Number.isFinite(kg) && kg > 0) unitWeights.set(unitWeightKey(Number(row.category_id), row.unit), kg);
-    }
-    return { byCategory, byReference, unitWeights };
-  } catch (err) {
-    // Tables not created yet — the data team's migration hasn't run.
-    if (err && (err.code === 'ER_NO_SUCH_TABLE' || err.errno === 1146)) return null;
-    throw err;
-  }
+/** How the weight was obtained, for the UI's "approximate" note. */
+function weightBasisFor(unit) {
+  const u = normaliseUnit(unit);
+  if (MASS_UNITS.has(u)) return 'mass';
+  if (VOLUME_UNITS.has(u)) return 'volume';
+  return 'unitWeight';
 }
 
-/** Works out one wasted item's CO2e, or why it couldn't be. */
-function estimateItem(row, ref) {
-  const factor =
-    (row.reference_id !== null && row.reference_id !== undefined && ref.byReference.get(Number(row.reference_id))) ||
-    ref.byCategory.get(Number(row.category_id)) ||
-    null;
-  const factorSource = factor
-    ? (row.reference_id !== null && row.reference_id !== undefined && ref.byReference.has(Number(row.reference_id)) ? 'product' : 'category')
-    : null;
-  const weight = toKilograms(row.quantity, row.unit, Number(row.category_id), ref.unitWeights);
-
-  let status = 'estimated';
-  if (!factor) status = 'noFactor';
-  else if (!weight) status = 'unknownWeight';
-
-  return {
-    status,
-    kgWasted: weight ? weight.kg : null,
-    weightBasis: weight ? weight.basis : null,
-    emissionFactor: factor ? factor.kgCo2ePerKg : null,
-    factorEntity: factor ? factor.entity : null,
-    factorSource,
-    kgCo2e: status === 'estimated' ? weight.kg * factor.kgCo2ePerKg : null,
-  };
+function isMissingTable(err) {
+  return err && (err.code === 'ER_NO_SUCH_TABLE' || err.errno === 1146);
 }
 
 // GET /households/:householdId/environmental-impact
@@ -171,70 +128,93 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
       end: new Date((i + 1 < trendStarts.length ? trendStarts[i + 1] : start).getTime() - 1),
     })),
     { start, end },
-  ].map((p) => ({ ...p, kgCo2e: 0, hasActivity: false }));
+  ].map((p) => ({ ...p, kgCo2e: 0, hasActivity: false, wasted: 0, assessed: 0 }));
 
-  const ref = await loadReferenceData();
-  if (!ref) {
-    return res.json({ status: 'pendingData' });
+  // Assess any discard in the whole span that doesn't have an assessment
+  // yet. 'pendingData' only if the Epic 8 tables/data aren't there.
+  try {
+    const [factorCheck] = await pool.query('SELECT 1 FROM emission_factors WHERE is_active = 1 LIMIT 1');
+    if (factorCheck.length === 0) return res.json({ status: 'pendingData' });
+    await assessPendingDiscards(pool, req.params.householdId, { from: toDbDateTime(earliest), to: toDbDateTime(end) });
+  } catch (err) {
+    if (isMissingTable(err)) return res.json({ status: 'pendingData' });
+    throw err;
   }
 
-  // Every resolved item across all periods in one query. Non-discarded
-  // items only tell "no activity at all" apart from "a real zero-waste
-  // period", so a comparison is never made against an empty period.
-  const [rows] = await pool.query(
-    `SELECT ii.inventory_item_id, ii.quantity, ii.unit, ii.status, ii.checkout_date,
-            p.product_name, p.category_id, pc.category_name, pr.reference_id
-     FROM inventory_items ii
-     JOIN products p ON p.product_id = ii.product_id
-     JOIN product_categories pc ON pc.category_id = p.category_id
-     LEFT JOIN product_reference pr ON pr.product_id = ii.product_id
-     WHERE ii.team_id = ?
-       AND ii.status IN ('CONSUMED', 'DISCARDED', 'DONATED')
-       AND ii.checkout_date BETWEEN ? AND ?`,
+  // Resolved items of any kind, only to tell "no activity at all" apart
+  // from "a real zero-waste period", so a comparison is never made
+  // against an empty period.
+  const [activityRows] = await pool.query(
+    `SELECT checkout_date FROM inventory_items
+     WHERE team_id = ? AND status IN ('CONSUMED', 'DISCARDED', 'DONATED')
+       AND checkout_date BETWEEN ? AND ?`,
     [req.params.householdId, toDbDateTime(earliest), toDbDateTime(end)]
   );
+  for (const row of activityRows) {
+    const t = fromDbDateTime(row.checkout_date);
+    const period = periods.find((p) => t >= p.start && t <= p.end);
+    if (period) period.hasActivity = true;
+  }
 
-  // The LEFT JOIN can repeat an item if a product has several reference
-  // rows — keep one row per inventory item.
-  const seen = new Set();
-  const uniqueRows = rows.filter((r) => (seen.has(r.inventory_item_id) ? false : seen.add(r.inventory_item_id)));
+  const [rows] = await pool.query(
+    `SELECT w.inventory_item_id, w.discarded_quantity, w.discarded_unit, w.converted_weight_kg,
+            w.factor_kg_co2e_per_kg_snapshot, w.footprint_kg_co2e, w.assessment_status,
+            w.exclusion_reason, w.discarded_at, qc.is_assumed, ef.food_type,
+            p.product_name, pc.category_name
+     FROM waste_impact_assessments w
+     LEFT JOIN products p ON p.product_id = w.product_id
+     LEFT JOIN product_categories pc ON pc.category_id = w.category_id
+     LEFT JOIN emission_factors ef ON ef.factor_id = w.factor_id
+     LEFT JOIN quantity_conversions qc ON qc.conversion_id = w.conversion_id
+     WHERE w.team_id = ? AND w.discarded_at BETWEEN ? AND ?`,
+    [req.params.householdId, toDbDateTime(earliest), toDbDateTime(end)]
+  );
 
   const current = periods[periods.length - 1];
   const items = [];
   const byCategory = new Map();
 
-  for (const row of uniqueRows) {
-    const resolvedAt = fromDbDateTime(row.checkout_date);
-    const period = periods.find((p) => resolvedAt >= p.start && resolvedAt <= p.end);
+  for (const row of rows) {
+    const discardedAt = fromDbDateTime(row.discarded_at);
+    const period = periods.find((p) => discardedAt >= p.start && discardedAt <= p.end);
     if (!period) continue;
     period.hasActivity = true;
-    if (row.status !== 'DISCARDED') continue;
-
-    const estimate = estimateItem(row, ref);
-    if (estimate.status === 'estimated') period.kgCo2e += estimate.kgCo2e;
+    const assessed = row.assessment_status === 'ASSESSED';
+    const kgCo2e = assessed ? Number(row.footprint_kg_co2e) : null;
+    period.wasted += 1;
+    if (assessed) {
+      period.kgCo2e += kgCo2e;
+      period.assessed += 1;
+    }
     if (period !== current) continue;
 
     const category = CATEGORY_DART_NAMES[row.category_name] ?? 'shelfStableFoods';
+    const kgWasted = row.converted_weight_kg === null ? null : Number(row.converted_weight_kg);
+    const status = assessed
+      ? 'estimated'
+      : (row.exclusion_reason === REASON_NO_CONVERSION ? 'unknownWeight' : 'noFactor');
     items.push({
       id: String(row.inventory_item_id),
-      name: row.product_name,
+      name: row.product_name || 'Item',
       category,
-      quantity: Number(row.quantity),
-      unit: row.unit || 'pcs',
-      resolvedAt: row.checkout_date,
-      status: estimate.status,
-      kgWasted: estimate.kgWasted === null ? null : round(estimate.kgWasted),
-      weightBasis: estimate.weightBasis,
-      emissionFactor: estimate.emissionFactor,
-      factorEntity: estimate.factorEntity,
-      factorSource: estimate.factorSource,
-      kgCo2e: estimate.kgCo2e === null ? null : round(estimate.kgCo2e),
+      quantity: Number(row.discarded_quantity),
+      unit: row.discarded_unit || 'pcs',
+      resolvedAt: row.discarded_at,
+      status,
+      kgWasted: kgWasted === null ? null : round(kgWasted),
+      weightBasis: kgWasted === null ? null : weightBasisFor(row.discarded_unit),
+      // From the conversion row actually used (quantity_conversions.is_assumed).
+      weightIsAssumed: Boolean(Number(row.is_assumed)),
+      emissionFactor: row.factor_kg_co2e_per_kg_snapshot === null ? null : Number(row.factor_kg_co2e_per_kg_snapshot),
+      factorEntity: row.food_type || null,
+      factorSource: row.factor_kg_co2e_per_kg_snapshot === null ? null : 'product',
+      kgCo2e: kgCo2e === null ? null : round(kgCo2e),
     });
 
-    if (estimate.status !== 'estimated') continue;
+    if (!assessed) continue;
     const c = byCategory.get(category) || { category, kgCo2e: 0, kgWasted: 0, itemCount: 0 };
-    c.kgCo2e += estimate.kgCo2e;
-    c.kgWasted += estimate.kgWasted;
+    c.kgCo2e += kgCo2e;
+    c.kgWasted += kgWasted;
     c.itemCount += 1;
     byCategory.set(category, c);
   }
@@ -243,6 +223,7 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
   const total = current.kgCo2e;
   const previous = periods.length > 1 ? periods[periods.length - 2] : null;
   const now = new Date();
+  const unknownOnly = (p) => p.wasted > 0 && p.assessed === 0;
 
   res.json({
     status: 'ready',
@@ -252,7 +233,10 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
     // one of the two periods) — the same rule that fixed the Iteration 2
     // "400% more waste" bug. Compared as an absolute kg difference, not a
     // percentage, so a near-zero previous period can't blow it up.
-    previousTotalKgCo2e: previous && previous.hasActivity && current.hasActivity ? round(previous.kgCo2e) : null,
+    // Also null when either period had waste that couldn't be estimated
+    // at all — its 0 would be "unknown", not "no impact".
+    previousTotalKgCo2e: previous && previous.hasActivity && current.hasActivity && !unknownOnly(previous) && !unknownOnly(current)
+      ? round(previous.kgCo2e) : null,
     // The selected period hasn't finished yet (e.g. "this week" on a
     // Wednesday) — the UI says "so far" so a half-finished week isn't
     // presented as an improvement over a full one.
@@ -268,14 +252,19 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
       noFactor: items.filter((i) => i.status === 'noFactor').length,
       unknownWeight: items.filter((i) => i.status === 'unknownWeight').length,
     },
-    hasApproximateWeights: estimated.some((i) => i.weightBasis !== 'mass'),
+    // True when any counted item's kg came from an assumed conversion
+    // (is_assumed = 1, e.g. a typical piece weight) — the report then says
+    // the figure is "based on assumed values".
+    hasApproximateWeights: estimated.some((i) => i.weightIsAssumed),
     byCategory: [...byCategory.values()]
       .map((c) => ({ ...c, kgCo2e: round(c.kgCo2e), kgWasted: round(c.kgWasted) }))
       .sort((a, b) => b.kgCo2e - a.kgCo2e),
     trend: periods.map((p) => ({
       start: p.start.toISOString(),
       end: p.end.toISOString(),
-      kgCo2e: round(p.kgCo2e),
+      // null = waste happened but none of it could be estimated (shown as
+      // "–", never as a 0 bar).
+      kgCo2e: unknownOnly(p) ? null : round(p.kgCo2e),
       hasActivity: p.hasActivity,
       isComplete: p.end <= now,
     })),
@@ -284,4 +273,4 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
 }));
 
 module.exports = router;
-module.exports._internal = { estimateItem, fromDbDateTime, toDbDateTime };
+module.exports._internal = { fromDbDateTime, toDbDateTime, weightBasisFor };

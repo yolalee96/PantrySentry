@@ -4,6 +4,8 @@ const { avatarIdToKey } = require('../util/avatars');
 const { CATEGORY_DB_NAMES, CATEGORY_DART_NAMES, STORAGE_DB_NAMES, STORAGE_DART_NAMES } = require('../util/enums');
 const { assertMember, assertMemberForItem } = require('../util/household_access');
 const { ApiError, asyncHandler } = require('../util/errors');
+const { assessPendingDiscards } = require('../util/waste_impact');
+const { foldPlural } = require('../util/product_reference');
 
 const router = express.Router();
 
@@ -77,11 +79,19 @@ async function findOrCreateProductId(conn, name, category) {
   );
   if (exact.length > 0) return exact[0].product_id;
 
-  const [partial] = await conn.query(
-    'SELECT product_id FROM products WHERE category_id = ? AND LOWER(product_name) LIKE LOWER(?) LIMIT 1',
-    [categoryId, `%${name}%`]
+  // Singular/plural of the same name ("Tomatoes" -> catalogue "Tomato").
+  // This used to be a LIKE '%name%' match, which silently renamed items
+  // to a different food: "Onion" became "Spring Onion", "Eggs" became
+  // "Chicken Eggs Grade A", "Milk" became "Fresh milk". That showed the
+  // wrong name in the inventory and broke recipe matching and the CO2e
+  // factors (Epic 6/8), so only the same word is accepted now.
+  const folded = foldPlural(name);
+  const [samePlural] = await conn.query(
+    'SELECT product_id, product_name FROM products WHERE category_id = ? AND LOWER(product_name) LIKE ?',
+    [categoryId, `${folded.split(' ')[0]}%`]
   );
-  if (partial.length > 0) return partial[0].product_id;
+  const pluralMatch = samePlural.find((p) => foldPlural(p.product_name) === folded);
+  if (pluralMatch) return pluralMatch.product_id;
 
   const [result] = await conn.query(
     'INSERT INTO products (category_id, product_name) VALUES (?, ?)',
@@ -111,7 +121,7 @@ router.get('/households/:householdId/inventory-items', asyncHandler(async (req, 
 router.post('/households/:householdId/inventory-items', asyncHandler(async (req, res) => {
   await assertMember(req.userId, req.params.householdId);
   const { name, quantity, storageLocation, category, useByDate } = req.body;
-  const unit = req.body.unit || 'pcs';
+  const unit = req.body.unit || 'kg'; // same default as the app's Add Item screen
   const notes = req.body.notes || null;
   // Optional — what the user actually paid, not a per-unit figure.
   const price = req.body.price !== undefined && req.body.price !== null ? Number(req.body.price) : null;
@@ -330,6 +340,18 @@ router.post('/inventory-items/:id/resolve', asyncHandler(async (req, res) => {
       [req.params.id]
     );
     await conn.commit();
+
+    // Epic 8 — record the environmental impact of this discard straight
+    // away. Best effort, AFTER the commit: a problem with the impact data
+    // must never stop someone discarding an item. Anything missed here is
+    // picked up the next time the Impact tab is opened.
+    if (disposition === 'discarded') {
+      try {
+        await assessPendingDiscards(pool, item.team_id, { inventoryItemId: req.params.id });
+      } catch (err) {
+        console.error('Epic 8 assessment after discard failed (will retry from the report):', err.code || err.message);
+      }
+    }
 
     const [updatedRows] = await conn.query(`${ITEM_SELECT} WHERE ii.inventory_item_id = ?`, [req.params.id]);
     res.json(itemRowToJson(updatedRows[0]));

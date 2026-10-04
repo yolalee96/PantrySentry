@@ -23,11 +23,16 @@ class RecordIngredientsScreen extends StatefulWidget {
 /// twice (e.g. "eggs" for batter and for glazing), the amounts are
 /// combined, since the server deducts per item.
 class _UseRow {
-  _UseRow({required this.item, required this.ingredientNames, required double? suggested})
+  _UseRow({required this.item, required this.ingredientNames, required this.ingredientId, required this.suggested})
       : controller = TextEditingController(text: suggested == null ? '' : formatQuantity(suggested));
 
   final MatchedInventoryItem item;
   final List<String> ingredientNames;
+  /// The (first) recipe ingredient line this item was matched to.
+  final String ingredientId;
+  /// What the recipe called for, in the item's unit — stored with the
+  /// cooking session as the planned quantity.
+  final double? suggested;
   final TextEditingController controller;
   bool selected = true;
   String? error;
@@ -37,8 +42,8 @@ class _RecordIngredientsScreenState extends State<RecordIngredientsScreen> {
   late final List<_UseRow> _rows;
   // AC 6.3.7 — created once per review and reused for every retry of
   // THIS submission, so a retry after a network error can never deduct
-  // twice. A new review (re-opening the screen) gets a new id.
-  late final String _submissionId =
+  // twice. A new review (re-opening the screen) gets a new key.
+  late final String _idempotencyKey =
       '${IdService.newId('ru')}-${DateTime.now().millisecondsSinceEpoch}';
   bool _saving = false;
   String? _formError;
@@ -49,12 +54,14 @@ class _RecordIngredientsScreenState extends State<RecordIngredientsScreen> {
     // Group by inventory item, keeping recipe order.
     final items = <String, MatchedInventoryItem>{};
     final names = <String, List<String>>{};
+    final firstIngredientId = <String, String>{};
     final suggestedTotals = <String, double?>{};
     for (final ing in widget.recipe.ingredients) {
       final item = ing.inventoryItem;
       if (item == null) continue;
       items.putIfAbsent(item.id, () => item);
       names.putIfAbsent(item.id, () => []).add(ing.name);
+      firstIngredientId.putIfAbsent(item.id, () => ing.ingredientId);
       // Sum the suggestions; if any part couldn't be converted, leave the
       // amount blank for the user rather than pre-filling a partial total.
       if (!suggestedTotals.containsKey(item.id)) {
@@ -68,7 +75,7 @@ class _RecordIngredientsScreenState extends State<RecordIngredientsScreen> {
     _rows = items.values.map((item) {
       final total = suggestedTotals[item.id];
       final capped = total == null ? null : (total > item.quantity ? item.quantity : total);
-      return _UseRow(item: item, ingredientNames: names[item.id]!, suggested: capped);
+      return _UseRow(item: item, ingredientNames: names[item.id]!, ingredientId: firstIngredientId[item.id]!, suggested: capped);
     }).toList();
   }
 
@@ -108,19 +115,22 @@ class _RecordIngredientsScreenState extends State<RecordIngredientsScreen> {
       setState(() {});
       return;
     }
-    // AC 6.3.2 — unticked ingredients are simply not sent.
+    // AC 6.3.2 — unticked ingredients are sent with selected: false, so
+    // the cooking session records them, but they are never deducted.
     final uses = _rows
-        .where((r) => r.selected)
         .map((r) => IngredientUse(
               inventoryItemId: r.item.id,
-              quantityUsed: double.parse(r.controller.text.trim().replaceAll(',', '.')),
+              selected: r.selected,
+              ingredientId: r.ingredientId,
+              plannedQuantity: r.suggested,
+              quantityUsed: r.selected ? double.parse(r.controller.text.trim().replaceAll(',', '.')) : null,
             ))
         .toList();
 
     setState(() => _saving = true);
     try {
       final result = await widget.appState.recordRecipeUsage(
-        submissionId: _submissionId,
+        idempotencyKey: _idempotencyKey,
         recipe: widget.recipe,
         uses: uses,
       );

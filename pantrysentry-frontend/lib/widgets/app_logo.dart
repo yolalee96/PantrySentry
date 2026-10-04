@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppLogo extends StatelessWidget {
   const AppLogo({
     super.key,
-    this.markSize = 250,
+    this.markSize = 400,
     this.showWordmark = true,
     this.wordmarkFontSize = 22,
     this.direction = Axis.vertical,

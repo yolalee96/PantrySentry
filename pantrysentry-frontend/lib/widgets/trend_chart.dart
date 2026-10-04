@@ -55,16 +55,16 @@ class _TrendBarPainter extends CustomPainter {
       ..strokeWidth = 1;
     final labelStyle = TextStyle(color: Colors.grey.shade600, fontSize: 9);
 
-    int? lastLabelValue;
-    for (final fraction in [0.0, 0.5, 1.0]) {
-      final y = chartHeight - (chartHeight * fraction);
+    // Gridlines sit on whole numbers at an even step (1, 2, 5, 10, ...),
+    // and the axis top is rounded up to a multiple of that step. Before,
+    // gridlines were drawn at 0% / 50% / 100% of the max and the label
+    // was rounded — with a max of 3 the middle line sat at 1.5 but was
+    // labelled "2", so 1-item bars looked far too short against it.
+    final step = _niceStep(maxVal);
+    final axisMax = ((maxVal + step - 1) ~/ step) * step;
+    for (var value = 0; value <= axisMax; value += step) {
+      final y = chartHeight - chartHeight * value / axisMax;
       canvas.drawLine(Offset(leftPad, y), Offset(size.width, y), gridPaint);
-      final value = (maxVal * fraction).round();
-      // Skip a label that duplicates the one just drawn (e.g. maxVal=1
-      // makes the midpoint round to 1 too, same as the top) — the
-      // gridline still draws, just without a redundant repeated number.
-      if (value == lastLabelValue) continue;
-      lastLabelValue = value;
       final tp = TextPainter(
         text: TextSpan(text: '$value', style: labelStyle),
         textDirection: TextDirection.ltr,
@@ -80,7 +80,7 @@ class _TrendBarPainter extends CustomPainter {
     final barGap = slotWidth * 0.06;
     final barWidth = (slotWidth - groupPadding * 2 - barGap) / 2;
 
-    double heightFor(int value) => maxVal == 0 ? 0 : chartHeight * value / maxVal;
+    double heightFor(int value) => chartHeight * value / axisMax;
 
     final consumedPaint = Paint()..color = _consumedColor;
     final wastedPaint = Paint()..color = _wastedColor;
@@ -103,14 +103,26 @@ class _TrendBarPainter extends CustomPainter {
       canvas.drawRRect(RRect.fromRectAndCorners(wastedRect, topLeft: const Radius.circular(2), topRight: const Radius.circular(2)), wastedPaint);
 
       // Day label — thin out if there are many points (monthly view).
-      final step = (points.length / 10).ceil().clamp(1, points.length);
-      if (i % step == 0) {
+      final labelEvery = (points.length / 10).ceil().clamp(1, points.length);
+      if (i % labelEvery == 0) {
         final label = points.length <= 10 ? weekdayShort[points[i].date.weekday - 1] : '${points[i].date.day}';
         final tp = TextPainter(
           text: TextSpan(text: label, style: labelStyle),
           textDirection: TextDirection.ltr,
         )..layout();
         tp.paint(canvas, Offset(slotLeft + slotWidth / 2 - tp.width / 2, chartHeight + 4));
+      }
+    }
+  }
+
+  /// Smallest "nice" step (1, 2, 5, 10, 20, 50, ...) that keeps the
+  /// chart to about 5 gridlines or fewer. Small counts (max 5 or less)
+  /// get a line at every whole number.
+  static int _niceStep(int maxVal) {
+    for (var magnitude = 1; ; magnitude *= 10) {
+      for (final m in const [1, 2, 5]) {
+        final step = m * magnitude;
+        if (maxVal / step <= 5) return step;
       }
     }
   }

@@ -16,7 +16,7 @@
 --     is repeatable and leaves no test data behind.
 --   * Consume, discard and donate operations lock the target row with
 --     SELECT ... FOR UPDATE to simulate concurrent-safe stock updates.
---   * Scenario 43 is the only block without a transaction because DDL
+--   * Scenario 44 is the only block without a transaction because DDL
 --     statements cause implicit commits in MySQL.
 -- ============================================================
 
@@ -1122,8 +1122,50 @@ WHERE w.team_id = 1;
 ROLLBACK;
 
 -- ============================================================
--- SCENARIO 43: clean schema recreation
--- Drop all 28 tables (reverse dependency order) so the schema can be
+-- SCENARIO 43: Epic 6 AI recipe generation cache
+-- Verifies the JSON columns, the CASCADE foreign key to teams and the
+-- RESTRICT foreign key to users.
+-- ============================================================
+START TRANSACTION;
+
+INSERT INTO users (email, password_hash, display_name)
+VALUES ('temp.ai.generation@example.com', '$2b$12$TEMP_AI_GENERATION_HASH_000000000001', 'Temp AI User');
+SET @temp_ai_user = LAST_INSERT_ID();
+
+INSERT INTO teams (team_name) VALUES ('Temp AI Team');
+SET @temp_ai_team = LAST_INSERT_ID();
+
+INSERT INTO recipe_ai_generations (team_id, model, input_item_ids, recipe_ids, created_by)
+VALUES (@temp_ai_team, 'gemini-flash-latest', '[101, 102]', '[1, 2]', @temp_ai_user);
+SET @generation_id = LAST_INSERT_ID();
+
+SELECT generation_id, model,
+       JSON_VALID(input_item_ids) AS input_json_valid,
+       JSON_VALID(recipe_ids) AS recipe_json_valid,
+       JSON_LENGTH(input_item_ids) AS input_item_count,
+       JSON_LENGTH(recipe_ids) AS recipe_count,
+       JSON_CONTAINS(recipe_ids, '2') AS contains_recipe_2
+FROM recipe_ai_generations
+WHERE generation_id = @generation_id;
+-- Expected: 1 row; both JSON flags 1, counts 2 and 2, contains_recipe_2 = 1
+
+-- [EXPECTED ERROR] Cannot delete or update a parent row: recipe_ai_generations
+-- references users (error 1451), because created_by is ON DELETE RESTRICT
+DELETE FROM users WHERE user_id = @temp_ai_user;
+
+-- CASCADE: deleting a team removes its cached AI generations
+DELETE FROM teams WHERE team_id = @temp_ai_team;
+
+SELECT COUNT(*) AS remaining_generations
+FROM recipe_ai_generations
+WHERE team_id = @temp_ai_team;
+-- Expected: 0 (the team cascade removed the generation row)
+
+ROLLBACK;
+
+-- ============================================================
+-- SCENARIO 44: clean schema recreation
+-- Drop all 29 tables (reverse dependency order) so the schema can be
 -- recreated from scratch. DDL causes implicit commits in MySQL, so this
 -- block intentionally runs without a transaction.
 --
@@ -1145,6 +1187,7 @@ DROP TABLE IF EXISTS recipe_cook_session_items;
 DROP TABLE IF EXISTS recipe_cook_sessions;
 DROP TABLE IF EXISTS recipe_ingredients;
 DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS recipe_ai_generations;
 DROP TABLE IF EXISTS price_observations;
 DROP TABLE IF EXISTS price_item_reference;
 DROP TABLE IF EXISTS product_keyword_mapping;

@@ -641,12 +641,20 @@ class AppState extends ChangeNotifier {
     return recipeRepo.getRecipeSuggestions(householdId: currentHousehold!.id, today: DateTime.now(), refresh: refresh);
   }
 
+  /// Read-only — see [RecipeRepository.getAiRecipeSuggestions].
+  Future<RecipeSuggestions> getAiRecipeSuggestions({bool refresh = false}) {
+    if (currentHousehold == null) {
+      return Future.value(const RecipeSuggestions(status: RecipeSuggestionsStatus.noInventory, recipes: [], expiringSoonCount: 0));
+    }
+    return recipeRepo.getAiRecipeSuggestions(householdId: currentHousehold!.id, today: DateTime.now(), refresh: refresh);
+  }
+
   /// User Story 6.3 — records what a recipe used, then refreshes items and
   /// reminders so every household screen shows the new quantities and
-  /// statuses straight away (AC 6.3.5 / 6.3.6). [submissionId] must stay
+  /// statuses straight away (AC 6.3.5 / 6.3.6). [idempotencyKey] must stay
   /// the same if the user retries the same update (AC 6.3.7).
   Future<RecipeUsageResult> recordRecipeUsage({
-    required String submissionId,
+    required String idempotencyKey,
     required Recipe recipe,
     required List<IngredientUse> uses,
   }) async {
@@ -655,9 +663,8 @@ class AppState extends ChangeNotifier {
     }
     final result = await recipeRepo.recordRecipeUsage(
       householdId: currentHousehold!.id,
-      submissionId: submissionId,
+      idempotencyKey: idempotencyKey,
       recipeId: recipe.id,
-      recipeTitle: recipe.title,
       uses: uses,
     );
     await _refreshItemsNow();

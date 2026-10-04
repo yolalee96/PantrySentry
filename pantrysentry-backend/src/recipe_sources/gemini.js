@@ -1,12 +1,8 @@
-// Epic 6 — recipe source: Gemini (Google AI Studio free tier).
-//
-// A recipe source has ONE job: given the household's eligible items,
-// propose recipes in the shape below. Everything else (what's eligible,
-// validating IDs, ranking, availability, recording usage) lives in
-// util/recipe_matching.js and routes/recipes.js, so adding the recipe
-// dataset later means adding a sibling file (e.g. recipe_sources/
-// dataset.js) with the same suggestRecipes() signature — nothing else
-// changes.
+// Epic 6 — AI recipe ideas from Gemini (Google AI Studio free tier),
+// shown alongside the recipe dataset's suggestions. This file only
+// proposes recipes; util/ai_recipes.js validates them against the real
+// inventory and saves them into the recipes tables, after which they are
+// matched, ranked and recorded exactly like dataset recipes.
 //
 //   suggestRecipes(items) -> Promise<Array<{
 //     title, description, servings, prepMinutes,
@@ -21,13 +17,28 @@
 //                   being shut down on 16 Oct 2026, so don't pin it).
 
 const { ApiError } = require('../util/errors');
-const { MAX_RECIPES } = require('../util/recipe_matching');
 
 const DEFAULT_MODEL = 'gemini-flash-latest';
-const TIMEOUT_MS = 45000;
+// Two attempts must fit inside the Vercel function time limit together.
+const ATTEMPT_TIMEOUT_MS = 25000;
+const RETRY_DELAY_MS = 1500;
+
+// The JSON shape spelled out for the schema-less retry.
+const SHAPE_EXAMPLE = JSON.stringify({
+  recipes: [{
+    title: 'string', description: 'string', servings: 2, prepMinutes: 20,
+    ingredients: [{ name: 'string', quantity: 1.5, unit: 'string', inventoryItemId: 'id from the inventory, or null' }],
+    steps: ['string'],
+  }],
+});
+const AI_RECIPE_LIMIT = 3; // a few ideas next to the dataset's recipes, not a replacement
 
 // Constrains the reply to valid JSON of exactly this shape (Gemini's
 // structured output), so we never have to scrape recipes out of prose.
+function modelName() {
+  return process.env.GEMINI_MODEL || DEFAULT_MODEL;
+}
+
 const RESPONSE_SCHEMA = {
   type: 'OBJECT',
   properties: {
@@ -74,7 +85,7 @@ function buildPrompt(items) {
   return [
     'You suggest home-cooking recipes that use up food a household already has, to reduce food waste.',
     '',
-    `Suggest up to ${Math.min(6, MAX_RECIPES)} different, realistic recipes using the household inventory below.`,
+    `Suggest up to ${AI_RECIPE_LIMIT} different, realistic recipes using the household inventory below.`,
     'Rules:',
     '- Prioritise items with the smallest daysUntilExpiry (0-3 days is urgent). Try to use every urgent item in at least one recipe.',
     '- Every recipe must use at least one inventory item.',
@@ -92,29 +103,29 @@ function buildPrompt(items) {
   ].join('\n');
 }
 
-async function suggestRecipes(items) {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new ApiError(503, 'Recipe suggestions are not set up yet (missing GEMINI_API_KEY).');
-  }
-  const model = process.env.GEMINI_MODEL || DEFAULT_MODEL;
+/**
+ * One call to Gemini. With [strictSchema] the reply is constrained to
+ * RESPONSE_SCHEMA; without it, Gemini is only asked for JSON and the
+ * shape comes from the prompt (the reply is validated by
+ * util/ai_recipes.js either way).
+ * Returns { ok: true, recipes } or { ok: false, status, body }.
+ */
+async function callGemini(apiKey, model, items, strictSchema) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const generationConfig = { responseMimeType: 'application/json', temperature: 0.7 };
+  if (strictSchema) generationConfig.responseSchema = RESPONSE_SCHEMA;
+  const prompt = strictSchema
+    ? buildPrompt(items)
+    : `${buildPrompt(items)}\n\nReply with JSON only, in exactly this shape:\n${SHAPE_EXAMPLE}`;
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
   let response;
   try {
     response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: buildPrompt(items) }] }],
-        generationConfig: {
-          responseMimeType: 'application/json',
-          responseSchema: RESPONSE_SCHEMA,
-          temperature: 0.7,
-        },
-      }),
+      body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], generationConfig }),
       signal: controller.signal,
     });
   } catch (err) {
@@ -125,25 +136,69 @@ async function suggestRecipes(items) {
     clearTimeout(timer);
   }
 
-  if (response.status === 429) {
-    throw new ApiError(503, 'Recipe suggestions are busy right now (free-tier limit reached). Please try again later.');
-  }
   if (!response.ok) {
-    // Logged server-side only — the body can contain details we don't
-    // want to show users.
-    console.error('Gemini error', response.status, await response.text().catch(() => ''));
-    throw new ApiError(502, 'The recipe service returned an error. Please try again.');
+    return { ok: false, status: response.status, body: await response.text().catch(() => '') };
   }
-
   const data = await response.json();
   const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
   try {
-    const parsed = JSON.parse(text);
-    return Array.isArray(parsed?.recipes) ? parsed.recipes : [];
+    // Tolerate a ```json fence in the schema-less reply.
+    const parsed = JSON.parse(text.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''));
+    return { ok: true, recipes: Array.isArray(parsed?.recipes) ? parsed.recipes : [] };
   } catch {
     console.error('Gemini returned non-JSON output', text.slice(0, 500));
     throw new ApiError(502, 'The recipe service returned an unexpected response. Please try again.');
   }
 }
 
-module.exports = { name: 'llm', suggestRecipes, _buildPrompt: buildPrompt };
+/** Turns a failed Gemini reply into a clear, safe message for the app. */
+function errorFor(status, body, model) {
+  let message = '';
+  try {
+    message = String(JSON.parse(body)?.error?.message || '');
+  } catch {
+    message = '';
+  }
+  if (status === 429) {
+    return new ApiError(503, 'AI recipe ideas are busy right now (free-tier limit reached). Please try again later.');
+  }
+  if (status === 400 && /api key/i.test(message)) {
+    return new ApiError(503, 'AI recipe ideas aren\'t set up correctly: the Gemini API key was rejected.');
+  }
+  if (status === 401 || status === 403) {
+    return new ApiError(503, 'AI recipe ideas aren\'t set up correctly: the API key isn\'t allowed to use Gemini.');
+  }
+  if (status === 404) {
+    return new ApiError(503, `AI recipe ideas aren't set up correctly: the Gemini model "${model}" isn't available. Set GEMINI_MODEL to a current model.`);
+  }
+  if (status >= 500) {
+    return new ApiError(502, 'Gemini is having problems right now. Please try again later.');
+  }
+  return new ApiError(502, `The recipe service returned an error (${status}). Please try again.`);
+}
+
+async function suggestRecipes(items) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new ApiError(503, 'AI recipe ideas are not set up yet (missing GEMINI_API_KEY).');
+  }
+  const model = modelName();
+
+  // Attempt 1: strict JSON schema.
+  let result = await callGemini(apiKey, model, items, true);
+  if (result.ok) return result.recipes;
+  console.error('Gemini error', result.status, result.body);
+
+  // A 5xx is either a busy model (a retry a moment later usually works) or
+  // Gemini failing on the strict schema itself (it then fails every time).
+  // One retry, after a short pause, without the strict schema covers both.
+  if (result.status >= 500) {
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    result = await callGemini(apiKey, model, items, false);
+    if (result.ok) return result.recipes;
+    console.error('Gemini error (retry without schema)', result.status, result.body);
+  }
+  throw errorFor(result.status, result.body, model);
+}
+
+module.exports = { suggestRecipes, modelName, AI_RECIPE_LIMIT, _buildPrompt: buildPrompt };

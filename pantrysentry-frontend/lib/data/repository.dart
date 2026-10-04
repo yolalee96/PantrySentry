@@ -203,13 +203,22 @@ abstract class RecipeRepository {
     bool refresh = false,
   });
 
-  /// Deducts the confirmed amounts in one all-or-nothing update. Sending
-  /// the same [submissionId] again never deducts twice (AC 6.3.7).
+  /// A few AI recipe ideas (Gemini) for the same inventory, shown next to
+  /// the dataset's. Slower than [getRecipeSuggestions], so it's loaded
+  /// separately; [refresh] asks for new ideas instead of the cached ones.
+  Future<RecipeSuggestions> getAiRecipeSuggestions({
+    required String householdId,
+    required DateTime today,
+    bool refresh = false,
+  });
+
+  /// Records a cooking session and deducts the selected amounts in one
+  /// all-or-nothing update. Sending the same [idempotencyKey] again never
+  /// deducts twice (AC 6.3.7).
   Future<RecipeUsageResult> recordRecipeUsage({
     required String householdId,
-    required String submissionId,
+    required String idempotencyKey,
     required String recipeId,
-    required String recipeTitle,
     required List<IngredientUse> uses,
   });
 }

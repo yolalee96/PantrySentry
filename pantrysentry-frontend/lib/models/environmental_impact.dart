@@ -61,8 +61,10 @@ class ImpactPeriodTotal {
   factory ImpactPeriodTotal.fromJson(Map<String, dynamic> json) => ImpactPeriodTotal(
         start: DateTime.parse(json['start'] as String).toLocal(),
         end: DateTime.parse(json['end'] as String).toLocal(),
-        kgCo2e: (json['kgCo2e'] as num).toDouble(),
-        hasActivity: json['hasActivity'] as bool,
+        // kgCo2e is null when the period had waste but none of it could be
+        // estimated — drawn the same as "no data" ("–"), never as a 0 bar.
+        kgCo2e: (json['kgCo2e'] as num?)?.toDouble() ?? 0,
+        hasActivity: (json['hasActivity'] as bool) && json['kgCo2e'] != null,
         isComplete: json['isComplete'] as bool,
       );
 }
@@ -77,6 +79,7 @@ class ImpactItem {
     required this.status,
     this.kgWasted,
     this.weightBasis,
+    this.weightIsAssumed = false,
     this.emissionFactor,
     this.factorEntity,
     this.kgCo2e,
@@ -90,6 +93,9 @@ class ImpactItem {
   final ImpactItemStatus status;
   final double? kgWasted;
   final WeightBasis? weightBasis;
+  /// The kg figure came from an assumed conversion (is_assumed = 1, e.g. a
+  /// typical piece weight) rather than a measured one.
+  final bool weightIsAssumed;
   /// kg CO2e per kg of this food.
   final double? emissionFactor;
   /// Which Our World in Data food product the factor came from.
@@ -105,6 +111,7 @@ class ImpactItem {
         status: ImpactItemStatus.values.byName(json['status'] as String),
         kgWasted: (json['kgWasted'] as num?)?.toDouble(),
         weightBasis: json['weightBasis'] == null ? null : WeightBasis.values.byName(json['weightBasis'] as String),
+        weightIsAssumed: json['weightIsAssumed'] as bool? ?? false,
         emissionFactor: (json['emissionFactor'] as num?)?.toDouble(),
         factorEntity: json['factorEntity'] as String?,
         kgCo2e: (json['kgCo2e'] as num?)?.toDouble(),

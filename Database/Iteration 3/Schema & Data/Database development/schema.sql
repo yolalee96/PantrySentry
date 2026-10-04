@@ -4,7 +4,7 @@
 -- MySQL Database Schema (schema.sql)
 --
 -- Target database : MySQL 8.0+ / TiDB (InnoDB, utf8mb4)
--- Tables          : 28
+-- Tables          : 29
 --   Iteration 1 (12): users, teams, team_members, join_requests,
 --                     product_categories, products, storage_types,
 --                     inventory_items, inventory_transactions,
@@ -12,22 +12,23 @@
 --   Iteration 2 (5) : security_questions, product_reference,
 --                     product_keyword_mapping, price_item_reference,
 --                     price_observations
---   Iteration 3 (11): recipes, recipe_ingredients, recipe_cook_sessions,
+--   Iteration 3 (12): recipes, recipe_ingredients, recipe_cook_sessions,
 --                     recipe_cook_session_items, donation_centres,
 --                     donation_centre_accepted_foods, donation_records,
 --                     donation_record_items, emission_factors,
---                     quantity_conversions, waste_impact_assessments
+--                     quantity_conversions, waste_impact_assessments,
+--                     recipe_ai_generations
 --
 -- Iteration 3 is incremental: the 17 Iteration 1 and Iteration 2 tables are
 -- reproduced here with exactly the same columns, types, defaults, enums,
--- indexes, unique keys, foreign keys and constraint names, and the 11 new
+-- indexes, unique keys, foreign keys and constraint names, and the 12 new
 -- Iteration 3 tables are appended after them. No existing table is changed.
 --
--- Epic 6: recipes and cooking sessions (4 tables)
+-- Epic 6: recipes, cooking sessions and AI generations (5 tables)
 -- Epic 7: food donation (4 tables)
 -- Epic 8: environmental impact (3 tables)
 --
--- This script is idempotent: it drops the 28 tables (reverse dependency
+-- This script is idempotent: it drops the 29 tables (reverse dependency
 -- order) and recreates them from scratch.
 -- ============================================================
 
@@ -54,6 +55,7 @@ DROP TABLE IF EXISTS recipe_cook_session_items;
 DROP TABLE IF EXISTS recipe_cook_sessions;
 DROP TABLE IF EXISTS recipe_ingredients;
 DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS recipe_ai_generations;
 DROP TABLE IF EXISTS price_observations;
 DROP TABLE IF EXISTS price_item_reference;
 DROP TABLE IF EXISTS product_keyword_mapping;
@@ -600,7 +602,32 @@ CREATE TABLE recipe_cook_session_items (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 22. donation_centres  (Iteration 3 - Epic 7 food donation)
+-- 22. recipe_ai_generations  (Iteration 3 - Epic 6, AI recipe cache)
+--     Remembers which AI recipe ideas (Gemini) were generated for which
+--     household, when, from which inventory items, so the free-tier API is
+--     not called on every page open. The generated recipes themselves live
+--     in recipes / recipe_ingredients (is_active = FALSE,
+--     source_name starting with 'Gemini (AI-generated)').
+--     input_item_ids and recipe_ids hold JSON arrays.
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS recipe_ai_generations (
+  generation_id   BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  team_id         BIGINT UNSIGNED NOT NULL,
+  model           VARCHAR(100)    NOT NULL,
+  input_item_ids  JSON            NOT NULL,
+  recipe_ids      JSON            NOT NULL,
+  created_by      BIGINT UNSIGNED NOT NULL,
+  created_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (generation_id),
+  KEY idx_recipe_ai_generations_team_created (team_id, created_at),
+  CONSTRAINT fk_recipe_ai_generations_team FOREIGN KEY (team_id)
+    REFERENCES teams (team_id) ON DELETE CASCADE,
+  CONSTRAINT fk_recipe_ai_generations_user FOREIGN KEY (created_by)
+    REFERENCES users (user_id) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ------------------------------------------------------------
+-- 23. donation_centres  (Iteration 3 - Epic 7 food donation)
 --     Donation drop-off points. Simplified after data-team review:
 --     no address_line2, no country, no accepts_food_donations and no
 --     accepted_categories; verification_source_url is included and
@@ -636,7 +663,7 @@ CREATE TABLE donation_centres (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 23. donation_centre_accepted_foods  (Iteration 3 - Epic 7)
+-- 24. donation_centre_accepted_foods  (Iteration 3 - Epic 7)
 --     Renamed and simplified from the earlier donation_centre_needs draft:
 --     8 columns only, one row per accepted food type of a centre.
 -- ------------------------------------------------------------
@@ -659,7 +686,7 @@ CREATE TABLE donation_centre_accepted_foods (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 24. donation_records  (Iteration 3 - Epic 7)
+-- 25. donation_records  (Iteration 3 - Epic 7)
 --     One donation request per team and centre. A PENDING record is only a
 --     reservation: stock is not moved until the record becomes COMPLETED.
 -- ------------------------------------------------------------
@@ -689,7 +716,7 @@ CREATE TABLE donation_records (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 25. donation_record_items  (Iteration 3 - Epic 7)
+-- 26. donation_record_items  (Iteration 3 - Epic 7)
 --     Stock rows donated in one donation record. transaction_id is filled
 --     only when the donation is completed and the DONATE transaction is
 --     written.
@@ -720,7 +747,7 @@ CREATE TABLE donation_record_items (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 26. emission_factors  (Iteration 3 - Epic 8 environmental impact)
+-- 27. emission_factors  (Iteration 3 - Epic 8 environmental impact)
 --     Greenhouse-gas factors per kilogram of food. A row can point at a
 --     category, at a specific product_reference, or stay generic.
 -- ------------------------------------------------------------
@@ -752,7 +779,7 @@ CREATE TABLE emission_factors (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 27. quantity_conversions  (Iteration 3 - Epic 8)
+-- 28. quantity_conversions  (Iteration 3 - Epic 8)
 --     Unit conversions used to turn a household quantity into kilograms.
 --     A row with reference_id NULL is generic, a row with reference_id is
 --     product specific, and is_assumed marks estimated factors.
@@ -778,7 +805,7 @@ CREATE TABLE quantity_conversions (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ------------------------------------------------------------
--- 28. waste_impact_assessments  (Iteration 3 - Epic 8)
+-- 29. waste_impact_assessments  (Iteration 3 - Epic 8)
 --     Carbon footprint of one discarded inventory transaction. Factor
 --     values are copied into snapshot columns so an old assessment keeps
 --     the numbers it was calculated with. transaction_id is UNIQUE:
