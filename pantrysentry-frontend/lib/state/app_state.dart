@@ -10,6 +10,7 @@ import '../models/activity_log_entry.dart';
 import '../models/shelf_life_suggestion.dart';
 import '../models/environmental_impact.dart';
 import '../models/recipe.dart';
+import '../models/donation.dart';
 import '../models/insights_data.dart';
 import '../data/repository.dart';
 import '../services/id_service.dart';
@@ -29,6 +30,7 @@ class AppState extends ChangeNotifier {
     required this.recognitionRepo,
     required this.environmentalImpactRepo,
     required this.recipeRepo,
+    required this.donationRepo,
   });
 
   final UserRepository userRepo;
@@ -40,6 +42,7 @@ class AppState extends ChangeNotifier {
   final RecognitionRepository recognitionRepo;
   final EnvironmentalImpactRepository environmentalImpactRepo;
   final RecipeRepository recipeRepo;
+  final DonationRepository donationRepo;
 
   AppUser? currentUser;
   Household? currentHousehold;
@@ -687,6 +690,79 @@ class AppState extends ChangeNotifier {
       }
     }
     return result;
+  }
+
+  // ==================== Donations (Epic 7) ====================
+
+  String get _householdIdOrThrow {
+    final id = currentHousehold?.id;
+    if (id == null) throw AuthException('You need to be in a household to do this.');
+    return id;
+  }
+
+  Future<List<DonationCentre>> getDonationCentres({
+    double? latitude,
+    double? longitude,
+    String? query,
+    List<String> itemIds = const [],
+  }) =>
+      donationRepo.getDonationCentres(
+        householdId: _householdIdOrThrow,
+        latitude: latitude,
+        longitude: longitude,
+        query: query,
+        itemIds: itemIds,
+      );
+
+  Future<List<DonatableItem>> getDonatableItems({String? excludeDonationId}) => donationRepo.getDonatableItems(
+      householdId: _householdIdOrThrow, today: DateTime.now(), excludeDonationId: excludeDonationId);
+
+  /// Creates a PENDING donation. Inventory doesn't change, so no refresh needed.
+  Future<Donation> createDonation({
+    required String centreId,
+    required List<DonationDraftItem> items,
+    required bool declarationAgreed,
+    String? notes,
+  }) =>
+      donationRepo.createDonation(
+        householdId: _householdIdOrThrow,
+        centreId: centreId,
+        items: items,
+        declarationAgreed: declarationAgreed,
+        today: DateTime.now(),
+        notes: notes,
+      );
+
+  Future<List<Donation>> getMyDonations({String? status}) =>
+      donationRepo.getMyDonations(householdId: _householdIdOrThrow, status: status);
+
+  Future<Donation> updateDonation({required String donationId, required List<DonationDraftItem> items, String? notes}) =>
+      donationRepo.updateDonation(donationId: donationId, items: items, today: DateTime.now(), notes: notes);
+
+  Future<void> cancelDonation(String donationId) => donationRepo.cancelDonation(donationId);
+
+  /// AC 7.3.8 / 7.3.9 — completing is the only step that changes stock, so
+  /// items and reminders are refreshed straight away afterwards.
+  Future<Donation> completeDonation({required String donationId, required Map<String, double> deliveredByItemId}) async {
+    final donation = await donationRepo.completeDonation(donationId: donationId, deliveredByItemId: deliveredByItemId);
+    await _refreshItemsNow();
+    try {
+      reminders = await reminderRepo.getRemindersForHousehold(currentHousehold!.id);
+      notifyListeners();
+    } catch (_) {} // the next poll catches up
+    for (final item in donation.items.where((i) => i.delivered)) {
+      try {
+        await activityRepo.logActivity(ActivityLogEntry(
+          id: IdService.newId('log'),
+          householdId: currentHousehold!.id,
+          actingUserId: currentUser!.id,
+          actingUserName: currentUser!.name,
+          action: ActivityAction.donated,
+          itemName: item.name,
+        ));
+      } catch (_) {}
+    }
+    return donation;
   }
 
   // ==================== Sign out ====================

@@ -6,6 +6,10 @@ import '../../widgets/item_card.dart';
 import 'item_detail_screen.dart';
 import 'add_edit_item_screen.dart';
 import 'receipt_scan_screen.dart';
+import '../donations/donate_items_screen.dart';
+import '../donations/my_donations_screen.dart';
+import '../../theme/app_theme.dart';
+import 'multi_item_scan_screen.dart';
 
 /// AC 2.5.1 — items grouped under storage-location tabs (All/Fridge/
 /// Freezer/Pantry), each showing an item count.
@@ -73,6 +77,7 @@ class _InventoryListScreenState extends State<InventoryListScreen>
               if (searchResults != null)
                 Expanded(child: _buildSearchResults(context, searchResults))
               else ...[
+                _buildDonateCard(context),
                 TabBar(
                   controller: _tabController,
                   isScrollable: true,
@@ -99,6 +104,17 @@ class _InventoryListScreenState extends State<InventoryListScreen>
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Epic 4 — several items from one photo (Gemini), alongside the
+          // single-item photo scan on the Add screen and the receipt scan.
+          FloatingActionButton(
+            heroTag: 'scanMultipleFab',
+            tooltip: 'Scan several items',
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => MultiItemScanScreen(appState: widget.appState),
+            )),
+            child: const Icon(Icons.shopping_basket_outlined),
+          ),
+          const SizedBox(height: 12),
           FloatingActionButton(
             heroTag: 'scanReceiptFab',
             tooltip: 'Scan receipt',
@@ -117,6 +133,40 @@ class _InventoryListScreenState extends State<InventoryListScreen>
             child: const Icon(Icons.add),
           ),
         ],
+      ),
+    );
+  }
+
+  /// Epic 7 — donate several items in one go, and see past donations.
+  Widget _buildDonateCard(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Card(
+        margin: EdgeInsets.zero,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
+          child: Row(
+            children: [
+              const Icon(Icons.volunteer_activism_outlined, color: AppTheme.seedColor),
+              const SizedBox(width: 12),
+              const Expanded(
+                child: Text('Donate food you won\'t use', style: TextStyle(fontWeight: FontWeight.w600)),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => MyDonationsScreen(appState: widget.appState),
+                )),
+                child: const Text('My donations'),
+              ),
+              FilledButton.tonal(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => DonateItemsScreen(appState: widget.appState),
+                )),
+                child: const Text('Donate'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

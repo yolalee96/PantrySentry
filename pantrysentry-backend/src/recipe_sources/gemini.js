@@ -160,16 +160,16 @@ function errorFor(status, body, model) {
     message = '';
   }
   if (status === 429) {
-    return new ApiError(503, 'AI recipe ideas are busy right now (free-tier limit reached). Please try again later.');
+    return new ApiError(503, 'AI features are busy right now (free-tier limit reached). Please try again later.');
   }
   if (status === 400 && /api key/i.test(message)) {
-    return new ApiError(503, 'AI recipe ideas aren\'t set up correctly: the Gemini API key was rejected.');
+    return new ApiError(503, 'AI features aren\'t set up correctly: the Gemini API key was rejected.');
   }
   if (status === 401 || status === 403) {
-    return new ApiError(503, 'AI recipe ideas aren\'t set up correctly: the API key isn\'t allowed to use Gemini.');
+    return new ApiError(503, 'AI features aren\'t set up correctly: the API key isn\'t allowed to use Gemini.');
   }
   if (status === 404) {
-    return new ApiError(503, `AI recipe ideas aren't set up correctly: the Gemini model "${model}" isn't available. Set GEMINI_MODEL to a current model.`);
+    return new ApiError(503, `AI features aren't set up correctly: the Gemini model "${model}" isn't available. Set GEMINI_MODEL to a current model.`);
   }
   if (status >= 500) {
     return new ApiError(502, 'Gemini is having problems right now. Please try again later.');
@@ -201,4 +201,62 @@ async function suggestRecipes(items) {
   throw errorFor(result.status, result.body, model);
 }
 
-module.exports = { suggestRecipes, modelName, AI_RECIPE_LIMIT, _buildPrompt: buildPrompt };
+/**
+ * Generic structured call, used by multi-item photo detection (Epic 4):
+ * [parts] are Gemini content parts (text and/or inline images). Same
+ * behaviour as recipes: strict schema first; on a 5xx, one retry after a
+ * pause without the strict schema (the prompt must then describe the
+ * shape — [shapeHint] is appended); clear errors for setup problems.
+ * Returns the parsed JSON object.
+ */
+async function generateJson({ parts, schema, shapeHint }) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new ApiError(503, 'AI scanning is not set up yet (missing GEMINI_API_KEY).');
+  const model = modelName();
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+
+  async function attempt(strict) {
+    const generationConfig = { responseMimeType: 'application/json', temperature: 0.2 };
+    if (strict) generationConfig.responseSchema = schema;
+    const content = strict ? parts : [...parts, { text: `Reply with JSON only, in exactly this shape:\n${shapeHint}` }];
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
+    let response;
+    try {
+      response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+        body: JSON.stringify({ contents: [{ role: 'user', parts: content }], generationConfig }),
+        signal: controller.signal,
+      });
+    } catch (err) {
+      throw new ApiError(502, err.name === 'AbortError'
+        ? 'The AI service took too long to respond. Please try again.'
+        : 'Could not reach the AI service. Please try again.');
+    } finally {
+      clearTimeout(timer);
+    }
+    if (!response.ok) return { ok: false, status: response.status, body: await response.text().catch(() => '') };
+    const data = await response.json();
+    const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
+    try {
+      return { ok: true, value: JSON.parse(text.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, '')) };
+    } catch {
+      console.error('Gemini returned non-JSON output', text.slice(0, 500));
+      throw new ApiError(502, 'The AI service returned an unexpected response. Please try again.');
+    }
+  }
+
+  let result = await attempt(true);
+  if (result.ok) return result.value;
+  console.error('Gemini error', result.status, result.body);
+  if (result.status >= 500) {
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    result = await attempt(false);
+    if (result.ok) return result.value;
+    console.error('Gemini error (retry without schema)', result.status, result.body);
+  }
+  throw errorFor(result.status, result.body, model);
+}
+
+module.exports = { suggestRecipes, generateJson, modelName, AI_RECIPE_LIMIT, _buildPrompt: buildPrompt };

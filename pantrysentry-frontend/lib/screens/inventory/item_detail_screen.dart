@@ -5,6 +5,7 @@ import '../../theme/app_theme.dart';
 import '../../utils/date_format.dart';
 import 'add_edit_item_screen.dart';
 import 'record_discard_screen.dart';
+import '../donations/donate_items_screen.dart';
 
 /// AC 2.6.1 plus item actions: consume / discard / donate, edit.
 /// The standalone "Delete" action was removed (usability testing found
@@ -155,21 +156,13 @@ class ItemDetailScreen extends StatelessWidget {
     }
   }
 
+  /// Epic 7 — opens the donation flow with this item already ticked.
+  /// (This used to mark the item donated straight away; stock now only
+  /// changes when a donation is completed, per the data team's rules.)
   Future<void> _donate(BuildContext context, FoodItem item) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Mark as donated?'),
-        content: Text('"${item.name}" will be recorded as donated instead of consumed or discarded.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Confirm')),
-        ],
-      ),
-    );
-    if (confirmed == true && context.mounted) {
-      await _resolve(context, item, ItemDisposition.donated);
-    }
+    await Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => DonateItemsScreen(appState: appState, preselectedItemId: item.id),
+    ));
   }
 
   @override

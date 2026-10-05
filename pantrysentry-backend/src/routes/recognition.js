@@ -3,6 +3,8 @@ const pool = require('../db');
 const { ApiError, asyncHandler } = require('../util/errors');
 const { CATEGORY_DART_NAMES } = require('../util/enums');
 const vision = require('@google-cloud/vision');
+const gemini = require('../recipe_sources/gemini');
+const { RESPONSE_SCHEMA: MULTI_SCHEMA, SHAPE_HINT: MULTI_SHAPE_HINT, buildPrompt: buildMultiPrompt, sanitiseDetections, imageMimeType } = require('../util/multi_item_detection');
 
 const router = express.Router();
 
@@ -229,6 +231,54 @@ router.post('/recognize/image', asyncHandler(async (req, res) => {
   }
   const best = candidates.length > 0 ? [candidates[0]] : [];
   res.json({ labels, candidates: best });
+}));
+
+// ==================== 3b. Photo of several items -> Gemini -> review list ====================
+// POST /recognize/multi  { imageBase64 }
+// Epic 4 "Scan several items". Gemini lists the food it can see (with a
+// box around each); the server validates it (multi_item_detection.js) and
+// links each name to the reference data with the same keyword lookup as
+// the other scanners. Returns candidates only — the app always shows a review screen
+// and nothing is added without the user confirming.
+router.post('/recognize/multi', asyncHandler(async (req, res) => {
+  const buffer = decodeImageBody(req);
+  const mimeType = imageMimeType(buffer);
+  if (!mimeType) throw new ApiError(400, 'Please upload a JPEG, PNG or WebP photo.');
+
+  const raw = await gemini.generateJson({
+    parts: [{ inlineData: { mimeType, data: buffer.toString('base64') } }, { text: buildMultiPrompt() }],
+    schema: MULTI_SCHEMA,
+    shapeHint: MULTI_SHAPE_HINT,
+  });
+  const detections = sanitiseDetections(raw);
+
+  const items = [];
+  for (const d of detections) {
+    // Same lookup as /recognize/text: the full name first, then the
+    // plain food name without a leading brand if that finds nothing.
+    let candidates = await resolveByKeywords([d.name], 'TEXT');
+    const words = d.name.split(' ');
+    if (candidates.length === 0 && words.length > 1) candidates = await resolveByKeywords([words.slice(1).join(' ')], 'TEXT');
+    if (candidates.length === 0 && words.length > 1) candidates = await resolveByKeywords([words[words.length - 1]], 'TEXT');
+    // Prefer a reference in the same category as the AI's answer. The AI's
+    // category wins when they disagree: some references carry an odd
+    // category (e.g. "Red onions" filed under condiments), while the AI
+    // picks from the app's 16 categories by looking at the actual item.
+    const aiCategory = d.categoryName ? CATEGORY_DART_NAMES[d.categoryName] ?? null : null;
+    const best = candidates.find((c) => aiCategory && c.categoryDartName === aiCategory) || candidates[0] || null;
+    items.push({
+      name: d.name,
+      quantity: d.quantity,
+      unit: d.unit,
+      categoryDartName: aiCategory || (best && best.categoryDartName) || null,
+      matched: Boolean(best),
+      referenceName: best ? best.productName : null,
+      packaged: d.packaged,
+      confidence: d.confidence,
+      boxes: d.boxes,
+    });
+  }
+  res.json({ items });
 }));
 
 // ==================== OCR is intentionally NOT a server route ====================

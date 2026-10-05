@@ -9,7 +9,9 @@ import '../models/recognition_candidate.dart';
 import '../models/receipt_item_draft.dart';
 import '../models/environmental_impact.dart';
 import '../models/recipe.dart';
+import '../models/donation.dart';
 import '../models/insights_data.dart';
+import '../models/detected_item_draft.dart';
 
 /// See lib/data/README.md — screens depend only on these interfaces,
 /// never on a concrete storage implementation.
@@ -169,6 +171,9 @@ abstract class RecognitionRepository {
   Future<List<RecognitionCandidate>> recognizeText(String text);
   Future<BarcodeRecognitionResult> recognizeBarcode(String barcode);
   Future<List<RecognitionCandidate>> recognizeImage(List<int> imageBytes);
+  /// Epic 4 "Scan several items" — every food item Gemini finds in one
+  /// photo, as editable drafts for the review screen (nothing is saved).
+  Future<List<DetectedItemDraft>> recognizeMultipleItems(List<int> imageBytes);
   Future<OcrRecognitionResult> recognizeOcr(List<int> imageBytes);
   /// [rawText] — already OCR'd text (from BrowserOcrService), not an
   /// image — receipt OCR happens client-side, see chat for why.
@@ -221,4 +226,48 @@ abstract class RecipeRepository {
     required String recipeId,
     required List<IngredientUse> uses,
   });
+}
+
+/// Epic 7 — donation centres and the household's donations.
+abstract class DonationRepository {
+  /// [latitude]/[longitude] give distances, nearest first; [query] matches
+  /// a centre's name, address, city, state or postcode; [itemIds] checks
+  /// each centre against those items and ranks by how many it covers.
+  Future<List<DonationCentre>> getDonationCentres({
+    required String householdId,
+    double? latitude,
+    double? longitude,
+    String? query,
+    List<String> itemIds = const [],
+  });
+
+  /// In-stock items with what's left to donate after other pending donations.
+  /// [excludeDonationId]: when editing that donation, its own amounts
+  /// aren't counted as already promised.
+  Future<List<DonatableItem>> getDonatableItems({required String householdId, required DateTime today, String? excludeDonationId});
+
+  /// Creates a PENDING donation — the inventory is not changed until it's completed.
+  Future<Donation> createDonation({
+    required String householdId,
+    required String centreId,
+    required List<DonationDraftItem> items,
+    required bool declarationAgreed,
+    required DateTime today,
+    String? notes,
+  });
+
+  /// The current user's donations; [status] 'pending' / 'completed' or null for all.
+  Future<List<Donation>> getMyDonations({required String householdId, String? status});
+
+  Future<Donation> updateDonation({
+    required String donationId,
+    required List<DonationDraftItem> items,
+    required DateTime today,
+    String? notes,
+  });
+
+  Future<void> cancelDonation(String donationId);
+
+  /// [deliveredByItemId]: donation item id -> delivered quantity (0 = not handed over).
+  Future<Donation> completeDonation({required String donationId, required Map<String, double> deliveredByItemId});
 }

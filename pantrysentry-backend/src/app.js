@@ -12,6 +12,7 @@ const shelfLifeRouter = require('./routes/shelf_life');
 const recognitionRouter = require('./routes/recognition');
 const environmentalImpactRouter = require('./routes/environmental_impact');
 const recipesRouter = require('./routes/recipes');
+const donationsRouter = require('./routes/donations');
 const { ApiError } = require('./util/errors');
 const { requireAuth } = require('./util/auth');
 
@@ -47,6 +48,7 @@ app.use('/', shelfLifeRouter);
 app.use('/', recognitionRouter);
 app.use('/', environmentalImpactRouter);
 app.use('/', recipesRouter);
+app.use('/', donationsRouter);
 
 // 404 handler
 app.use((req, res) => {
