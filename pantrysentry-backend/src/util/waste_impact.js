@@ -26,10 +26,14 @@
 // failed — whenever the impact report is requested.
 
 const { resolveReferenceIds } = require('./product_reference');
+const { buildFactorMatcher } = require('./factor_matching');
 
-const CALCULATION_METHOD_VERSION = 'epic8-v1: kg x factor (no GWP)';
+// v2: factor chosen by the data team's food_type -> factor_name text
+// matching (highest factor wins), product-reference factor as fallback.
+const CALCULATION_METHOD_VERSION = 'epic8-v2: kg x factor, name match'; // column is VARCHAR(50)
 const REASON_NO_REFERENCE = 'Missing emission factor (product not matched to reference data)';
 const REASON_NO_FACTOR = 'Missing emission factor';
+const UNAVAILABLE_MESSAGE = 'Environmental impact data is currently unavailable for this item.';
 const REASON_NO_CONVERSION = 'Missing quantity conversion';
 const BATCH_LIMIT = 500;
 
@@ -117,20 +121,28 @@ async function assessPendingDiscards(db, teamId, { from, to, inventoryItemId } =
   })));
   const referenceIds = [...new Set([...references.values()].map((r) => r.referenceId))];
 
+  // All active factors: the text matching looks across every food_type
+  // and factor_name; the per-reference map is the fallback (step 3).
+  const [allFactors] = await db.query(
+    `SELECT factor_id, factor_name, reference_id, food_type, factor_kg_co2e_per_kg, source_name, source_version, valid_from, valid_to
+     FROM emission_factors WHERE is_active = 1`
+  );
   const factorsByRef = new Map();
-  const edgesByRef = new Map();
-  if (referenceIds.length > 0) {
-    const [factorRows] = await db.query(
-      `SELECT factor_id, reference_id, food_type, factor_kg_co2e_per_kg, source_name, source_version, valid_from, valid_to
-       FROM emission_factors WHERE is_active = 1 AND reference_id IN (?)`,
-      [referenceIds]
-    );
-    for (const f of factorRows) {
-      const key = Number(f.reference_id);
-      if (!factorsByRef.has(key)) factorsByRef.set(key, []);
-      factorsByRef.get(key).push(f);
-    }
+  for (const f of allFactors) {
+    if (f.reference_id === null || f.reference_id === undefined) continue;
+    const key = Number(f.reference_id);
+    if (!factorsByRef.has(key)) factorsByRef.set(key, []);
+    factorsByRef.get(key).push(f);
   }
+  const edgesByRef = new Map();
+  // One matcher per discard date, over the factors valid on that date.
+  const matcherByDate = new Map();
+  const matcherFor = (onDate) => {
+    if (!matcherByDate.has(onDate)) {
+      matcherByDate.set(onDate, buildFactorMatcher(allFactors.filter((f) => pickFactor([f], onDate))));
+    }
+    return matcherByDate.get(onDate);
+  };
   const [conversionRows] = await db.query(
     `SELECT conversion_id, reference_id, from_unit, to_unit, factor, is_assumed
      FROM quantity_conversions
@@ -160,15 +172,23 @@ async function assessPendingDiscards(db, teamId, { from, to, inventoryItemId } =
   for (const row of pending) {
     const ref = references.get(String(row.product_id)) || null;
     const referenceId = ref ? ref.referenceId : null;
-    const factor = referenceId ? pickFactor(factorsByRef.get(referenceId) || [], dateOnly(row.transaction_time)) : null;
-    // Rule: no reference_id -> no conversion (and no factor) -> EXCLUDED.
-    const conversion = referenceId ? convertToKg(row.quantity, row.unit, edgesByRef.get(referenceId) || [], genericEdges) : null;
+    // Data team's rule: food_type match, then factor_name match (highest
+    // factor wins), then (ours) the product reference's own factor.
+    const onDate = dateOnly(row.transaction_time);
+    const textMatch = matcherFor(onDate)(row.product_name);
+    const refFactor = !textMatch && referenceId ? pickFactor(factorsByRef.get(referenceId) || [], onDate) : null;
+    const factor = textMatch ? textMatch.row : refFactor;
+    const factorMethod = textMatch ? textMatch.method : (refFactor ? 'reference' : null);
+    // Product-specific conversions need a reference; without one, only the
+    // global g/kg/mg rows apply (the factor no longer depends on a reference,
+    // so an unmatched item weighed in grams can still be estimated).
+    const conversion = convertToKg(row.quantity, row.unit, referenceId ? (edgesByRef.get(referenceId) || []) : [], genericEdges);
 
     let status = 'ASSESSED';
     let reason = null;
     if (!factor) {
       status = 'EXCLUDED';
-      reason = referenceId ? REASON_NO_FACTOR : REASON_NO_REFERENCE;
+      reason = REASON_NO_FACTOR;
     } else if (!conversion) {
       status = 'EXCLUDED';
       reason = REASON_NO_CONVERSION;
@@ -177,7 +197,8 @@ async function assessPendingDiscards(db, teamId, { from, to, inventoryItemId } =
     const notes = [
       ref ? `reference ${referenceId} matched by ${ref.method}` : 'no reference match',
       conversion ? `converted ${row.quantity} ${row.unit} -> ${conversion.kg.toFixed(6)} kg (conversion ${conversion.conversionId}${conversion.isAssumed ? ', assumed value' : ''})` : (referenceId ? `no ${row.unit} -> kg conversion for reference ${referenceId}` : 'not converted (no reference)'),
-      factor ? `factor ${factorValue} kg CO2e/kg (${factor.food_type || 'food type n/a'})` : null,
+      factor ? `factor ${factorValue} kg CO2e/kg, food type ${factor.food_type || 'n/a'}, matched by ${factorMethod}`
+        + (factorMethod === 'reference' ? '' : ' (highest factor among matches - conservative estimate)') : null,
     ].filter(Boolean).join('; ');
 
     const [result] = await db.query(
@@ -213,4 +234,5 @@ module.exports = {
   REASON_NO_CONVERSION,
   REASON_NO_FACTOR,
   REASON_NO_REFERENCE,
+  UNAVAILABLE_MESSAGE,
 };

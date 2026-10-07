@@ -602,6 +602,11 @@ class ApiDataStore
     return EnvironmentalImpact.fromJson(json as Map<String, dynamic>);
   }
 
+  @override
+  Future<void> setDiscardedWeight({required String householdId, required String inventoryItemId, required double weightKg}) async {
+    await _put('/households/$householdId/environmental-impact/items/$inventoryItemId/weight', {'weightKg': weightKg});
+  }
+
   // ==================== RecipeRepository ====================
 
   @override

@@ -1,11 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import '../../state/app_state.dart';
 import '../../models/reminder.dart';
-import '../../theme/app_theme.dart';
 import '../inventory/item_detail_screen.dart';
 import '../../models/food_item.dart';
+// import '../../theme/app_theme.dart';
 
-/// AC 3.3.1 — all upcoming reminders in one place, sorted by urgency.
+/// Reminders that are DUE, most urgent first. A reminder only appears here
+/// once its date arrives (expiry date minus its lead time); before that it
+/// stays hidden, and the empty state says how many are scheduled.
 class RemindersScreen extends StatelessWidget {
   const RemindersScreen({super.key, required this.appState});
   final AppState appState;
@@ -19,18 +23,24 @@ class RemindersScreen extends StatelessWidget {
         builder: (context, _) {
           // Only show one reminder per item, even if multiple reminders exist for that item.
           final seenItemIds = <String>{};
-          final reminders = appState.sortedUpcomingReminders.where((reminder) {
+          final reminders = appState.dueReminders.where((reminder) {
             final itemKey = '${reminder.householdId}:${reminder.itemId}';
             return seenItemIds.add(itemKey);
           }).toList();
           // Yola
 
           if (reminders.isEmpty) {
+            // Count scheduled (not yet due) reminders, one per item, so the
+            // empty screen doesn't suggest that no reminders exist at all.
+            final scheduledItems = appState.sortedUpcomingReminders.map((r) => r.itemId).toSet().length;
             return Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
                 child: Text(
-                  'No reminders set yet. Add one from any item\'s page.',
+                  scheduledItems == 0
+                      ? 'No reminders set yet. Add one from any item\'s page.'
+                      : 'Nothing due right now.\n$scheduledItems ${scheduledItems == 1 ? 'reminder is' : 'reminders are'} '
+                          'scheduled and will appear here when ${scheduledItems == 1 ? 'it\'s' : 'they\'re'} due.',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
@@ -79,46 +89,92 @@ class _ReminderTile extends StatelessWidget {
     }
     // Yola
 
-    final color = urgencyColor(item.daysLeft);
+    // Changed the visual representation of the reminder cards.
+    // Added a color coding for the urgency of the reminder based on the
+    // number of days left as follows:
+    // 1. If item is more than 7 days from expiry date, the color is green. 
+    // 2. If item is between 3-7 days from expiry date, the color is yellow. 
+    // 3. If item is less than 3 days from expiry date, the color is red.
+    // 4. If item is expired, the color is grey.
+    final daysLeft = item.daysLeft;
+    final Color bellColor;
+
+    if (daysLeft < 0) {
+      bellColor = const Color(0xFFE0E0E0);
+    } else if (daysLeft < 3) {
+      bellColor = const Color(0xFFD50000);
+    } else if (daysLeft < 7) {
+      bellColor = const Color(0xFFFFEB3B);
+    } else {
+      bellColor = const Color(0xFF69F0AE);
+    }
+
+    final String expiryLabel;
+
+    if (daysLeft < 0) {
+      final overdueDays = -daysLeft;
+      expiryLabel = 'Expired $overdueDays day${overdueDays == 1 ? '' : 's'} ago';
+    } else if (daysLeft == 0) {
+      expiryLabel = 'Expires today';
+    } else {
+      expiryLabel = '$daysLeft day${daysLeft == 1 ? '' : 's'} until expiry';
+    }
 
     return Card(
-      // Added a border to the reminder card for better visibility.
+      color: const Color(0xFFF5F5F5),
+      surfaceTintColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(
-          color: Colors.black,
-          width: 1.5,
-        ),
+        side:BorderSide(
+          color: Color(0xff00000000),
+          width: 1,
+          )
       ),
       clipBehavior: Clip.antiAlias,
-      // Yola
-
       child: ListTile(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (_) => ItemDetailScreen(appState: appState, item: item),
-        )),
-        leading: CircleAvatar(
-          backgroundColor: color.withValues(alpha: 0.15),
-          child: Icon(Icons.notifications_active_outlined, color: color, size: 20),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 10,
         ),
-        title: Text(item.name, style: const TextStyle(fontWeight: FontWeight.w600)),
-        
-        // Modified subtitle to include the storage location of item (with it's label).
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ItemDetailScreen(
+              appState: appState,
+              item: item,
+            ),
+          ),
+        ),
+        leading: CircleAvatar(
+          backgroundColor: bellColor,
+          child: Icon(
+            daysLeft < 0
+                ? Icons.delete_outlined
+                : Icons.notifications_active_outlined,
+            size: 20,
+          ),
+        ),
+        title: Text(
+          item.name,
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 6),
+
+            // White keeps the storage badge readable on every card colour.
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8,
                 vertical: 4,
               ),
               decoration: BoxDecoration(
-                color: storageColor.withValues(alpha: 0.12),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: storageColor.withValues(alpha: 0.4),
-                ),
+                border: Border.all(color: storageColor),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -134,34 +190,52 @@ class _ReminderTile extends StatelessWidget {
                     style: TextStyle(
                       color: storageColor,
                       fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
             ),
+
             const SizedBox(height: 6),
             Text(
               'Reminds ${reminder.leadTimeDays} '
-              'day${reminder.leadTimeDays == 1 ? '' : 's'} before • '
+              'day${reminder.leadTimeDays == 1 ? '' : 's'} before',
+              style: TextStyle(
+                color: Colors.black87, 
+                fontSize: 12
+                ),
             ),
-
-            // Separately make remaining number of days bold for better visibility.
-            RichText(
-              text: TextSpan(
-                text: '${item.daysLeft} days left',
-                style: const TextStyle(fontWeight: FontWeight.w600),
+            const SizedBox(height: 4),
+            Text(
+              expiryLabel,
+              style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.w700,
               ),
-            )
+            ),
+            if (daysLeft < 0) ...[
+              const SizedBox(height: 4),
+              Text(
+                'Open item to record disposal',
+                style: TextStyle(
+                  color: Colors.black87, 
+                  fontStyle: FontStyle.italic),
+              ),
+            ],
           ],
         ),
-        // Yola
-
         trailing: reminder.triggered
-            ? const Icon(Icons.notifications, color: Colors.orange, size: 20)
+            ? Icon(
+                Icons.notifications,
+                color: Colors.black87,
+                size: 20,
+              )
             : null,
       ),
     );
+    // Yola
+
   }
 }
 

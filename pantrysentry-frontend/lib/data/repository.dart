@@ -195,6 +195,10 @@ abstract class EnvironmentalImpactRepository {
     required DateRange range,
     required List<DateTime> trendStarts,
   });
+
+  /// For a discard whose unit couldn't be converted to kg: records the
+  /// actual weight the user entered, so that discard is counted.
+  Future<void> setDiscardedWeight({required String householdId, required String inventoryItemId, required double weightKg});
 }
 
 /// Epic 6 — recipe suggestions and recording what a recipe used.

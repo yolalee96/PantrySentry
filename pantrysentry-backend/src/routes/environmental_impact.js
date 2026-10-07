@@ -159,7 +159,7 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
   const [rows] = await pool.query(
     `SELECT w.inventory_item_id, w.discarded_quantity, w.discarded_unit, w.converted_weight_kg,
             w.factor_kg_co2e_per_kg_snapshot, w.footprint_kg_co2e, w.assessment_status,
-            w.exclusion_reason, w.discarded_at, qc.is_assumed, ef.food_type,
+            w.exclusion_reason, w.discarded_at, w.calculation_notes, qc.is_assumed, ef.food_type,
             p.product_name, pc.category_name
      FROM waste_impact_assessments w
      LEFT JOIN products p ON p.product_id = w.product_id
@@ -207,7 +207,11 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
       weightIsAssumed: Boolean(Number(row.is_assumed)),
       emissionFactor: row.factor_kg_co2e_per_kg_snapshot === null ? null : Number(row.factor_kg_co2e_per_kg_snapshot),
       factorEntity: row.food_type || null,
-      factorSource: row.factor_kg_co2e_per_kg_snapshot === null ? null : 'product',
+      // How the factor was chosen: 'food_type' / 'factor_name' (data team's
+      // text matching, highest factor among matches) or 'reference'.
+      factorSource: ((String(row.calculation_notes || '').match(/matched by (food_type|factor_name|reference)/) || [])[1])
+        || (row.factor_kg_co2e_per_kg_snapshot === null ? null : 'reference'),
+      weightEnteredByUser: /weight entered by user/.test(String(row.calculation_notes || '')),
       kgCo2e: kgCo2e === null ? null : round(kgCo2e),
     });
 
@@ -270,6 +274,40 @@ router.get('/households/:householdId/environmental-impact', asyncHandler(async (
     })),
     items: items.sort((a, b) => (b.kgCo2e ?? -1) - (a.kgCo2e ?? -1)),
   });
+}));
+
+// PUT /households/:householdId/environmental-impact/items/:inventoryItemId/weight  { weightKg }
+//
+// For a discard whose unit couldn't be converted to kg (e.g. "1 pack"):
+// the user enters the actual discarded weight, and that discard is
+// counted with the factor already chosen for it. Only works on EXCLUDED
+// "missing quantity conversion" rows, so a computed figure is never
+// overwritten. The note records that the weight came from the user.
+router.put('/households/:householdId/environmental-impact/items/:inventoryItemId/weight', asyncHandler(async (req, res) => {
+  await assertMember(req.userId, req.params.householdId);
+  const weightKg = Number(req.body && req.body.weightKg);
+  if (!Number.isFinite(weightKg) || weightKg <= 0 || weightKg > 1000) {
+    throw new ApiError(400, 'Enter a weight between 0 and 1000 kg.');
+  }
+  const [rows] = await pool.query(
+    `SELECT assessment_id, factor_kg_co2e_per_kg_snapshot, calculation_notes FROM waste_impact_assessments
+     WHERE team_id = ? AND inventory_item_id = ? AND assessment_status = 'EXCLUDED' AND exclusion_reason = ?
+     ORDER BY assessment_id DESC LIMIT 1`,
+    [req.params.householdId, req.params.inventoryItemId, REASON_NO_CONVERSION]
+  );
+  if (rows.length === 0) throw new ApiError(404, 'This item doesn\'t need a weight (it\'s already counted or can\'t be estimated).');
+  const row = rows[0];
+  if (row.factor_kg_co2e_per_kg_snapshot === null) throw new ApiError(409, 'This item has no emission factor, so a weight won\'t help.');
+  const footprint = weightKg * Number(row.factor_kg_co2e_per_kg_snapshot);
+  await pool.query(
+    `UPDATE waste_impact_assessments
+     SET converted_weight_kg = ?, conversion_id = NULL, footprint_kg_co2e = ?, assessment_status = 'ASSESSED',
+         exclusion_reason = NULL, calculation_notes = ?
+     WHERE assessment_id = ? AND assessment_status = 'EXCLUDED'`,
+    [Number(weightKg.toFixed(6)), Number(footprint.toFixed(6)),
+      `${row.calculation_notes || ''}; weight entered by user: ${weightKg} kg`.slice(0, 1000), row.assessment_id]
+  );
+  res.json({ ok: true, kgCo2e: round(footprint) });
 }));
 
 module.exports = router;

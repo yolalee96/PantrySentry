@@ -622,7 +622,16 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
     switch (item.status) {
       case ImpactItemStatus.estimated:
         final approx = item.weightIsAssumed ? '≈' : '';
-        detail = '$qty ${item.unit} → $approx${_formatKg(item.kgWasted!)} kg × ${item.emissionFactor} (${item.factorEntity})';
+        final weight = item.weightEnteredByUser
+            ? '${_formatKg(item.kgWasted!)} kg (weight you entered)'
+            : '$qty ${item.unit} → $approx${_formatKg(item.kgWasted!)} kg';
+        // The data team's name matching picks the highest factor among
+        // matches — a conservative estimate, not a confirmed identity.
+        final method = switch (item.factorSource) {
+          'food_type' || 'factor_name' => ' · closest match by name',
+          _ => '',
+        };
+        detail = '$weight × ${item.emissionFactor} (${item.factorEntity})$method';
         break;
       case ImpactItemStatus.noFactor:
         // Wording from the data team's Epic 8 README for excluded items.
@@ -631,7 +640,7 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
       case ImpactItemStatus.unknownWeight:
         // Usually "pcs"/"pack": there's no reliable weight for one piece of
         // most foods, so the hint tells people how to get it counted.
-        detail = '$qty ${item.unit} · can\'t convert "${item.unit}" to kg for this item yet (entering it in g or kg lets it be counted)';
+        detail = '$qty ${item.unit} · can\'t convert "${item.unit}" to kg — enter how much it weighed to count it';
         break;
     }
     return Padding(
@@ -649,6 +658,13 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
             ),
           ),
           const SizedBox(width: 8),
+          if (item.status == ImpactItemStatus.unknownWeight)
+            TextButton(
+              style: TextButton.styleFrom(visualDensity: VisualDensity.compact, padding: const EdgeInsets.symmetric(horizontal: 8)),
+              onPressed: () => _enterWeight(item),
+              child: const Text('Enter weight', style: TextStyle(fontSize: 12.5)),
+            )
+          else
           Text(
             item.kgCo2e == null ? 'Not counted' : '${_formatKg(item.kgCo2e!)} kg',
             style: TextStyle(
@@ -660,6 +676,75 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
         ],
       ),
     );
+  }
+
+  /// Asks for the actual discarded weight of an item whose unit (e.g. "pack")
+  /// couldn't be converted, then reloads so it's counted.
+  Future<void> _enterWeight(ImpactItem item) async {
+    final controller = TextEditingController();
+    var unit = 'g';
+    final weightKg = await showDialog<double>(
+      context: context,
+      builder: (context) {
+        String? error;
+        return StatefulBuilder(
+          builder: (context, setDialogState) => AlertDialog(
+            title: Text('How much did the ${item.name} weigh?'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('You discarded ${item.quantity == item.quantity.roundToDouble() ? item.quantity.toInt() : item.quantity} ${item.unit}. '
+                    'A rough weight is fine.', style: const TextStyle(fontSize: 13)),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: controller,
+                        autofocus: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        decoration: InputDecoration(labelText: 'Weight', errorText: error, border: const OutlineInputBorder(), isDense: true),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    DropdownButton<String>(
+                      value: unit,
+                      items: const [DropdownMenuItem(value: 'g', child: Text('g')), DropdownMenuItem(value: 'kg', child: Text('kg'))],
+                      onChanged: (v) => setDialogState(() => unit = v ?? unit),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+              FilledButton(
+                onPressed: () {
+                  final v = double.tryParse(controller.text.trim().replaceAll(',', '.'));
+                  final kg = v == null ? null : (unit == 'g' ? v / 1000 : v);
+                  if (kg == null || kg <= 0 || kg > 1000) {
+                    setDialogState(() => error = 'Enter a weight above 0');
+                    return;
+                  }
+                  Navigator.pop(context, kg);
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+    controller.dispose();
+    if (weightKg == null || !mounted) return;
+    try {
+      await widget.appState.setDiscardedWeight(inventoryItemId: item.id, weightKg: weightKg);
+      if (!mounted) return;
+      _load(_range);
+    } catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+    }
   }
 
   // ==================== Footnote & method ====================
@@ -696,6 +781,9 @@ class _EnvironmentalImpactScreenState extends State<EnvironmentalImpactScreen> {
             'conversion for that specific food: a measured value where one exists, otherwise an assumed typical density '
             'or piece weight. Figures that use an assumed value are marked ≈. If an item can\'t be matched to our food '
             'data, it is left out rather than guessed, and never counted as zero.\n\n'
+            'Each item\'s factor is found by matching its name to the food types and products in our emission data. '
+            'When several match, the highest factor is used. This is a conservative estimate, not a confirmed '
+            'identification of the product.\n\n'
             'Sources: Poore, J. & Nemecek, T. (2018), Science 360(6392), 987–992, via Our World in Data. '
             'Petrol factor: ${_data?.petrolSourceName ?? 'DEFRA 2023, as used by MGTC Malaysia'}. '
             'Calculation method adapted from the GHG Protocol.',

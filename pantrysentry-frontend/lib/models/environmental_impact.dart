@@ -80,6 +80,8 @@ class ImpactItem {
     this.kgWasted,
     this.weightBasis,
     this.weightIsAssumed = false,
+    this.factorSource,
+    this.weightEnteredByUser = false,
     this.emissionFactor,
     this.factorEntity,
     this.kgCo2e,
@@ -96,6 +98,11 @@ class ImpactItem {
   /// The kg figure came from an assumed conversion (is_assumed = 1, e.g. a
   /// typical piece weight) rather than a measured one.
   final bool weightIsAssumed;
+  /// How the factor was chosen: 'food_type' or 'factor_name' (the data
+  /// team's name matching — highest factor among matches) or 'reference'.
+  final String? factorSource;
+  /// The kg figure is the actual weight the user entered for this discard.
+  final bool weightEnteredByUser;
   /// kg CO2e per kg of this food.
   final double? emissionFactor;
   /// Which Our World in Data food product the factor came from.
@@ -112,6 +119,8 @@ class ImpactItem {
         kgWasted: (json['kgWasted'] as num?)?.toDouble(),
         weightBasis: json['weightBasis'] == null ? null : WeightBasis.values.byName(json['weightBasis'] as String),
         weightIsAssumed: json['weightIsAssumed'] as bool? ?? false,
+        factorSource: json['factorSource'] as String?,
+        weightEnteredByUser: json['weightEnteredByUser'] as bool? ?? false,
         emissionFactor: (json['emissionFactor'] as num?)?.toDouble(),
         factorEntity: json['factorEntity'] as String?,
         kgCo2e: (json['kgCo2e'] as num?)?.toDouble(),
