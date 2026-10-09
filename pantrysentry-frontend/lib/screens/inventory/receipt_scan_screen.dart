@@ -421,11 +421,16 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
                   const SizedBox(height: 8),
                   InkWell(
                     onTap: () async {
+                      final now = DateTime.now();
                       final picked = await showDropdownDatePicker(
                         context: context,
-                        initialDate: draft.useByDate ?? DateTime.now().add(const Duration(days: 5)),
-                        firstDate: DateTime.now().subtract(const Duration(days: 1)),
-                        lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+                        // Updated the Date time picker to have a lastDate of
+                        // exactly 5 years after the current date, instead of January 1st of that
+                        initialDate: draft.useByDate ??
+                          now.add(const Duration(days: 5)),
+                        firstDate: DateTime(now.year, now.month, now.day - 1),
+                        lastDate: DateTime(now.year + 5, now.month, now.day),
+                        // Yola
                       );
                       if (picked != null) {
                         setState(() {

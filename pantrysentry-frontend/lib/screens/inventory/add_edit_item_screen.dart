@@ -263,7 +263,10 @@ class _AddEditItemScreenState extends State<AddEditItemScreen> {
       context: context,
       initialDate: _useByDate ?? now,
       firstDate: DateTime(now.year - 1),
-      lastDate: DateTime(now.year + 5),
+      // Changing lastDate to exactly 5 years after current date
+      // instead of January 1st of that year.
+      lastDate: DateTime(now.year + 5, now.month, now.day),
+      // Yola
     );
     if (picked != null) {
       setState(() {

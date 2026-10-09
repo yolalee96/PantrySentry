@@ -10,22 +10,30 @@ import '../inventory/expiring_soon_screen.dart';
 import '../inventory/item_detail_screen.dart';
 import '../household/switch_household_screen.dart';
 import '../recipes/recipe_suggestions_screen.dart';
+import '../inventory/add_edit_item_screen.dart';
 
 const _expiringSoonWindowDays = 3;
 
 /// AC 1.2.2 — household name + user avatar in the header.
 /// AC 2.2.1 — total count + per-category breakdown.
 /// AC 2.3.1 / AC 2.4.1 — expiring soon preview + "View All".
+/// (Further split into "Eat First" and "Expired" sections)
 /// AC 2.7.1 — search across all locations.
 class HomeOverviewTab extends StatefulWidget {
   const HomeOverviewTab({
     super.key,
     required this.appState,
     required this.onViewInventory,
+    // Added an onViewStorage field in constructor.
+    required this.onViewStorage,
+    // Yola
   });
 
   final AppState appState;
   final VoidCallback onViewInventory;
+  // Added an onViewStorage field in constructor.
+  final ValueChanged<StorageLocation> onViewStorage;
+  // Yola
 
   @override
   State<HomeOverviewTab> createState() => _HomeOverviewTabState();
@@ -302,27 +310,41 @@ class _HomeOverviewTabState extends State<HomeOverviewTab> {
                 for (var i = 0; i < StorageLocation.values.length; i++) ...[
                   if (i > 0) const SizedBox(width: 8),
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
-                      child: Column(
-                        children: [
-                          _buildStorageIllustration(StorageLocation.values[i]),
-                          const SizedBox(height: 8),
-                          Text(
-                            StorageLocation.values[i].label,
-                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: AppTheme.ink),
+                    // Changed structure to a Material + InkWell to allow
+                    // direct navigation to Pantry, Fridge, or Freezer screens.
+                    child: Material(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      clipBehavior: Clip.antiAlias,
+                      child: InkWell(
+                        onTap: () {
+                        widget.onViewStorage(StorageLocation.values[i]);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 4,
+                            vertical: 12,
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${byLocation[StorageLocation.values[i]]}',
-                            style: AppTheme.statNumberStyle.copyWith(fontSize: 24, color: AppTheme.ocean),
+                        child: Column(
+                          children: [
+                            _buildStorageIllustration(StorageLocation.values[i]),
+                            const SizedBox(height: 8),
+                            Text(
+                              StorageLocation.values[i].label,
+                              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: AppTheme.ink),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              '${byLocation[StorageLocation.values[i]]}',
+                              style: AppTheme.statNumberStyle.copyWith(fontSize: 24, color: AppTheme.ocean),
+                            ),
+                            Text(
+                              byLocation[StorageLocation.values[i]] == 1 ? 'item' : 'items',
+                              style: TextStyle(fontSize: 11, color: AppTheme.ink.withValues(alpha: 0.65)),
+                              ),
+                            ],
                           ),
-                          Text(
-                            byLocation[StorageLocation.values[i]] == 1 ? 'item' : 'items',
-                            style: TextStyle(fontSize: 11, color: AppTheme.ink.withValues(alpha: 0.65)),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -333,14 +355,25 @@ class _HomeOverviewTabState extends State<HomeOverviewTab> {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
-                onPressed: widget.onViewInventory,
-                icon: const Icon(Icons.inventory_2_outlined),
-                label: const Text('View Inventory'),
+                // Converted the View Inventory button to an Add Item button
+                // to navigate users directly to the Add Item screen, as per team decision.
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => AddEditItemScreen(
+                        appState: widget.appState,
+                      ),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.add),
+                label: const Text('Add Item to Inventory'),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.white,
                   side: const BorderSide(color: Colors.white),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
+                // Yola
               ),
             ),
           ],
@@ -350,44 +383,125 @@ class _HomeOverviewTabState extends State<HomeOverviewTab> {
   }
 
   Widget _buildExpiringSoon(BuildContext context, AppState state) {
-    final expiring = state.expiringWithin(_expiringSoonWindowDays);
+    // Rewrote the _buildExpiringSoon method to separate the "Eat First" and "Expired" sections,
+    // allowing for clearer organization and filtering of items based on their expiration status.
+    final activeItems = state.activeItems;
+
+    final eatFirst = activeItems.where((item) {
+      final days = item.daysLeft;
+      return days >= 0 && days <= _expiringSoonWindowDays;
+    }).toList()
+      ..sort((a, b) => a.daysLeft.compareTo(b.daysLeft));
+
+    final expired = activeItems
+        .where((item) => item.daysLeft < 0)
+        .toList()
+      ..sort((a, b) => a.daysLeft.compareTo(b.daysLeft));
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Expiring Soon', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17)),
-              TextButton(
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => ExpiringSoonScreen(appState: widget.appState),
-                )),
-                child: const Text('View All'),
-              ),
-            ],
+          _buildExpirySection(
+            context,
+            title: 'Eat First',
+            description: 'Expires today or within $_expiringSoonWindowDays days.',
+            items: eatFirst,
+            expiredOnly: false,
+            emptyMessage: 'Nothing nearing expiry.',
           ),
-          if (expiring.isEmpty)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text('Nothing expiring in the next $_expiringSoonWindowDays days 🎉',
-                  style: TextStyle(color: Colors.grey.shade600)),
-            )
-          else
-            ...expiring.take(4).map((item) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: ItemCard(
-                    item: item,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => ItemDetailScreen(appState: widget.appState, item: item),
-                    )),
-                  ),
-                )),
+          const SizedBox(height: 24),
+          _buildExpirySection(
+            context,
+            title: 'Expired',
+            description: 'Past the recorded expiry date.',
+            items: expired,
+            expiredOnly: true,
+            emptyMessage: 'No expired items.',
+          ),
         ],
       ),
     );
+    // Yola
   }
+
+  // Added a _buildExpirySection method to create a reusable widget for both "Eat First" and
+  // "Expired" sections.
+  Widget _buildExpirySection(
+    BuildContext context, {
+    required String title,
+    required String description,
+    required List<FoodItem> items,
+    required bool expiredOnly,
+    required String emptyMessage,
+    }) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '$title (${items.length})',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              if (items.isNotEmpty)
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ExpiringSoonScreen(
+                        appState: widget.appState,
+                        expiredOnly: expiredOnly,
+                        windowDays: _expiringSoonWindowDays,
+                      ),
+                    ),
+                  ),
+                  child: const Text('View All'),
+                ),
+            ],
+          ),
+          Text(
+            description,
+            style: TextStyle(
+              color: Colors.grey.shade700,
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: 12),
+          if (items.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                emptyMessage,
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+            )
+          else
+            ...items.take(4).map(
+              (item) => Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: ItemCard(
+                  item: item,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ItemDetailScreen(
+                        appState: widget.appState,
+                        item: item,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+  }
+  // Yola
 
   /// Epic 6 — entry point to recipe suggestions. Recipes themselves are
   /// only fetched when the screen is opened (an LLM call), not on Home.

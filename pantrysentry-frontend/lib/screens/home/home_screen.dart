@@ -6,6 +6,7 @@ import '../progress/progress_screen.dart';
 import '../profile/profile_screen.dart';
 import '../impact/environmental_impact_screen.dart';
 import 'home_overview_tab.dart';
+import '../../models/food_item.dart';
 
 /// Bottom-nav shell. "Home" tab satisfies Epic 2's home-screen overview
 /// requirements (AC 2.2.1 / AC 2.3.1); "Progress" covers Epic 5's
@@ -23,14 +24,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _index = 0;
 
+  // Added fields to track the inventory location and request count for the inventory screen.
+  StorageLocation? _inventoryLocation;
+  int _inventoryRequest = 0;
+
+  void _openInventory([StorageLocation? location]) {
+    setState(() {
+      _inventoryLocation = location;
+      _inventoryRequest++;
+      _index = 1;
+    });
+  }
+  // Yola
+
   @override
   Widget build(BuildContext context) {
     final tabs = [
       HomeOverviewTab(
         appState: widget.appState,
-        onViewInventory: () => setState(() => _index = 1),
+        onViewInventory: () => _openInventory(),
+        // Added an onViewStorage callback to the HomeOverviewTab.
+        onViewStorage: (location) => _openInventory(location),
+        // Yola
       ),
-      InventoryListScreen(appState: widget.appState),
+      InventoryListScreen(
+        appState: widget.appState,
+        // Pass the inventory location and request count to the InventoryListScreen.
+        requestedLocation: _inventoryLocation,
+        navigationRequest: _inventoryRequest,
+        // Yola
+      ),
       RemindersScreen(appState: widget.appState),
       ProgressScreen(appState: widget.appState),
       EnvironmentalImpactScreen(appState: widget.appState),

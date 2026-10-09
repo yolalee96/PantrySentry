@@ -206,6 +206,22 @@ class Recipe {
         matchedCount: json['matchedCount'] as int,
         missingCount: json['missingCount'] as int,
       );
+
+      // Added inventoryCoverage getter to calculate the percentage of required
+      // ingredients that are available in the inventory.
+      double get inventoryCoverage {
+        final requiredIngredients =
+          ingredients.where((ingredient) => !ingredient.isOptional).toList();
+
+        if (requiredIngredients.isEmpty) return 0;
+
+        final availableCount = requiredIngredients
+            .where((ingredient) => ingredient.isAvailable)
+            .length;
+
+        return availableCount / requiredIngredients.length;
+      }
+      // Yola
 }
 
 class RecipeSuggestions {

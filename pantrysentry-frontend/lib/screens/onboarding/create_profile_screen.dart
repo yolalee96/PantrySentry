@@ -125,6 +125,13 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                 ],
                 const SizedBox(height: 28),
                 ElevatedButton(
+                  // Changed colour of button for better visibility, as per team decision.
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green.shade700,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  ),
+                  // Yola
                   onPressed: _submitting ? null : _submit,
                   child: _submitting
                       ? const SizedBox(

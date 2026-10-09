@@ -109,6 +109,34 @@ class _RecipeSuggestionsScreenState extends State<RecipeSuggestionsScreen> {
     );
   }
 
+  // Added a sorting helper to sort recipes by highest proportion of coverage order,
+  // then by the number of expiring matches, and finally by title.
+  List<Recipe> _sortByCoverage(List<Recipe> recipes) {
+      final sorted = List<Recipe>.of(recipes);
+
+      sorted.sort((a, b) {
+          // Highest proportion first.
+          final coverageOrder =
+              b.inventoryCoverage.compareTo(a.inventoryCoverage);
+
+          if (coverageOrder != 0) return coverageOrder;
+
+          // For equal coverage, prioritise recipes using expiring items.
+          final expiryOrder =
+              b.expiringMatches.length.compareTo(a.expiringMatches.length);
+
+          // Condition if number of expiring matches is 0, return 0 to avoid division
+          // by zero error.
+          if (expiryOrder != 0) return expiryOrder;
+
+      // Predictable order when both scores match.
+      return a.title.compareTo(b.title);
+      });
+
+      return sorted;
+  }
+  // Yola
+
   Widget _buildBody() {
     // Nothing in stock: both sources say the same thing, so say it once.
     if (_dataset?.status == RecipeSuggestionsStatus.noInventory) {
@@ -122,10 +150,13 @@ class _RecipeSuggestionsScreenState extends State<RecipeSuggestionsScreen> {
       return const Center(child: CircularProgressIndicator());
     }
 
-    final dataset = _dataset;
-    final datasetRecipes = dataset?.recipes ?? const <Recipe>[];
-    final aiRecipes = _ai?.recipes ?? const <Recipe>[];
-    final noneAnywhere = dataset?.status == RecipeSuggestionsStatus.noMatches &&
+    // Sort the recipes by coverage and expiring matches before displaying them.
+    final datasetRecipes = _sortByCoverage(_dataset?.recipes ?? const <Recipe>[]);
+
+    final aiRecipes = _sortByCoverage(_ai?.recipes ?? const <Recipe>[]);
+    // Yola
+
+    final noneAnywhere = _dataset?.status == RecipeSuggestionsStatus.noMatches &&
         !_aiLoading && aiRecipes.isEmpty;
 
     return RefreshIndicator(
@@ -134,7 +165,7 @@ class _RecipeSuggestionsScreenState extends State<RecipeSuggestionsScreen> {
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
         children: [
-          if (dataset != null) _buildIntro(dataset.expiringSoonCount),
+          if (_dataset != null) _buildIntro(_dataset!.expiringSoonCount),
           if (noneAnywhere) ...[
             const SizedBox(height: 24),
             // AC 6.1.7 — say so plainly; never imply a match exists.
@@ -188,9 +219,15 @@ class _RecipeSuggestionsScreenState extends State<RecipeSuggestionsScreen> {
   Widget _buildIntro(int expiring) {
     // AC 6.1.6 — when nothing is expiring soon, say the recipes use the
     // rest of the inventory instead.
-    final text = expiring > 0
-        ? 'Recipes using your $expiring ${expiring == 1 ? 'item' : 'items'} expiring in the next 3 days come first.'
-        : 'Nothing is expiring in the next 3 days, so these recipes use other food you have.';
+
+    // Updated the description to clarify that the recipes are sorted by coverage and expiring items,
+    // rather than just expiring items.
+    final text = 
+        'Within each section, recipes are sorted by the proportion of '
+        'required ingredients already in your inventory. '
+        'Recipes using soon-to-expire items come first when proportions match.';
+    // Yola
+    
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -304,6 +341,18 @@ class _RecipeCard extends StatelessWidget {
                       ),
                     ),
                   const SizedBox(height: 8),
+                  // Indicate percentage of ingredients needed to make recipe are in the inventory, and how many are missing.
+                  Text(
+                    '${(recipe.inventoryCoverage * 100).round()}% of required '
+                    'ingredients in inventory',
+                    style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: AppTheme.seedColor,
+                    ),
+                  ),
+                  // Yola
+                  
                   Text(
                     recipe.missingCount == 0
                         ? 'All ${recipe.matchedCount} ingredients in your inventory'

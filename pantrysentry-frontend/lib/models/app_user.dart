@@ -31,8 +31,9 @@ class AppUser {
   }
 }
 
-/// Small curated set of avatar options (vegetable-themed, matching the
-/// app's mascot style) so profile creation doesn't depend on image assets.
+/// Curated set of avatar options (vegetable-themed, matching the app's
+/// mascot style) so profile creation doesn't depend on image assets.
+/// Additional avatars have been added to the original set of 12 by Yola.
 class AvatarCatalog {
   static const List<MapEntry<String, String>> options = [
     MapEntry('tomato', '🍅'),
@@ -47,6 +48,34 @@ class AvatarCatalog {
     MapEntry('cucumber', '🥒'),
     MapEntry('mushroom', '🍄'),
     MapEntry('avocado', '🥑'),
+    MapEntry('apple', '🍎'),
+    MapEntry('banana', '🍌'),
+    MapEntry('grapes', '🍇'),
+    MapEntry('watermelon', '🍉'),
+    MapEntry('peach', '🍑'),
+    MapEntry('cherry', '🍒'),
+    MapEntry('strawberry', '🍓'),
+    MapEntry('kiwi', '🥝'),
+    MapEntry('pineapple', '🍍'),
+    MapEntry('coconut', '🥥'),
+    MapEntry('lemon', '🍋'),
+    MapEntry('lime', '🍈'),
+    MapEntry('blueberry', '🫐'),
+    MapEntry('orange', '🍊'),
+    MapEntry('pear', '🍐'),
+    MapEntry('Milk', '🥛'),
+    MapEntry('Cheese', '🧀'),
+    MapEntry('Bread', '🍞'),
+    MapEntry('Egg', '🥚'),
+    MapEntry('Fish', '🐟'),
+    MapEntry('Chicken', '🍗'),
+    MapEntry('Shrimp', '🦐'),
+    MapEntry('Meat', '🥩'),
+    MapEntry('Pasta', '🍝'),
+    MapEntry('Rice', '🍚'),
+    MapEntry('Noodles', '🍜'),
+    MapEntry('Soup', '🥣'),
+    MapEntry('Pizza', '🍕'),
   ];
 
   static String emojiFor(String key) {

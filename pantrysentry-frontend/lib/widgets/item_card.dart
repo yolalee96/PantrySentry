@@ -41,7 +41,10 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = urgencyColor(item.daysLeft);
     final daysLabel = item.daysLeft < 0
-        ? '${-item.daysLeft}d overdue'
+        // Expired items are clearly labeled as Expired with number of days
+        // overdue clearly shown.
+        ? 'Expired: ${-item.daysLeft}d overdue'
+        // Yola
         : item.daysLeft == 0
             ? 'Due today'
             : '${item.daysLeft}d left';

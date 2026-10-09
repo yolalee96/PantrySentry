@@ -15,8 +15,17 @@ import 'multi_item_scan_screen.dart';
 /// Freezer/Pantry), each showing an item count.
 /// Search bar shown on both the home screen and here (AC).
 class InventoryListScreen extends StatefulWidget {
-  const InventoryListScreen({super.key, required this.appState});
+  const InventoryListScreen(
+    {
+      super.key, 
+      required this.appState,
+      this.requestedLocation,
+      this.navigationRequest = 0,
+    }
+  );
   final AppState appState;
+  final StorageLocation? requestedLocation;
+  final int navigationRequest;
 
   @override
   State<InventoryListScreen> createState() => _InventoryListScreenState();
@@ -27,17 +36,52 @@ class _InventoryListScreenState extends State<InventoryListScreen>
   late final TabController _tabController;
   final _searchController = TextEditingController();
   Timer? _searchDebounce;
+  // Added a getter to request the tab index based on the requested location.
+  int get _requestedTabIndex {
+    final location = widget.requestedLocation;
+
+    return location == null
+      ? 0
+      : StorageLocation.values.indexOf(location) + 1;
+  }
+  // Yola
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(
+      // Modified the length of the TabController to include the
+      // "All" tab and the storage location tabs.
+      length: StorageLocation.values.length + 1,
+      vsync: this,
+      initialIndex: _requestedTabIndex,
+      // Yola
+    );
   }
+
+  // Added an additional override to handle the navigation request
+  // and requested location changes, resetting the search bar and
+  // tab index accordingly.
+  @override
+  void didUpdateWidget(covariant InventoryListScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.navigationRequest != widget.navigationRequest ||
+      oldWidget.requestedLocation != widget.requestedLocation) {
+      _searchDebounce?.cancel();
+      _searchController.clear();
+      _tabController.index = _requestedTabIndex;
+    }
+  }
+  // Yola
 
   @override
   void dispose() {
     _searchDebounce?.cancel();
     _searchController.dispose();
+    // Added a dispose call for the TabController to prevent memory leaks.
+    _tabController.dispose();
+    // Yola
     super.dispose();
   }
 

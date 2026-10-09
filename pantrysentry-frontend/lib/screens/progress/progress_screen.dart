@@ -74,6 +74,117 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
+  // The _buildInfoSection widget is created to build the info sections in the
+  // pop-up dialog explaining the progress tab via the _showProgressInfo method.
+  // It takes a title and explanation as parameters and returns a Column widget
+  // containing the title and content.
+  Widget _buildInfoSection(String title, String explanation) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(explanation),
+        ],
+      ),
+    );
+  }
+  // Yola
+
+  // Added the _showProgressInfo method to show a dialog explaining the
+  // progress tab when the info icon is pressed.
+  void _showProgressInfo() {
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Understanding My Progress'),
+        scrollable: true,
+        content: SizedBox(
+          width: 420,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildInfoSection(
+                'Your household’s progress',
+                'This page summarises the selected household’s food records, '
+                'not just your own activity. Choose Weekly or Monthly and '
+                'use the date arrows to explore different periods.',
+              ),
+              _buildInfoSection(
+                'Consumed, Stored and Wasted',
+                'Consumed and Wasted count inventory entries recorded as '
+                'consumed or discarded during the selected period. Stored '
+                'counts entries still unresolved at the period’s end. '
+                'These are item counts, not weights or individual servings. '
+                'An expired item is not counted as wasted until its '
+                'disposal is recorded.',
+              ),
+              _buildInfoSection(
+                'Reading the trend chart',
+                'The horizontal axis shows dates and the vertical axis '
+                'shows item counts. The green line represents consumed '
+                'items and the red line represents wasted items. '
+                'Use the chart to spot changes across the selected period.',
+              ),
+              _buildInfoSection(
+                'Category breakdown',
+                'This shows which food categories contributed to recorded '
+                'waste. Use it to identify categories you may want to '
+                'buy in smaller quantities or use earlier.',
+              ),
+              _buildInfoSection(
+                'Estimated value wasted',
+                'This estimates the value of discarded food in RM. '
+                'It uses entered purchase prices where available, '
+                'then reference-price estimates or category estimates. '
+                'It is not an exact measure of money lost.',
+              ),
+              _buildInfoSection(
+                'Why food was wasted',
+                'This breakdown uses the reasons household members '
+                'selected when recording disposal. Accurate records '
+                'make the breakdown more useful.',
+              ),
+              _buildInfoSection(
+                'Ways to reduce food waste',
+                'These tips use your current inventory and approaching '
+                'expiry dates. They help you decide what to prioritise now, '
+                'even when you are viewing an earlier reporting period.',
+              ),
+              _buildInfoSection(
+                'Recommended changes',
+                'These suggestions use recorded discard reasons and '
+                'waste patterns to help you adjust shopping, storage '
+                'and food-use habits.',
+              ),
+              _buildInfoSection(
+                'Keep your records updated',
+                'Record consumption and disposal from an item’s details. '
+                'Missing records can make the charts incomplete; '
+                'no recorded waste does not necessarily mean no waste occurred.',
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Got it'),
+          ),
+        ],
+      ),
+    );
+  }
+  // Yola
+
   Widget _buildHeader() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,14 +198,22 @@ class _ProgressScreenState extends State<ProgressScreen> {
             ],
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: AppTheme.seedColor.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(14),
+        // Replaced the non-functioning leaf icon with an info icon that opens a
+        // dialog explaining the progress tab.
+        IconButton(
+          tooltip: 'About My Progress',
+          onPressed: _showProgressInfo,
+          icon: const Icon(Icons.info_outline),
+          style: IconButton.styleFrom(
+            foregroundColor: AppTheme.seedColor,
+            backgroundColor: AppTheme.seedColor.withValues(alpha: 0.12),
+            minimumSize: const Size(48, 48),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
           ),
-          child: const Icon(Icons.eco_outlined, color: AppTheme.seedColor),
         ),
+        // Yola
       ],
     );
   }
@@ -306,7 +425,16 @@ class _ProgressScreenState extends State<ProgressScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Trends (items)', style: TextStyle(fontWeight: FontWeight.w700)),
+            // Changed the title of the trend chart to "Food Consumption and Waste Trends" to better reflect the data being displayed.
+            const Text(
+              'Food Consumption and Waste Trends (number of items)', 
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppTheme.ink,
+              ),
+              // Yola
+            ),
             const SizedBox(height: 4),
             const Wrap(
               spacing: 14,

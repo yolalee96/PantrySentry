@@ -95,12 +95,19 @@ class _DropdownDatePickerDialogState extends State<_DropdownDatePickerDialog> {
     _clampSelections();
     return AlertDialog(
       title: const Text('Select date'),
+      // Encompassed the 3 dropdowns for date in a Sized Box to add a slider
+      // below the date dropdown selections.
       content: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: DropdownButtonFormField<int>(
               initialValue: _day,
+              // Enlarged dropdown arrows based on UT feedback.
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 32,
+              isExpanded: true,
+              // Yola
               decoration: const InputDecoration(labelText: 'Day', isDense: true),
               items: _availableDays.map((d) => DropdownMenuItem(value: d, child: Text('$d'))).toList(),
               onChanged: (v) => setState(() => _day = v ?? _day),
@@ -111,6 +118,11 @@ class _DropdownDatePickerDialogState extends State<_DropdownDatePickerDialog> {
             flex: 2,
             child: DropdownButtonFormField<int>(
               initialValue: _month,
+              // Enlarged dropdown arrows based on UT feedback
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 32,
+              isExpanded: true,
+              // Yola
               decoration: const InputDecoration(labelText: 'Month', isDense: true),
               items: _availableMonths
                   .map((m) => DropdownMenuItem(value: m, child: Text(_monthNames[m - 1], overflow: TextOverflow.ellipsis)))
@@ -122,6 +134,11 @@ class _DropdownDatePickerDialogState extends State<_DropdownDatePickerDialog> {
           Expanded(
             child: DropdownButtonFormField<int>(
               initialValue: _year,
+              // Enlarged dropdown arrows based on UT feedback
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 32,
+              isExpanded: true,
+              // Yola
               decoration: const InputDecoration(labelText: 'Year', isDense: true),
               items: _availableYears.map((y) => DropdownMenuItem(value: y, child: Text('$y'))).toList(),
               onChanged: (v) => setState(() => _year = v ?? _year),
